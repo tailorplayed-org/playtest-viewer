@@ -1,0 +1,2092 @@
+{
+  "meta": {
+    "order_id": "TP-2026-00040",
+    "game_title": "Gold Hunt",
+    "game_title_original": "ציד הזהב",
+    "game_number": 5,
+    "total_games": 6,
+    "player_count": 6,
+    "win_target": 3,
+    "players": [
+      {
+        "id": "player-6",
+        "name": "Yossi-2",
+        "personality": "rules-lawyer",
+        "character": "Nadavch the Sheriff",
+        "priority": 8,
+        "color": "#E24B4A"
+      },
+      {
+        "id": "player-4",
+        "name": "Michal",
+        "personality": "casual",
+        "character": "Ilanit 'The Full Case'",
+        "priority": 7,
+        "color": "#3B82F6"
+      },
+      {
+        "id": "player-1",
+        "name": "Danny",
+        "personality": "strategist",
+        "character": "Shaika the Trail Tracker",
+        "priority": 6,
+        "color": "#22C55E"
+      },
+      {
+        "id": "player-3",
+        "name": "Ronit",
+        "personality": "chaotic",
+        "character": "Alonzo the Sly",
+        "priority": 5,
+        "color": "#EAB308"
+      },
+      {
+        "id": "player-5",
+        "name": "Danny-2",
+        "personality": "strategist",
+        "character": "Yermi the Dinosaur",
+        "priority": 3,
+        "color": "#F97316"
+      },
+      {
+        "id": "player-2",
+        "name": "Yossi",
+        "personality": "rules-lawyer",
+        "character": "Alex the Stranger",
+        "priority": 1,
+        "color": "#6B7280"
+      }
+    ],
+    "protocols": [
+      "P1-simultaneous",
+      "P7-set-collection",
+      "P9-abilities",
+      "P10-catch-up"
+    ],
+    "status": "completed",
+    "started_at": "2026-03-22T17:55:33.292Z",
+    "ended_at": "2026-03-22T17:55:33.294Z",
+    "winner": "player-4",
+    "winner_name": "Michal",
+    "total_rounds": 6
+  },
+  "board": {
+    "locations": [
+      {
+        "id": "matzok_store",
+        "name": "Matzok Store",
+        "special": null
+      },
+      {
+        "id": "eilat_reef",
+        "name": "Eilat Reef",
+        "special": null
+      },
+      {
+        "id": "messy_closet",
+        "name": "The Messy Closet",
+        "special": "random_draw"
+      },
+      {
+        "id": "rosa_salon",
+        "name": "Rosa Salon",
+        "special": null
+      },
+      {
+        "id": "dizengoff_cabin",
+        "name": "Dizengoff Cabin",
+        "special": null
+      },
+      {
+        "id": "nadav_hq",
+        "name": "Nadav's HQ",
+        "special": "peek"
+      },
+      {
+        "id": "subaru_wagon",
+        "name": "Subaru Wagon",
+        "special": "swap"
+      },
+      {
+        "id": "barka_salon",
+        "name": "Barka Salon",
+        "special": null
+      }
+    ]
+  },
+  "rounds": [
+    {
+      "number": 1,
+      "actions": [
+        {
+          "player_id": "player-6",
+          "player_name": "Yossi-2",
+          "character": "Nadavch the Sheriff",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Yossi: Eilat Reef follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "blue"
+          ]
+        },
+        {
+          "player_id": "player-4",
+          "player_name": "Michal",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Michal: Eilat Reef sounds interesting! Let's see what's there.",
+          "tokens_collected": []
+        },
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Shaika the Trail Tracker",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Danny calculates: Eilat Reef has tokens I need. Optimizing for case completion.",
+          "tokens_collected": []
+        },
+        {
+          "player_id": "player-3",
+          "player_name": "Ronit",
+          "character": "Alonzo the Sly",
+          "action_type": "select_location",
+          "target": "subaru_wagon",
+          "target_name": "Subaru Wagon",
+          "thought": "Ronit: Going to Subaru Wagon because nobody expects it!",
+          "tokens_collected": [
+            "orange",
+            "brown"
+          ]
+        },
+        {
+          "player_id": "player-5",
+          "player_name": "Danny-2",
+          "character": "Yermi the Dinosaur",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Danny calculates: Eilat Reef has tokens I need. Optimizing for case completion.",
+          "tokens_collected": []
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "Alex the Stranger",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Yossi: Eilat Reef follows the optimal token collection path per rules.",
+          "tokens_collected": []
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "eilat_reef",
+            "location_name": "Eilat Reef",
+            "players": [
+              "player-6",
+              "player-4",
+              "player-1",
+              "player-5",
+              "player-2"
+            ],
+            "player_count": 5,
+            "resolution_rule": "5 players: only highest priority collects 1 (Section 1.2 Rule 4c)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "subaru_wagon",
+            "added": [
+              "blue"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-6",
+            "name": "Yossi-2",
+            "character": "Nadavch the Sheriff",
+            "tokens": [
+              "blue"
+            ],
+            "token_count": 1,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-4",
+            "name": "Michal",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Shaika the Trail Tracker",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-3",
+            "name": "Ronit",
+            "character": "Alonzo the Sly",
+            "tokens": [
+              "orange",
+              "brown"
+            ],
+            "token_count": 2,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-5",
+            "name": "Danny-2",
+            "character": "Yermi the Dinosaur",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "Alex the Stranger",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 1
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "green",
+              "brown",
+              "orange"
+            ],
+            "count": 3
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "blue",
+              "blue"
+            ],
+            "count": 2
+          },
+          {
+            "id": "messy_closet",
+            "name": "The Messy Closet",
+            "tokens": [],
+            "count": 0
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "orange",
+              "orange",
+              "orange"
+            ],
+            "count": 3
+          },
+          {
+            "id": "dizengoff_cabin",
+            "name": "Dizengoff Cabin",
+            "tokens": [
+              "darkred",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "nadav_hq",
+            "name": "Nadav's HQ",
+            "tokens": [
+              "orange",
+              "brown",
+              "brown"
+            ],
+            "count": 3
+          },
+          {
+            "id": "subaru_wagon",
+            "name": "Subaru Wagon",
+            "tokens": [
+              "darkred",
+              "blue"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "brown",
+              "darkred",
+              "brown"
+            ],
+            "count": 3
+          }
+        ],
+        "bag_count": 19,
+        "public_cases": [
+          {
+            "id": "CF-05",
+            "name": "The Oracle Mystery"
+          },
+          {
+            "id": "CF-10",
+            "name": "The Diving Case"
+          }
+        ],
+        "draw_pile_count": 8,
+        "prize_holder": "center",
+        "score_gap": 0
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 2,
+      "actions": [
+        {
+          "player_id": "player-6",
+          "player_name": "Yossi-2",
+          "character": "Nadavch the Sheriff",
+          "action_type": "select_location",
+          "target": "rosa_salon",
+          "target_name": "Rosa Salon",
+          "thought": "Yossi: Rosa Salon follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "orange"
+          ]
+        },
+        {
+          "player_id": "player-4",
+          "player_name": "Michal",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Michal: Eilat Reef sounds interesting! Let's see what's there.",
+          "tokens_collected": [
+            "blue",
+            "blue"
+          ]
+        },
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Shaika the Trail Tracker",
+          "action_type": "select_location",
+          "target": "rosa_salon",
+          "target_name": "Rosa Salon",
+          "thought": "Danny calculates: Rosa Salon has tokens I need. Optimizing for case completion.",
+          "tokens_collected": []
+        },
+        {
+          "player_id": "player-3",
+          "player_name": "Ronit",
+          "character": "Alonzo the Sly",
+          "action_type": "select_location",
+          "target": "barka_salon",
+          "target_name": "Barka Salon",
+          "thought": "Ronit: Going to Barka Salon because nobody expects it!",
+          "tokens_collected": [
+            "brown",
+            "darkred"
+          ]
+        },
+        {
+          "player_id": "player-5",
+          "player_name": "Danny-2",
+          "character": "Yermi the Dinosaur",
+          "action_type": "select_location",
+          "target": "rosa_salon",
+          "target_name": "Rosa Salon",
+          "thought": "Danny calculates: Rosa Salon has tokens I need. Optimizing for case completion.",
+          "tokens_collected": []
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "Alex the Stranger",
+          "action_type": "select_location",
+          "target": "nadav_hq",
+          "target_name": "Nadav's HQ",
+          "thought": "Yossi: Nadav's HQ follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "orange",
+            "brown"
+          ],
+          "peek": "CF-11"
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "rosa_salon",
+            "location_name": "Rosa Salon",
+            "players": [
+              "player-6",
+              "player-1",
+              "player-5"
+            ],
+            "player_count": 3,
+            "resolution_rule": "3 players: only highest priority collects 1 (Section 1.2 Rule 4c)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "eilat_reef",
+            "added": [
+              "blue",
+              "darkred"
+            ]
+          },
+          {
+            "location": "nadav_hq",
+            "added": [
+              "blue"
+            ]
+          },
+          {
+            "location": "barka_salon",
+            "added": [
+              "orange"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-6",
+            "name": "Yossi-2",
+            "character": "Nadavch the Sheriff",
+            "tokens": [
+              "blue",
+              "orange"
+            ],
+            "token_count": 2,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-4",
+            "name": "Michal",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [
+              "blue",
+              "blue"
+            ],
+            "token_count": 2,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Shaika the Trail Tracker",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-3",
+            "name": "Ronit",
+            "character": "Alonzo the Sly",
+            "tokens": [
+              "orange",
+              "brown",
+              "brown",
+              "darkred"
+            ],
+            "token_count": 4,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-5",
+            "name": "Danny-2",
+            "character": "Yermi the Dinosaur",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "Alex the Stranger",
+            "tokens": [
+              "orange",
+              "brown"
+            ],
+            "token_count": 2,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "green",
+              "brown",
+              "orange"
+            ],
+            "count": 3
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "blue",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "messy_closet",
+            "name": "The Messy Closet",
+            "tokens": [],
+            "count": 0
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "orange",
+              "orange"
+            ],
+            "count": 2
+          },
+          {
+            "id": "dizengoff_cabin",
+            "name": "Dizengoff Cabin",
+            "tokens": [
+              "darkred",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "nadav_hq",
+            "name": "Nadav's HQ",
+            "tokens": [
+              "brown",
+              "blue"
+            ],
+            "count": 2
+          },
+          {
+            "id": "subaru_wagon",
+            "name": "Subaru Wagon",
+            "tokens": [
+              "darkred",
+              "blue"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "brown",
+              "orange"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 15,
+        "public_cases": [
+          {
+            "id": "CF-05",
+            "name": "The Oracle Mystery"
+          },
+          {
+            "id": "CF-10",
+            "name": "The Diving Case"
+          }
+        ],
+        "draw_pile_count": 8,
+        "prize_holder": "center",
+        "score_gap": 0
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 3,
+      "actions": [
+        {
+          "player_id": "player-6",
+          "player_name": "Yossi-2",
+          "character": "Nadavch the Sheriff",
+          "action_type": "select_location",
+          "target": "messy_closet",
+          "target_name": "The Messy Closet",
+          "thought": "Yossi: The Messy Closet follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "green",
+            "darkred"
+          ]
+        },
+        {
+          "player_id": "player-4",
+          "player_name": "Michal",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "matzok_store",
+          "target_name": "Matzok Store",
+          "thought": "Michal: Matzok Store sounds interesting! Let's see what's there.",
+          "tokens_collected": [
+            "green"
+          ],
+          "case_completed": {
+            "id": "CF-10",
+            "name": "The Diving Case",
+            "is_public": true
+          }
+        },
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Shaika the Trail Tracker",
+          "action_type": "select_location",
+          "target": "matzok_store",
+          "target_name": "Matzok Store",
+          "thought": "Danny calculates: Matzok Store has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "brown"
+          ]
+        },
+        {
+          "player_id": "player-3",
+          "player_name": "Ronit",
+          "character": "Alonzo the Sly",
+          "action_type": "select_location",
+          "target": "nadav_hq",
+          "target_name": "Nadav's HQ",
+          "thought": "Ronit: Going to Nadav's HQ because nobody expects it!",
+          "tokens_collected": [
+            "brown",
+            "blue"
+          ],
+          "peek": "CF-11",
+          "case_completed": {
+            "id": "CF-05",
+            "name": "The Oracle Mystery",
+            "is_public": true
+          }
+        },
+        {
+          "player_id": "player-5",
+          "player_name": "Danny-2",
+          "character": "Yermi the Dinosaur",
+          "action_type": "select_location",
+          "target": "rosa_salon",
+          "target_name": "Rosa Salon",
+          "thought": "Danny calculates: Rosa Salon has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "orange",
+            "orange"
+          ]
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "Alex the Stranger",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Yossi: Eilat Reef follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "blue",
+            "darkred"
+          ]
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "matzok_store",
+            "location_name": "Matzok Store",
+            "players": [
+              "player-4",
+              "player-1"
+            ],
+            "player_count": 2,
+            "resolution_rule": "Two players: each collects 1, higher priority first (Section 1.2 Rule 4b)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "matzok_store",
+            "added": [
+              "darkred"
+            ]
+          },
+          {
+            "location": "eilat_reef",
+            "added": [
+              "orange",
+              "green"
+            ]
+          },
+          {
+            "location": "rosa_salon",
+            "added": [
+              "blue",
+              "green"
+            ]
+          },
+          {
+            "location": "nadav_hq",
+            "added": [
+              "brown",
+              "green"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-6",
+            "name": "Yossi-2",
+            "character": "Nadavch the Sheriff",
+            "tokens": [
+              "blue",
+              "orange",
+              "green",
+              "darkred"
+            ],
+            "token_count": 4,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-4",
+            "name": "Michal",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Diving Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Shaika the Trail Tracker",
+            "tokens": [
+              "brown"
+            ],
+            "token_count": 1,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-3",
+            "name": "Ronit",
+            "character": "Alonzo the Sly",
+            "tokens": [
+              "brown",
+              "darkred",
+              "brown"
+            ],
+            "token_count": 3,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Oracle Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-5",
+            "name": "Danny-2",
+            "character": "Yermi the Dinosaur",
+            "tokens": [
+              "orange",
+              "orange"
+            ],
+            "token_count": 2,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "Alex the Stranger",
+            "tokens": [
+              "orange",
+              "brown",
+              "blue",
+              "darkred"
+            ],
+            "token_count": 4,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "orange",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "orange",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "messy_closet",
+            "name": "The Messy Closet",
+            "tokens": [],
+            "count": 0
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "blue",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "dizengoff_cabin",
+            "name": "Dizengoff Cabin",
+            "tokens": [
+              "darkred",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "nadav_hq",
+            "name": "Nadav's HQ",
+            "tokens": [
+              "brown",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "subaru_wagon",
+            "name": "Subaru Wagon",
+            "tokens": [
+              "darkred",
+              "blue"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "brown",
+              "orange"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 12,
+        "public_cases": [
+          {
+            "id": "CF-11",
+            "name": "The Buckets Case"
+          },
+          {
+            "id": "CF-09",
+            "name": "The Wedding Mystery"
+          }
+        ],
+        "draw_pile_count": 6,
+        "prize_holder": "player-3",
+        "score_gap": 1
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 4,
+      "actions": [
+        {
+          "player_id": "player-6",
+          "player_name": "Yossi-2",
+          "character": "Nadavch the Sheriff",
+          "action_type": "select_location",
+          "target": "messy_closet",
+          "target_name": "The Messy Closet",
+          "thought": "Yossi: The Messy Closet follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "blue"
+          ],
+          "case_completed": {
+            "id": "CF-09",
+            "name": "The Wedding Mystery",
+            "is_public": true
+          }
+        },
+        {
+          "player_id": "player-4",
+          "player_name": "Michal",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "nadav_hq",
+          "target_name": "Nadav's HQ",
+          "thought": "Michal: Nadav's HQ sounds interesting! Let's see what's there.",
+          "tokens_collected": [
+            "brown",
+            "green"
+          ],
+          "peek": "CF-07"
+        },
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Shaika the Trail Tracker",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Danny calculates: Eilat Reef has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "orange",
+            "green"
+          ],
+          "case_completed": {
+            "id": "CF-01",
+            "name": "The Spackle Mystery",
+            "is_public": false
+          }
+        },
+        {
+          "player_id": "player-3",
+          "player_name": "Ronit",
+          "character": "Alonzo the Sly",
+          "action_type": "select_location",
+          "target": "barka_salon",
+          "target_name": "Barka Salon",
+          "thought": "Ronit: Going to Barka Salon because nobody expects it!",
+          "tokens_collected": [
+            "brown",
+            "orange"
+          ]
+        },
+        {
+          "player_id": "player-5",
+          "player_name": "Danny-2",
+          "character": "Yermi the Dinosaur",
+          "action_type": "select_location",
+          "target": "dizengoff_cabin",
+          "target_name": "Dizengoff Cabin",
+          "thought": "Danny calculates: Dizengoff Cabin has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "darkred",
+            "darkred"
+          ]
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "Alex the Stranger",
+          "action_type": "select_location",
+          "target": "messy_closet",
+          "target_name": "The Messy Closet",
+          "thought": "Yossi: The Messy Closet follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "orange"
+          ],
+          "case_completed": {
+            "id": "CF-11",
+            "name": "The Buckets Case",
+            "is_public": true
+          }
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "messy_closet",
+            "location_name": "The Messy Closet",
+            "players": [
+              "player-6",
+              "player-2"
+            ],
+            "player_count": 2,
+            "resolution_rule": "Two players: each collects 1, higher priority first (Section 1.2 Rule 4b)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "eilat_reef",
+            "added": [
+              "green",
+              "brown"
+            ]
+          },
+          {
+            "location": "dizengoff_cabin",
+            "added": [
+              "green",
+              "green"
+            ]
+          },
+          {
+            "location": "nadav_hq",
+            "added": [
+              "brown",
+              "orange"
+            ]
+          },
+          {
+            "location": "barka_salon",
+            "added": [
+              "brown",
+              "orange"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-6",
+            "name": "Yossi-2",
+            "character": "Nadavch the Sheriff",
+            "tokens": [
+              "blue",
+              "blue"
+            ],
+            "token_count": 2,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Wedding Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-4",
+            "name": "Michal",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [
+              "brown",
+              "green"
+            ],
+            "token_count": 2,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Diving Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Shaika the Trail Tracker",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Spackle Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-3",
+            "name": "Ronit",
+            "character": "Alonzo the Sly",
+            "tokens": [
+              "brown",
+              "darkred",
+              "brown",
+              "brown",
+              "orange"
+            ],
+            "token_count": 5,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Oracle Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-5",
+            "name": "Danny-2",
+            "character": "Yermi the Dinosaur",
+            "tokens": [
+              "orange",
+              "orange",
+              "darkred",
+              "darkred"
+            ],
+            "token_count": 4,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "Alex the Stranger",
+            "tokens": [
+              "darkred",
+              "orange"
+            ],
+            "token_count": 2,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Buckets Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "orange",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "green",
+              "brown"
+            ],
+            "count": 2
+          },
+          {
+            "id": "messy_closet",
+            "name": "The Messy Closet",
+            "tokens": [],
+            "count": 0
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "blue",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "dizengoff_cabin",
+            "name": "Dizengoff Cabin",
+            "tokens": [
+              "green",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "nadav_hq",
+            "name": "Nadav's HQ",
+            "tokens": [
+              "brown",
+              "orange"
+            ],
+            "count": 2
+          },
+          {
+            "id": "subaru_wagon",
+            "name": "Subaru Wagon",
+            "tokens": [
+              "darkred",
+              "blue"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "brown",
+              "orange"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 11,
+        "public_cases": [
+          {
+            "id": "CF-07",
+            "name": "The Butt Flick Case"
+          },
+          {
+            "id": "CF-16",
+            "name": "The Singapore Mystery"
+          }
+        ],
+        "draw_pile_count": 3,
+        "prize_holder": "player-2",
+        "score_gap": 1
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 5,
+      "actions": [
+        {
+          "player_id": "player-6",
+          "player_name": "Yossi-2",
+          "character": "Nadavch the Sheriff",
+          "action_type": "select_location",
+          "target": "matzok_store",
+          "target_name": "Matzok Store",
+          "thought": "Yossi: Matzok Store follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "orange"
+          ]
+        },
+        {
+          "player_id": "player-4",
+          "player_name": "Michal",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "subaru_wagon",
+          "target_name": "Subaru Wagon",
+          "thought": "Michal: Subaru Wagon sounds interesting! Let's see what's there.",
+          "tokens_collected": [
+            "darkred",
+            "blue"
+          ],
+          "case_completed": {
+            "id": "CF-07",
+            "name": "The Butt Flick Case",
+            "is_public": true
+          }
+        },
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Shaika the Trail Tracker",
+          "action_type": "select_location",
+          "target": "matzok_store",
+          "target_name": "Matzok Store",
+          "thought": "Danny calculates: Matzok Store has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "darkred"
+          ]
+        },
+        {
+          "player_id": "player-3",
+          "player_name": "Ronit",
+          "character": "Alonzo the Sly",
+          "action_type": "select_location",
+          "target": "rosa_salon",
+          "target_name": "Rosa Salon",
+          "thought": "Ronit: Going to Rosa Salon because nobody expects it!",
+          "tokens_collected": [
+            "blue",
+            "green"
+          ]
+        },
+        {
+          "player_id": "player-5",
+          "player_name": "Danny-2",
+          "character": "Yermi the Dinosaur",
+          "action_type": "select_location",
+          "target": "messy_closet",
+          "target_name": "The Messy Closet",
+          "thought": "Danny calculates: The Messy Closet has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "darkred",
+            "blue"
+          ]
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "Alex the Stranger",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Yossi: Eilat Reef follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "green",
+            "brown"
+          ]
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "matzok_store",
+            "location_name": "Matzok Store",
+            "players": [
+              "player-6",
+              "player-1"
+            ],
+            "player_count": 2,
+            "resolution_rule": "Two players: each collects 1, higher priority first (Section 1.2 Rule 4b)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "matzok_store",
+            "added": [
+              "blue",
+              "green"
+            ]
+          },
+          {
+            "location": "eilat_reef",
+            "added": [
+              "blue",
+              "darkred"
+            ]
+          },
+          {
+            "location": "rosa_salon",
+            "added": [
+              "darkred",
+              "green"
+            ]
+          },
+          {
+            "location": "subaru_wagon",
+            "added": [
+              "green",
+              "green"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-6",
+            "name": "Yossi-2",
+            "character": "Nadavch the Sheriff",
+            "tokens": [
+              "blue",
+              "blue",
+              "orange"
+            ],
+            "token_count": 3,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Wedding Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-4",
+            "name": "Michal",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [
+              "brown"
+            ],
+            "token_count": 1,
+            "cases_completed": 2,
+            "completed_case_names": [
+              "The Diving Case",
+              "The Butt Flick Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Shaika the Trail Tracker",
+            "tokens": [
+              "darkred"
+            ],
+            "token_count": 1,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Spackle Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-3",
+            "name": "Ronit",
+            "character": "Alonzo the Sly",
+            "tokens": [
+              "brown",
+              "darkred",
+              "brown",
+              "brown",
+              "orange",
+              "blue",
+              "green"
+            ],
+            "token_count": 7,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Oracle Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-5",
+            "name": "Danny-2",
+            "character": "Yermi the Dinosaur",
+            "tokens": [
+              "orange",
+              "orange",
+              "darkred",
+              "darkred",
+              "darkred",
+              "blue"
+            ],
+            "token_count": 6,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "Alex the Stranger",
+            "tokens": [
+              "darkred",
+              "orange",
+              "green",
+              "brown"
+            ],
+            "token_count": 4,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Buckets Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "blue",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "blue",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "messy_closet",
+            "name": "The Messy Closet",
+            "tokens": [],
+            "count": 0
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "darkred",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "dizengoff_cabin",
+            "name": "Dizengoff Cabin",
+            "tokens": [
+              "green",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "nadav_hq",
+            "name": "Nadav's HQ",
+            "tokens": [
+              "brown",
+              "orange"
+            ],
+            "count": 2
+          },
+          {
+            "id": "subaru_wagon",
+            "name": "Subaru Wagon",
+            "tokens": [
+              "green",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "brown",
+              "orange"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 4,
+        "public_cases": [
+          {
+            "id": "CF-16",
+            "name": "The Singapore Mystery"
+          },
+          {
+            "id": "CF-14",
+            "name": "The Photographer Case"
+          }
+        ],
+        "draw_pile_count": 2,
+        "prize_holder": "player-4",
+        "score_gap": 2
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 6,
+      "actions": [
+        {
+          "player_id": "player-6",
+          "player_name": "Yossi-2",
+          "character": "Nadavch the Sheriff",
+          "action_type": "select_location",
+          "target": "rosa_salon",
+          "target_name": "Rosa Salon",
+          "thought": "Yossi: Rosa Salon follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "darkred",
+            "green"
+          ],
+          "case_completed": {
+            "id": "CF-16",
+            "name": "The Singapore Mystery",
+            "is_public": true
+          }
+        },
+        {
+          "player_id": "player-4",
+          "player_name": "Michal",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "subaru_wagon",
+          "target_name": "Subaru Wagon",
+          "thought": "Michal: Subaru Wagon sounds interesting! Let's see what's there.",
+          "tokens_collected": [
+            "green",
+            "green"
+          ],
+          "case_completed": {
+            "id": "CF-15",
+            "name": "The Thin Wall Case",
+            "is_public": false
+          }
+        },
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Shaika the Trail Tracker",
+          "action_type": "select_location",
+          "target": "nadav_hq",
+          "target_name": "Nadav's HQ",
+          "thought": "Danny calculates: Nadav's HQ has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "brown",
+            "orange"
+          ],
+          "peek": "CF-04"
+        },
+        {
+          "player_id": "player-3",
+          "player_name": "Ronit",
+          "character": "Alonzo the Sly",
+          "action_type": "select_location",
+          "target": "matzok_store",
+          "target_name": "Matzok Store",
+          "thought": "Ronit: Going to Matzok Store because nobody expects it!",
+          "tokens_collected": [
+            "green"
+          ],
+          "case_completed": {
+            "id": "CF-06",
+            "name": "The Toughest Cookie Case",
+            "is_public": false
+          }
+        },
+        {
+          "player_id": "player-5",
+          "player_name": "Danny-2",
+          "character": "Yermi the Dinosaur",
+          "action_type": "select_location",
+          "target": "messy_closet",
+          "target_name": "The Messy Closet",
+          "thought": "Danny calculates: The Messy Closet has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "brown",
+            "blue"
+          ],
+          "case_completed": {
+            "id": "CF-13",
+            "name": "The Cottage Mystery",
+            "is_public": false
+          }
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "Alex the Stranger",
+          "action_type": "select_location",
+          "target": "matzok_store",
+          "target_name": "Matzok Store",
+          "thought": "Yossi: Matzok Store follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "blue"
+          ]
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "matzok_store",
+            "location_name": "Matzok Store",
+            "players": [
+              "player-3",
+              "player-2"
+            ],
+            "player_count": 2,
+            "resolution_rule": "Two players: each collects 1, higher priority first (Section 1.2 Rule 4b)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "matzok_store",
+            "added": [
+              "green",
+              "blue"
+            ]
+          },
+          {
+            "location": "rosa_salon",
+            "added": [
+              "orange",
+              "orange"
+            ]
+          },
+          {
+            "location": "nadav_hq",
+            "added": [
+              "brown",
+              "green"
+            ]
+          },
+          {
+            "location": "subaru_wagon",
+            "added": [
+              "darkred",
+              "orange"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-6",
+            "name": "Yossi-2",
+            "character": "Nadavch the Sheriff",
+            "tokens": [
+              "blue",
+              "green"
+            ],
+            "token_count": 2,
+            "cases_completed": 2,
+            "completed_case_names": [
+              "The Wedding Mystery",
+              "The Singapore Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-4",
+            "name": "Michal",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [],
+            "token_count": 0,
+            "cases_completed": 3,
+            "completed_case_names": [
+              "The Diving Case",
+              "The Butt Flick Case",
+              "The Thin Wall Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Shaika the Trail Tracker",
+            "tokens": [
+              "darkred",
+              "brown",
+              "orange"
+            ],
+            "token_count": 3,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Spackle Mystery"
+            ],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 1
+          },
+          {
+            "id": "player-3",
+            "name": "Ronit",
+            "character": "Alonzo the Sly",
+            "tokens": [
+              "brown",
+              "darkred",
+              "brown",
+              "brown",
+              "blue"
+            ],
+            "token_count": 5,
+            "cases_completed": 2,
+            "completed_case_names": [
+              "The Oracle Mystery",
+              "The Toughest Cookie Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 0
+          },
+          {
+            "id": "player-5",
+            "name": "Danny-2",
+            "character": "Yermi the Dinosaur",
+            "tokens": [
+              "darkred",
+              "darkred",
+              "darkred",
+              "blue",
+              "blue"
+            ],
+            "token_count": 5,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Cottage Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 0
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "Alex the Stranger",
+            "tokens": [
+              "darkred",
+              "orange",
+              "green",
+              "brown",
+              "blue"
+            ],
+            "token_count": 5,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Buckets Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 1
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "green",
+              "blue"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "blue",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "messy_closet",
+            "name": "The Messy Closet",
+            "tokens": [],
+            "count": 0
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "orange",
+              "orange"
+            ],
+            "count": 2
+          },
+          {
+            "id": "dizengoff_cabin",
+            "name": "Dizengoff Cabin",
+            "tokens": [
+              "green",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "nadav_hq",
+            "name": "Nadav's HQ",
+            "tokens": [
+              "brown",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "subaru_wagon",
+            "name": "Subaru Wagon",
+            "tokens": [
+              "darkred",
+              "orange"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "brown",
+              "orange"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 6,
+        "public_cases": [
+          {
+            "id": "CF-14",
+            "name": "The Photographer Case"
+          },
+          {
+            "id": "CF-04",
+            "name": "The Dracula Cloak Investigation"
+          }
+        ],
+        "draw_pile_count": 0,
+        "prize_holder": "player-4",
+        "score_gap": 2
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    }
+  ],
+  "final_analysis": {
+    "game_length_rounds": 6,
+    "winner": {
+      "id": "player-4",
+      "name": "Michal",
+      "character": "Ilanit 'The Full Case'"
+    },
+    "win_condition_met": "Completed 3 case files",
+    "score_progression": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        1,
+        2,
+        1,
+        1
+      ]
+    ],
+    "collision_rate": 1,
+    "location_usage_distribution": {
+      "matzok_store": 6,
+      "eilat_reef": 9,
+      "messy_closet": 5,
+      "rosa_salon": 6,
+      "dizengoff_cabin": 1,
+      "nadav_hq": 4,
+      "subaru_wagon": 3,
+      "barka_salon": 2
+    },
+    "dead_locations": [
+      "dizengoff_cabin"
+    ],
+    "catch_up_triggers": 4,
+    "rule_gaps_found": 0,
+    "rule_ambiguities_found": 0,
+    "invented_rules": 0,
+    "all_flags": []
+  }
+}

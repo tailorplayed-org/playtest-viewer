@@ -1,0 +1,820 @@
+{
+  "meta": {
+    "order_id": "TP-2026-00040",
+    "game_title": "Gold Hunt",
+    "game_title_original": "ציד הזהב",
+    "game_number": 2,
+    "total_games": 6,
+    "player_count": 2,
+    "win_target": 2,
+    "players": [
+      {
+        "id": "player-1",
+        "name": "Danny",
+        "personality": "strategist",
+        "character": "Ilanit 'The Full Case'",
+        "priority": 7,
+        "color": "#3B82F6"
+      },
+      {
+        "id": "player-2",
+        "name": "Yossi",
+        "personality": "rules-lawyer",
+        "character": "May the Red Lipstick",
+        "priority": 2,
+        "color": "#EC4899"
+      }
+    ],
+    "protocols": [
+      "P1-simultaneous",
+      "P7-set-collection",
+      "P9-abilities",
+      "P10-catch-up"
+    ],
+    "status": "completed",
+    "started_at": "2026-03-22T17:55:33.287Z",
+    "ended_at": "2026-03-22T17:55:33.287Z",
+    "winner": "player-1",
+    "winner_name": "Danny",
+    "total_rounds": 5
+  },
+  "board": {
+    "locations": [
+      {
+        "id": "matzok_store",
+        "name": "Matzok Store",
+        "special": null
+      },
+      {
+        "id": "eilat_reef",
+        "name": "Eilat Reef",
+        "special": null
+      },
+      {
+        "id": "rosa_salon",
+        "name": "Rosa Salon",
+        "special": null
+      },
+      {
+        "id": "barka_salon",
+        "name": "Barka Salon",
+        "special": null
+      }
+    ]
+  },
+  "rounds": [
+    {
+      "number": 1,
+      "actions": [
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "matzok_store",
+          "target_name": "Matzok Store",
+          "thought": "Danny calculates: Matzok Store has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "green",
+            "brown"
+          ]
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "May the Red Lipstick",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Yossi: Eilat Reef follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "blue",
+            "blue"
+          ]
+        }
+      ],
+      "resolution": {
+        "collisions": [],
+        "replenishment": [
+          {
+            "location": "matzok_store",
+            "added": [
+              "green",
+              "darkred"
+            ]
+          },
+          {
+            "location": "eilat_reef",
+            "added": [
+              "darkred",
+              "green"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [
+              "green",
+              "brown"
+            ],
+            "token_count": 2,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 2
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "May the Red Lipstick",
+            "tokens": [
+              "blue",
+              "blue"
+            ],
+            "token_count": 2,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 2
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "green",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "darkred",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "orange",
+              "orange"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "brown",
+              "green"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 28,
+        "public_cases": [
+          {
+            "id": "CF-03",
+            "name": "The Cursed Bags Case"
+          }
+        ],
+        "draw_pile_count": 11,
+        "prize_holder": "center",
+        "score_gap": 0
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 2,
+      "actions": [
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "matzok_store",
+          "target_name": "Matzok Store",
+          "thought": "Danny calculates: Matzok Store has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "green",
+            "darkred"
+          ]
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "May the Red Lipstick",
+          "action_type": "select_location",
+          "target": "barka_salon",
+          "target_name": "Barka Salon",
+          "thought": "Yossi: Barka Salon follows the optimal token collection path per rules.",
+          "tokens_collected": [
+            "brown",
+            "green"
+          ],
+          "case_completed": {
+            "id": "CF-10",
+            "name": "The Diving Case",
+            "is_public": false
+          }
+        }
+      ],
+      "resolution": {
+        "collisions": [],
+        "replenishment": [
+          {
+            "location": "matzok_store",
+            "added": [
+              "green",
+              "brown"
+            ]
+          },
+          {
+            "location": "barka_salon",
+            "added": [
+              "darkred",
+              "green"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [
+              "green",
+              "brown",
+              "green",
+              "darkred"
+            ],
+            "token_count": 4,
+            "cases_completed": 0,
+            "completed_case_names": [],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 2
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "May the Red Lipstick",
+            "tokens": [
+              "brown"
+            ],
+            "token_count": 1,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Diving Case"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 2
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "green",
+              "brown"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "darkred",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "orange",
+              "orange"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "darkred",
+              "green"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 27,
+        "public_cases": [
+          {
+            "id": "CF-03",
+            "name": "The Cursed Bags Case"
+          }
+        ],
+        "draw_pile_count": 10,
+        "prize_holder": "player-2",
+        "score_gap": 1
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 3,
+      "actions": [
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "rosa_salon",
+          "target_name": "Rosa Salon",
+          "thought": "Danny calculates: Rosa Salon has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "orange",
+            "orange"
+          ],
+          "case_completed": {
+            "id": "CF-09",
+            "name": "The Wedding Mystery",
+            "is_public": false
+          }
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "May the Red Lipstick",
+          "action_type": "select_location",
+          "target": "rosa_salon",
+          "target_name": "Rosa Salon",
+          "thought": "Yossi: Rosa Salon follows the optimal token collection path per rules.",
+          "tokens_collected": []
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "rosa_salon",
+            "location_name": "Rosa Salon",
+            "players": [
+              "player-1",
+              "player-2"
+            ],
+            "player_count": 2,
+            "resolution_rule": "Sheriff bonus: both collect 2 (Section 1.4 Rule 5)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "rosa_salon",
+            "added": [
+              "green",
+              "darkred"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [
+              "brown",
+              "green",
+              "orange"
+            ],
+            "token_count": 3,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Wedding Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 2
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "May the Red Lipstick",
+            "tokens": [
+              "brown"
+            ],
+            "token_count": 1,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Diving Case"
+            ],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 2
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "green",
+              "brown"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "darkred",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "green",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "darkred",
+              "green"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 28,
+        "public_cases": [
+          {
+            "id": "CF-03",
+            "name": "The Cursed Bags Case"
+          }
+        ],
+        "draw_pile_count": 9,
+        "prize_holder": "player-1",
+        "score_gap": 0
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 4,
+      "actions": [
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Danny calculates: Eilat Reef has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "darkred",
+            "green"
+          ]
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "May the Red Lipstick",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Yossi: Eilat Reef follows the optimal token collection path per rules.",
+          "tokens_collected": []
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "eilat_reef",
+            "location_name": "Eilat Reef",
+            "players": [
+              "player-1",
+              "player-2"
+            ],
+            "player_count": 2,
+            "resolution_rule": "Sheriff bonus: both collect 2 (Section 1.4 Rule 5)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "eilat_reef",
+            "added": [
+              "orange",
+              "blue"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [
+              "brown",
+              "green",
+              "orange",
+              "darkred",
+              "green"
+            ],
+            "token_count": 5,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Wedding Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 2
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "May the Red Lipstick",
+            "tokens": [
+              "brown"
+            ],
+            "token_count": 1,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Diving Case"
+            ],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 2
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "green",
+              "brown"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "orange",
+              "blue"
+            ],
+            "count": 2
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "green",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "darkred",
+              "green"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 26,
+        "public_cases": [
+          {
+            "id": "CF-03",
+            "name": "The Cursed Bags Case"
+          }
+        ],
+        "draw_pile_count": 9,
+        "prize_holder": "player-1",
+        "score_gap": 0
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    },
+    {
+      "number": 5,
+      "actions": [
+        {
+          "player_id": "player-1",
+          "player_name": "Danny",
+          "character": "Ilanit 'The Full Case'",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Danny calculates: Eilat Reef has tokens I need. Optimizing for case completion.",
+          "tokens_collected": [
+            "orange",
+            "blue"
+          ],
+          "case_completed": {
+            "id": "CF-13",
+            "name": "The Cottage Mystery",
+            "is_public": false
+          }
+        },
+        {
+          "player_id": "player-2",
+          "player_name": "Yossi",
+          "character": "May the Red Lipstick",
+          "action_type": "select_location",
+          "target": "eilat_reef",
+          "target_name": "Eilat Reef",
+          "thought": "Yossi: Eilat Reef follows the optimal token collection path per rules.",
+          "tokens_collected": []
+        }
+      ],
+      "resolution": {
+        "collisions": [
+          {
+            "location": "eilat_reef",
+            "location_name": "Eilat Reef",
+            "players": [
+              "player-1",
+              "player-2"
+            ],
+            "player_count": 2,
+            "resolution_rule": "Sheriff bonus: both collect 2 (Section 1.4 Rule 5)"
+          }
+        ],
+        "replenishment": [
+          {
+            "location": "eilat_reef",
+            "added": [
+              "blue",
+              "green"
+            ]
+          }
+        ]
+      },
+      "state_after": {
+        "players": [
+          {
+            "id": "player-1",
+            "name": "Danny",
+            "character": "Ilanit 'The Full Case'",
+            "tokens": [
+              "green",
+              "darkred",
+              "green",
+              "blue"
+            ],
+            "token_count": 4,
+            "cases_completed": 2,
+            "completed_case_names": [
+              "The Wedding Mystery",
+              "The Cottage Mystery"
+            ],
+            "has_sheriff": false,
+            "ability_used": false,
+            "private_cases_held": 2
+          },
+          {
+            "id": "player-2",
+            "name": "Yossi",
+            "character": "May the Red Lipstick",
+            "tokens": [
+              "brown"
+            ],
+            "token_count": 1,
+            "cases_completed": 1,
+            "completed_case_names": [
+              "The Diving Case"
+            ],
+            "has_sheriff": true,
+            "ability_used": false,
+            "private_cases_held": 2
+          }
+        ],
+        "locations": [
+          {
+            "id": "matzok_store",
+            "name": "Matzok Store",
+            "tokens": [
+              "green",
+              "brown"
+            ],
+            "count": 2
+          },
+          {
+            "id": "eilat_reef",
+            "name": "Eilat Reef",
+            "tokens": [
+              "blue",
+              "green"
+            ],
+            "count": 2
+          },
+          {
+            "id": "rosa_salon",
+            "name": "Rosa Salon",
+            "tokens": [
+              "green",
+              "darkred"
+            ],
+            "count": 2
+          },
+          {
+            "id": "barka_salon",
+            "name": "Barka Salon",
+            "tokens": [
+              "darkred",
+              "green"
+            ],
+            "count": 2
+          }
+        ],
+        "bag_count": 27,
+        "public_cases": [
+          {
+            "id": "CF-03",
+            "name": "The Cursed Bags Case"
+          }
+        ],
+        "draw_pile_count": 8,
+        "prize_holder": "player-1",
+        "score_gap": 1
+      },
+      "referee_flags": [],
+      "observer_notes": []
+    }
+  ],
+  "final_analysis": {
+    "game_length_rounds": 5,
+    "winner": {
+      "id": "player-1",
+      "name": "Danny",
+      "character": "Ilanit 'The Full Case'"
+    },
+    "win_condition_met": "Completed 2 case files",
+    "score_progression": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "collision_rate": 0.6,
+    "location_usage_distribution": {
+      "matzok_store": 2,
+      "eilat_reef": 5,
+      "rosa_salon": 2,
+      "barka_salon": 1
+    },
+    "dead_locations": [
+      "barka_salon"
+    ],
+    "catch_up_triggers": 2,
+    "rule_gaps_found": 0,
+    "rule_ambiguities_found": 0,
+    "invented_rules": 0,
+    "all_flags": []
+  }
+}
