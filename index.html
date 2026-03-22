@@ -1,1 +1,704 @@
-<html><body><h1>TailorPlayed Playtest Viewer</h1><p>Coming soon.</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TailorPlayed Playtest Viewer</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --surface-2: #242836;
+  --border: #2e3345;
+  --text: #e4e6ef;
+  --text-dim: #8b8fa3;
+  --accent: #6c63ff;
+  --accent-glow: rgba(108,99,255,0.15);
+  --green: #4ade80;
+  --red: #f87171;
+  --yellow: #fbbf24;
+  --orange: #fb923c;
+  --blue: #60a5fa;
+  --radius: 8px;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font); background:var(--bg); color:var(--text); min-height:100vh; }
+a { color:var(--accent); }
+
+/* PIN Screen */
+#pin-screen {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:100vh; padding:2rem;
+}
+#pin-screen h1 { font-size:1.5rem; margin-bottom:0.5rem; }
+#pin-screen p { color:var(--text-dim); margin-bottom:2rem; font-size:0.9rem; }
+#pin-input {
+  font-family:var(--mono); font-size:2rem; letter-spacing:0.5rem;
+  background:var(--surface); border:2px solid var(--border); border-radius:var(--radius);
+  color:var(--text); padding:0.75rem 1.5rem; text-align:center; width:220px; outline:none;
+}
+#pin-input:focus { border-color:var(--accent); }
+#pin-error { color:var(--red); margin-top:1rem; display:none; font-size:0.85rem; }
+#pin-btn {
+  margin-top:1.5rem; padding:0.6rem 2rem; background:var(--accent);
+  border:none; border-radius:var(--radius); color:#fff; font-size:1rem;
+  cursor:pointer; transition:opacity 0.2s;
+}
+#pin-btn:hover { opacity:0.85; }
+
+/* Loading */
+#loading { display:none; text-align:center; padding:4rem 2rem; }
+.spinner { display:inline-block; width:32px; height:32px; border:3px solid var(--border);
+  border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* Dashboard */
+#dashboard { display:none; max-width:1200px; margin:0 auto; padding:1rem; }
+
+/* Header */
+.header { display:flex; align-items:center; justify-content:space-between;
+  padding:1rem; background:var(--surface); border-radius:var(--radius);
+  margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem; }
+.header h1 { font-size:1.2rem; }
+.badge { display:inline-block; padding:0.2rem 0.6rem; border-radius:4px;
+  font-size:0.75rem; font-weight:600; text-transform:uppercase; }
+.badge-pass { background:rgba(74,222,128,0.15); color:var(--green); }
+.badge-guardrail { background:rgba(251,191,36,0.15); color:var(--yellow); }
+.badge-fail { background:rgba(248,113,113,0.15); color:var(--red); }
+.badge-live { background:rgba(96,165,250,0.15); color:var(--blue); animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+/* Summary Grid */
+.summary-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:1rem; margin-bottom:1.5rem; }
+.game-card {
+  background:var(--surface); border-radius:var(--radius); padding:1rem;
+  border:1px solid var(--border); cursor:pointer; transition:border-color 0.2s;
+}
+.game-card:hover { border-color:var(--accent); }
+.game-card h3 { font-size:0.95rem; margin-bottom:0.5rem; }
+.game-card .stats { display:flex; gap:1rem; font-size:0.8rem; color:var(--text-dim); }
+.game-card .findings { color:var(--yellow); }
+
+/* Game View */
+.game-view { display:none; }
+
+/* Timeline */
+.timeline { display:flex; gap:4px; padding:0.75rem 1rem; background:var(--surface);
+  border-radius:var(--radius); margin-bottom:1rem; overflow-x:auto; align-items:center; }
+.timeline-dot {
+  min-width:28px; height:28px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:0.7rem; font-weight:600; cursor:pointer;
+  background:var(--surface-2); border:2px solid var(--border); transition:all 0.2s;
+  flex-shrink:0;
+}
+.timeline-dot:hover { border-color:var(--accent); }
+.timeline-dot.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+.timeline-dot.flagged { border-color:var(--red); }
+.timeline-dot.collision { border-color:var(--orange); }
+.timeline-nav { display:flex; gap:0.5rem; margin-left:auto; flex-shrink:0; }
+.timeline-nav button {
+  background:var(--surface-2); border:1px solid var(--border); border-radius:4px;
+  color:var(--text); padding:0.3rem 0.8rem; cursor:pointer; font-size:0.8rem;
+}
+.timeline-nav button:hover { border-color:var(--accent); }
+
+/* Layout Grid */
+.game-grid { display:grid; grid-template-columns:1fr 320px; gap:1rem; }
+@media(max-width:768px) { .game-grid { grid-template-columns:1fr; } }
+
+/* Board */
+.board-panel { background:var(--surface); border-radius:var(--radius); padding:1rem;
+  min-height:300px; position:relative; }
+.board-panel h2 { font-size:0.9rem; color:var(--text-dim); margin-bottom:0.75rem; }
+.board-svg { width:100%; height:auto; }
+.board-svg .location { cursor:default; }
+.board-svg .loc-circle { fill:var(--surface-2); stroke:var(--border); stroke-width:2; }
+.board-svg .loc-label { fill:var(--text); font-size:11px; text-anchor:middle; font-family:var(--font); }
+.board-svg .loc-tokens { fill:var(--text-dim); font-size:9px; text-anchor:middle; font-family:var(--mono); }
+.board-svg .connection { stroke:var(--border); stroke-width:1; stroke-dasharray:4,4; }
+.board-svg .player-marker { stroke:#000; stroke-width:1.5; }
+
+/* Sidebar */
+.sidebar { display:flex; flex-direction:column; gap:1rem; }
+
+/* Scoreboard */
+.scoreboard { background:var(--surface); border-radius:var(--radius); padding:1rem; }
+.scoreboard h2 { font-size:0.9rem; color:var(--text-dim); margin-bottom:0.75rem; }
+.player-row { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0;
+  border-bottom:1px solid var(--border); }
+.player-row:last-child { border-bottom:none; }
+.player-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.player-name { font-size:0.85rem; flex:1; }
+.player-score { font-family:var(--mono); font-size:0.85rem; font-weight:600; }
+.player-detail { font-size:0.75rem; color:var(--text-dim); }
+
+/* Round Detail */
+.round-detail { background:var(--surface); border-radius:var(--radius); padding:1rem; }
+.round-detail h2 { font-size:0.9rem; color:var(--text-dim); margin-bottom:0.75rem; }
+
+/* Thoughts */
+.thought {
+  background:var(--surface-2); border-radius:var(--radius); padding:0.6rem 0.8rem;
+  margin-bottom:0.5rem; font-size:0.82rem; border-left:3px solid var(--border);
+}
+.thought .speaker { font-weight:600; margin-bottom:0.2rem; }
+.thought.strategist { border-left-color:#E24B4A; }
+.thought.casual { border-left-color:#4ABDE2; }
+.thought.rules-lawyer { border-left-color:#4AE28B; }
+.thought.chaotic { border-left-color:#E2A84A; }
+
+/* Actions */
+.action-line { font-size:0.82rem; padding:0.25rem 0; font-family:var(--mono); }
+
+/* Resolution */
+.resolution-box { background:var(--surface-2); border-radius:var(--radius);
+  padding:0.6rem 0.8rem; margin:0.5rem 0; font-size:0.82rem; }
+
+/* Flags */
+.flag { background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3);
+  border-radius:var(--radius); padding:0.5rem 0.8rem; margin:0.5rem 0; font-size:0.8rem; }
+.flag-type { color:var(--red); font-weight:600; font-size:0.75rem; text-transform:uppercase; }
+
+/* Observer Notes */
+.obs-note { background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.2);
+  border-radius:var(--radius); padding:0.5rem 0.8rem; margin:0.5rem 0; font-size:0.8rem; }
+.obs-severity { font-weight:600; font-size:0.7rem; text-transform:uppercase; }
+.obs-severity.finding { color:var(--yellow); }
+.obs-severity.pattern { color:var(--orange); }
+.obs-severity.concern { color:var(--red); }
+
+/* Supply bar */
+.supply-bar { margin-top:0.5rem; }
+.supply-track { height:6px; background:var(--surface-2); border-radius:3px; overflow:hidden; }
+.supply-fill { height:100%; background:var(--accent); border-radius:3px; transition:width 0.3s; }
+.supply-label { font-size:0.75rem; color:var(--text-dim); margin-top:0.2rem; }
+
+/* Back button */
+.back-btn {
+  background:none; border:1px solid var(--border); border-radius:var(--radius);
+  color:var(--text); padding:0.4rem 1rem; cursor:pointer; font-size:0.85rem;
+  margin-bottom:1rem;
+}
+.back-btn:hover { border-color:var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- PIN Entry Screen -->
+<div id="pin-screen">
+  <h1>TailorPlayed Playtest Viewer</h1>
+  <p>Enter the 6-digit PIN from your terminal</p>
+  <input id="pin-input" type="password" maxlength="6" placeholder="------" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+  <div id="pin-error">Invalid PIN or data could not be decrypted</div>
+  <button id="pin-btn" onclick="attemptUnlock()">Unlock</button>
+</div>
+
+<!-- Loading -->
+<div id="loading">
+  <div class="spinner"></div>
+  <p style="margin-top:1rem;color:var(--text-dim)">Decrypting game data...</p>
+</div>
+
+<!-- Dashboard -->
+<div id="dashboard">
+  <div class="header" id="main-header">
+    <div>
+      <h1 id="game-title">-</h1>
+      <span style="font-size:0.8rem;color:var(--text-dim)" id="order-id">-</span>
+    </div>
+    <div id="verdict-badge"></div>
+  </div>
+
+  <!-- Summary View -->
+  <div id="summary-view">
+    <div class="summary-grid" id="games-grid"></div>
+  </div>
+
+  <!-- Single Game View -->
+  <div class="game-view" id="game-view">
+    <button class="back-btn" onclick="showSummary()">Back to all games</button>
+
+    <div class="timeline" id="timeline"></div>
+
+    <div class="game-grid">
+      <div>
+        <!-- Board -->
+        <div class="board-panel">
+          <h2>Board</h2>
+          <svg class="board-svg" id="board-svg" viewBox="0 0 500 400"></svg>
+        </div>
+        <!-- Round Detail -->
+        <div class="round-detail" id="round-detail" style="margin-top:1rem">
+          <h2>Round <span id="round-num">-</span></h2>
+          <div id="round-content"></div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+          <h2>Players</h2>
+          <div id="scoreboard-content"></div>
+        </div>
+        <!-- Supply -->
+        <div class="scoreboard">
+          <h2>Supply</h2>
+          <div id="supply-content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// State
+// ============================================================
+let pin = '';
+let orderData = {};   // { games: [gameData, ...], report: {...} }
+let currentGame = null;
+let currentRound = 0;
+let pollInterval = null;
+const POLL_MS = 15000;
+
+const params = new URLSearchParams(location.search);
+const ORDER = params.get('order') || '';
+const GAME_NUM = params.get('game') ? parseInt(params.get('game')) : null;
+const BASE_URL = (() => {
+  const p = location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+  return location.origin + p;
+})();
+
+// ============================================================
+// Crypto
+// ============================================================
+async function deriveKey(pin, salt) {
+  const enc = new TextEncoder();
+  const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' },
+    keyMaterial,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    ['decrypt']
+  );
+}
+
+async function decryptPayload(encryptedJson, pin) {
+  const { salt, iv, data } = JSON.parse(encryptedJson);
+  const saltBuf = Uint8Array.from(atob(salt), c => c.charCodeAt(0));
+  const ivBuf = Uint8Array.from(atob(iv), c => c.charCodeAt(0));
+  const dataBuf = Uint8Array.from(atob(data), c => c.charCodeAt(0));
+  const key = await deriveKey(pin, saltBuf);
+  const decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: ivBuf }, key, dataBuf);
+  return JSON.parse(new TextDecoder().decode(decrypted));
+}
+
+// Try to parse as plain JSON first (unencrypted dev mode), then as encrypted
+async function parseGameData(text, pin) {
+  try { return JSON.parse(text); } catch(e) {}
+  return decryptPayload(text, pin);
+}
+
+// ============================================================
+// Data Loading
+// ============================================================
+async function loadGameList() {
+  // Try to load report.json first for game index
+  try {
+    const res = await fetch(`${BASE_URL}/${ORDER}/report.json?${Date.now()}`);
+    if (res.ok) return await parseGameData(await res.text(), pin);
+  } catch(e) {}
+  return null;
+}
+
+async function loadGame(filename) {
+  const res = await fetch(`${BASE_URL}/${ORDER}/games/${filename}?${Date.now()}`);
+  if (!res.ok) throw new Error(`Failed to load ${filename}: ${res.status}`);
+  return parseGameData(await res.text(), pin);
+}
+
+async function discoverGames() {
+  // If report.json exists, use its game list. Otherwise try common filenames.
+  const report = await loadGameList();
+  if (report && report.games) return report;
+
+  const games = [];
+  for (let n = 1; n <= 20; n++) {
+    for (const pc of [2,3,4,5,6,8]) {
+      const fn = `game-${String(n).padStart(2,'0')}-${pc}p.json`;
+      try {
+        const g = await loadGame(fn);
+        games.push(g);
+      } catch(e) { /* skip */ }
+    }
+  }
+  return { games, report: null };
+}
+
+// ============================================================
+// PIN & Boot
+// ============================================================
+document.getElementById('pin-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') attemptUnlock();
+});
+
+async function attemptUnlock() {
+  pin = document.getElementById('pin-input').value.trim();
+  if (!/^\d{6}$/.test(pin)) {
+    document.getElementById('pin-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('pin-screen').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+
+  try {
+    orderData = await discoverGames();
+    if (!orderData.games || orderData.games.length === 0) throw new Error('No games found');
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+
+    const first = orderData.games[0];
+    document.getElementById('game-title').textContent = first.meta.game_title || 'Unknown Game';
+    document.getElementById('order-id').textContent = first.meta.order_id || ORDER;
+
+    if (GAME_NUM) {
+      const g = orderData.games.find(g => g.meta.game_number === GAME_NUM);
+      if (g) { openGame(g); return; }
+    }
+    renderSummary();
+  } catch(e) {
+    console.error(e);
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('pin-screen').style.display = 'flex';
+    document.getElementById('pin-error').style.display = 'block';
+    document.getElementById('pin-input').value = '';
+    document.getElementById('pin-input').focus();
+  }
+}
+
+// ============================================================
+// Summary View
+// ============================================================
+function renderSummary() {
+  document.getElementById('summary-view').style.display = 'block';
+  document.getElementById('game-view').style.display = 'none';
+  if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+
+  const grid = document.getElementById('games-grid');
+  grid.innerHTML = '';
+
+  // Verdict badge from report or aggregate
+  const verdicts = orderData.games.map(g => g.final_analysis);
+  const ruleGaps = orderData.games.reduce((s, g) => s + (g.final_analysis?.rule_gaps_found || 0), 0);
+  updateVerdictBadge(ruleGaps > 0 ? (ruleGaps > 3 ? 'FAIL' : 'GUARDRAIL') : 'PASS');
+
+  orderData.games.forEach((game, i) => {
+    const card = document.createElement('div');
+    card.className = 'game-card';
+    card.onclick = () => openGame(game);
+    const fa = game.final_analysis || {};
+    const flags = (fa.rule_gaps_found||0) + (fa.rule_ambiguities_found||0);
+    card.innerHTML = `
+      <h3>Game ${game.meta.game_number || i+1} \u2014 ${game.meta.player_count}p</h3>
+      <div class="stats">
+        <span>${fa.game_length_rounds || game.rounds?.length || '?'} rounds</span>
+        <span>Winner: ${fa.winner || 'N/A'}</span>
+        ${flags ? `<span class="findings">${flags} findings</span>` : ''}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function updateVerdictBadge(verdict) {
+  const el = document.getElementById('verdict-badge');
+  const cls = verdict === 'PASS' ? 'badge-pass' : verdict === 'FAIL' ? 'badge-fail' : verdict === 'LIVE' ? 'badge-live' : 'badge-guardrail';
+  el.innerHTML = `<span class="badge ${cls}">${verdict}</span>`;
+}
+
+function showSummary() {
+  currentGame = null;
+  renderSummary();
+}
+
+// ============================================================
+// Game View
+// ============================================================
+function openGame(game) {
+  currentGame = game;
+  currentRound = (game.rounds?.length || 1) - 1;
+  document.getElementById('summary-view').style.display = 'none';
+  document.getElementById('game-view').style.display = 'block';
+
+  renderTimeline();
+  renderBoard();
+  renderRound(currentRound);
+
+  // Live mode
+  if (game.meta.status === 'in_progress') startPolling();
+}
+
+// ============================================================
+// Timeline
+// ============================================================
+function renderTimeline() {
+  const el = document.getElementById('timeline');
+  el.innerHTML = '';
+  if (!currentGame?.rounds) return;
+
+  currentGame.rounds.forEach((r, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'timeline-dot';
+    if (i === currentRound) dot.classList.add('active');
+    if (r.referee_flags?.length) dot.classList.add('flagged');
+    else if (r.resolution?.collisions?.length) dot.classList.add('collision');
+    dot.textContent = r.round_number || i + 1;
+    dot.onclick = () => { currentRound = i; renderTimeline(); renderRound(i); renderScoreboard(i); };
+    el.appendChild(dot);
+  });
+
+  const nav = document.createElement('div');
+  nav.className = 'timeline-nav';
+  nav.innerHTML = `
+    <button onclick="navRound(-1)">Prev</button>
+    <button onclick="navRound(1)">Next</button>
+  `;
+  el.appendChild(nav);
+}
+
+function navRound(delta) {
+  if (!currentGame?.rounds) return;
+  const next = currentRound + delta;
+  if (next < 0 || next >= currentGame.rounds.length) return;
+  currentRound = next;
+  renderTimeline();
+  renderRound(currentRound);
+  renderScoreboard(currentRound);
+}
+
+// ============================================================
+// Board Rendering
+// ============================================================
+const PLAYER_COLORS = ['#E24B4A','#4ABDE2','#4AE28B','#E2A84A','#C464E2','#E2648A','#64E2C4','#8B64E2'];
+
+function renderBoard() {
+  const svg = document.getElementById('board-svg');
+  svg.innerHTML = '';
+  if (!currentGame?.board?.locations) return;
+
+  const locs = currentGame.board.locations;
+  const conns = currentGame.board.connections || [];
+  const n = locs.length;
+
+  // Auto-layout in a circle if no x/y coordinates
+  const cx = 250, cy = 200, radius = 150;
+  locs.forEach((loc, i) => {
+    if (loc.x == null || loc.y == null) {
+      const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+      loc._x = cx + Math.cos(angle) * radius;
+      loc._y = cy + Math.sin(angle) * radius;
+    } else {
+      loc._x = loc.x * (500/600);  // scale to viewBox
+      loc._y = loc.y * (400/500);
+    }
+  });
+
+  // Connections
+  conns.forEach(c => {
+    const from = locs.find(l => l.id === c.from);
+    const to = locs.find(l => l.id === c.to);
+    if (!from || !to) return;
+    const line = svgEl('line', {
+      x1:from._x, y1:from._y, x2:to._x, y2:to._y, class:'connection'
+    });
+    svg.appendChild(line);
+  });
+
+  // Locations
+  locs.forEach(loc => {
+    const g = svgEl('g', { class:'location', transform:`translate(${loc._x},${loc._y})` });
+    g.appendChild(svgEl('circle', { class:'loc-circle', r:28, cx:0, cy:0 }));
+    g.appendChild(svgEl('text', { class:'loc-label', x:0, y:2 }, loc.name));
+    g.appendChild(svgEl('text', { class:'loc-tokens', x:0, y:16 },
+      loc.tokens != null ? `${loc.tokens} tokens` : ''));
+    svg.appendChild(g);
+  });
+}
+
+function svgEl(tag, attrs, text) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k,v] of Object.entries(attrs)) el.setAttribute(k, v);
+  if (text) el.textContent = text;
+  return el;
+}
+
+// ============================================================
+// Round Rendering
+// ============================================================
+function renderRound(idx) {
+  if (!currentGame?.rounds?.[idx]) {
+    document.getElementById('round-content').innerHTML = '<p style="color:var(--text-dim)">No data</p>';
+    return;
+  }
+  const r = currentGame.rounds[idx];
+  document.getElementById('round-num').textContent = r.round_number || idx + 1;
+
+  let html = '';
+
+  // Thoughts
+  if (r.thoughts?.length) {
+    html += '<h3 style="font-size:0.85rem;margin:0.5rem 0">Thoughts</h3>';
+    r.thoughts.forEach(t => {
+      const p = currentGame.meta.players.find(p => p.id === t.player_id) || {};
+      html += `<div class="thought ${p.personality||''}">
+        <div class="speaker">${p.name || t.player_id}</div>
+        <div>${esc(t.text)}</div>
+      </div>`;
+    });
+  }
+
+  // Actions
+  if (r.actions?.length) {
+    html += '<h3 style="font-size:0.85rem;margin:0.75rem 0 0.25rem">Actions</h3>';
+    r.actions.forEach(a => {
+      const p = currentGame.meta.players.find(p => p.id === a.player_id) || {};
+      html += `<div class="action-line">${p.name || a.player_id} \u2192 ${a.action_type}: ${a.target || ''}</div>`;
+    });
+  }
+
+  // Resolution
+  if (r.resolution) {
+    html += '<h3 style="font-size:0.85rem;margin:0.75rem 0 0.25rem">Resolution</h3>';
+    if (r.resolution.collisions?.length) {
+      r.resolution.collisions.forEach(c => {
+        const names = c.players.map(pid => {
+          const p = currentGame.meta.players.find(p => p.id === pid);
+          return p?.name || pid;
+        }).join(', ');
+        html += `<div class="resolution-box">
+          <strong>Collision at ${c.location}</strong>: ${names}<br>
+          <span style="font-size:0.78rem;color:var(--text-dim)">${esc(c.resolution_rule||'')}</span>
+        </div>`;
+      });
+    }
+    if (r.resolution.outcomes?.length) {
+      r.resolution.outcomes.forEach(o => {
+        const p = currentGame.meta.players.find(p => p.id === o.player_id) || {};
+        html += `<div style="font-size:0.82rem;padding:0.15rem 0">${p.name||o.player_id}: ${esc(o.description)}</div>`;
+      });
+    }
+  }
+
+  // Referee flags
+  if (r.referee_flags?.length) {
+    html += '<h3 style="font-size:0.85rem;margin:0.75rem 0 0.25rem">Referee Flags</h3>';
+    r.referee_flags.forEach(f => {
+      html += `<div class="flag">
+        <span class="flag-type">${f.type}</span>
+        <div>${esc(f.description)}</div>
+        ${f.gsd_section ? `<div style="font-size:0.75rem;color:var(--text-dim)">GSD: ${f.gsd_section}</div>` : ''}
+      </div>`;
+    });
+  }
+
+  // Observer notes
+  if (r.observer_notes?.length) {
+    html += '<h3 style="font-size:0.85rem;margin:0.75rem 0 0.25rem">Observer Notes</h3>';
+    r.observer_notes.forEach(n => {
+      html += `<div class="obs-note">
+        <span class="obs-severity ${n.severity}">${n.severity}</span> [${n.category||'general'}]
+        <div>${esc(n.text)}</div>
+      </div>`;
+    });
+  }
+
+  document.getElementById('round-content').innerHTML = html;
+  renderScoreboard(idx);
+}
+
+// ============================================================
+// Scoreboard
+// ============================================================
+function renderScoreboard(roundIdx) {
+  const el = document.getElementById('scoreboard-content');
+  const supply = document.getElementById('supply-content');
+  if (!currentGame) { el.innerHTML = ''; supply.innerHTML = ''; return; }
+
+  const r = currentGame.rounds[roundIdx];
+  const state = r?.state_after;
+
+  // Players
+  let html = '';
+  currentGame.meta.players.forEach((p, i) => {
+    const ps = state?.players?.find(s => s.player_id === p.id) || {};
+    const score = ps.case_files_complete ?? ps.score ?? ps.tokens ?? '-';
+    const target = ps.case_files_target ? `/${ps.case_files_target}` : '';
+    html += `<div class="player-row">
+      <div class="player-dot" style="background:${PLAYER_COLORS[i]}"></div>
+      <div>
+        <div class="player-name">${p.name}</div>
+        <div class="player-detail">${p.personality}</div>
+      </div>
+      <div class="player-score">${score}${target}</div>
+    </div>`;
+  });
+  el.innerHTML = html;
+
+  // Supply
+  if (state?.supply) {
+    const s = state.supply;
+    const pct = s.tokens_total ? ((s.tokens_remaining / s.tokens_total) * 100) : 0;
+    supply.innerHTML = `
+      <div class="supply-bar">
+        <div class="supply-track"><div class="supply-fill" style="width:${pct}%"></div></div>
+        <div class="supply-label">Tokens: ${s.tokens_remaining ?? '?'}/${s.tokens_total ?? '?'}</div>
+      </div>
+      ${s.case_files_claimed != null ? `<div class="supply-label" style="margin-top:0.3rem">Sets claimed: ${s.case_files_claimed}/${s.case_files_total||'?'}</div>` : ''}
+    `;
+  } else {
+    supply.innerHTML = '<span style="color:var(--text-dim);font-size:0.8rem">No supply data</span>';
+  }
+}
+
+// ============================================================
+// Live Polling
+// ============================================================
+function startPolling() {
+  if (pollInterval) clearInterval(pollInterval);
+  updateVerdictBadge('LIVE');
+  pollInterval = setInterval(async () => {
+    try {
+      const fn = `game-${String(currentGame.meta.game_number).padStart(2,'0')}-${currentGame.meta.player_count}p.json`;
+      const fresh = await loadGame(fn);
+      if (fresh.rounds.length > currentGame.rounds.length) {
+        currentGame = fresh;
+        currentRound = currentGame.rounds.length - 1;
+        renderTimeline();
+        renderRound(currentRound);
+      }
+      if (fresh.meta.status === 'complete') {
+        clearInterval(pollInterval);
+        pollInterval = null;
+        currentGame = fresh;
+        renderTimeline();
+        renderRound(currentGame.rounds.length - 1);
+        updateVerdictBadge(fresh.final_analysis?.rule_gaps_found ? 'GUARDRAIL' : 'PASS');
+      }
+    } catch(e) { /* silent retry */ }
+  }, POLL_MS);
+}
+
+// ============================================================
+// Util
+// ============================================================
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// Auto-focus PIN input
+document.getElementById('pin-input').focus();
+</script>
+</body>
+</html>
