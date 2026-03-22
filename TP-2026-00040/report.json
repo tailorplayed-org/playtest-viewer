@@ -1,0 +1,16 @@
+{
+  "order_id": "TP-2026-00040",
+  "game_title": "Gold Hunt",
+  "games_played": 6,
+  "player_counts": [2, 2, 4, 4, 6, 8],
+  "verdict": "GUARDRAIL",
+  "results": [
+    {"game": 1, "players": 2, "rounds": 4, "winner": "Danny", "winner_personality": "strategist", "collision_rate": 0, "flags": 0},
+    {"game": 2, "players": 2, "rounds": 5, "winner": "Danny", "winner_personality": "strategist", "collision_rate": 0.6, "flags": 0},
+    {"game": 3, "players": 4, "rounds": 5, "winner": "Ronit", "winner_personality": "chaotic", "collision_rate": 0.6, "flags": 0},
+    {"game": 4, "players": 4, "rounds": 6, "winner": "Danny", "winner_personality": "strategist", "collision_rate": 1, "flags": 0},
+    {"game": 5, "players": 6, "rounds": 6, "winner": "Michal", "winner_personality": "casual", "collision_rate": 1, "flags": 0},
+    {"game": 6, "players": 8, "rounds": 7, "winner": "Michal", "winner_personality": "casual", "collision_rate": 1, "flags": 0}
+  ],
+  "generated_at": "2026-03-22T17:59:38.252Z"
+}
