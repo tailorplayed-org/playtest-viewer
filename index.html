@@ -6,7 +6,7 @@
 <title>Playtest Viewer — TailorPlayed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════
    DESIGN TOKENS
@@ -42,6 +42,40 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ═══════════════════════════════════════════════
+   MOOD OVERRIDES
+   ═══════════════════════════════════════════════ */
+[data-mood="whimsical"] {
+  --radius-sm: 14px; --radius-md: 18px; --radius-lg: 22px; --radius-xl: 28px;
+}
+[data-mood="whimsical"] .bubble { border-radius: 4px var(--radius-lg) var(--radius-lg) var(--radius-lg); }
+[data-mood="whimsical"] .game-card { border-radius: var(--radius-lg); }
+
+[data-mood="tactical"] {
+  --radius-sm: 2px; --radius-md: 3px; --radius-lg: 4px; --radius-xl: 6px;
+}
+[data-mood="tactical"] h1, [data-mood="tactical"] h2,
+[data-mood="tactical"] h3, [data-mood="tactical"] h4,
+[data-mood="tactical"] .header__title,
+[data-mood="tactical"] .game-card__num,
+[data-mood="tactical"] .player-card__name {
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+[data-mood="cozy"] {
+  --radius-sm: 12px; --radius-md: 16px; --radius-lg: 20px; --radius-xl: 24px;
+}
+
+[data-mood="intense"] {
+  --radius-sm: 3px; --radius-md: 5px; --radius-lg: 8px; --radius-xl: 10px;
+}
+[data-mood="intense"] .bubble { border-left-width: 4px; }
+[data-mood="intense"] .timeline__round--active { box-shadow: 0 0 16px rgba(124,58,237,0.6); }
+
+[data-mood="western"] {
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-xl: 16px;
 }
 
 /* ═══════════════════════════════════════════════
@@ -261,6 +295,12 @@ a { color: var(--c-primary-light); text-decoration: none; }
   grid-template-rows: auto 1fr 1fr auto;
   grid-template-areas: "timeline" "board" "commentary" "scoreboard";
 }
+.replay-layout--no-board {
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "timeline" "commentary" "scoreboard";
+}
+.replay-layout--no-board .board { display: none; }
+.replay-layout--no-board .commentary { border-left: none; }
 
 /* ═══════════════════════════════════════════════
    TIMELINE
@@ -377,6 +417,12 @@ a { color: var(--c-primary-light); text-decoration: none; }
   color: var(--c-text-dim); font-size: 0.75rem;
   display: flex; align-items: center; gap: 3px;
 }
+.bubble__action-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 600;
+  background: rgba(124,58,237,0.12); color: var(--c-primary-light);
+}
+.bubble__dice { font-size: 1.3rem; line-height: 1; }
 .bubble__thought {
   font-size: 0.85rem; line-height: 1.5; color: var(--c-text-muted);
   min-height: 1.2em;
@@ -393,6 +439,14 @@ a { color: var(--c-primary-light); text-decoration: none; }
   background: rgba(252,183,0,0.15); border-radius: var(--radius-sm);
   font-size: 0.78rem; color: var(--c-gold); font-weight: 600;
 }
+.bubble--collision-flash {
+  animation: collision-flash 0.5s ease-out;
+}
+.bubble--sparkle::after {
+  content: ''; position: absolute; inset: -2px; border-radius: inherit;
+  background: transparent; pointer-events: none;
+  animation: sparkle-ring 0.6s ease-out forwards;
+}
 
 .system-msg {
   padding: 8px 12px; border-radius: var(--radius-sm);
@@ -406,9 +460,32 @@ a { color: var(--c-primary-light); text-decoration: none; }
   background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);
   color: var(--c-verdict-fail);
 }
+.system-msg--warning {
+  background: rgba(234,179,8,0.12); border: 1px solid rgba(234,179,8,0.25);
+  color: var(--c-verdict-guardrail);
+  text-align: left; display: flex; align-items: flex-start; gap: 8px;
+  font-weight: 500;
+}
 .system-msg--info {
   background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
   color: var(--c-primary-light);
+}
+
+.outcome-feed {
+  padding: 8px 10px; border-radius: var(--radius-sm);
+  background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.12);
+  display: flex; flex-direction: column; gap: 5px;
+}
+.outcome-feed__title {
+  font-size: 0.72rem; font-weight: 600; color: var(--c-text-dim);
+  text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;
+}
+.outcome-line {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: var(--c-text-muted); line-height: 1.4;
+}
+.outcome-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
 }
 
 .typing-indicator {
@@ -549,6 +626,8 @@ a { color: var(--c-primary-light); text-decoration: none; }
 @keyframes crown-bounce { from { transform: scale(0) rotate(-30deg); } to { transform: scale(1) rotate(0); } }
 @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(124,58,237,0.4); } 70% { box-shadow: 0 0 0 8px rgba(124,58,237,0); } 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); } }
 @keyframes collision-pulse { 0%,100% { opacity: 0; } 50% { opacity: 1; } }
+@keyframes collision-flash { 0% { background: rgba(234,179,8,0.25); } 100% { background: var(--c-bg-surface); } }
+@keyframes sparkle-ring { 0% { box-shadow: 0 0 0 0 rgba(234,179,8,0.5); } 100% { box-shadow: 0 0 10px 3px rgba(234,179,8,0); } }
 
 /* ═══════════════════════════════════════════════
    RESPONSIVE
@@ -562,7 +641,13 @@ a { color: var(--c-primary-light); text-decoration: none; }
       "board commentary"
       "scoreboard scoreboard";
   }
+  .replay-layout--no-board {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "timeline" "commentary" "scoreboard";
+  }
   .commentary { border-top: none; border-left: 1px solid var(--c-border-subtle); }
+  .replay-layout--no-board .commentary { border-left: none; border-top: 1px solid var(--c-border-subtle); }
   .board { padding: 12px; }
 }
 @media (min-width: 1024px) {
@@ -624,9 +709,9 @@ a { color: var(--c-primary-light); text-decoration: none; }
 
 <!-- ═══════ REPLAY VIEW ═══════ -->
 <div class="view" id="replay-view">
-  <div class="replay-layout">
+  <div class="replay-layout" id="replay-layout">
     <div class="timeline" id="timeline"></div>
-    <div class="board"><svg id="board-svg" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <div class="board" id="board-panel"><svg id="board-svg" preserveAspectRatio="xMidYMid meet"></svg></div>
     <div class="commentary">
       <div class="commentary__header">
         <span>📡</span> Agent Transmissions
@@ -689,6 +774,16 @@ function tokenColor(name) {
 
 function personalityOf(id) { return PERSONALITY[id] || PERSONALITY.casual; }
 
+const DICE_FACES = ['\u2680','\u2681','\u2682','\u2683','\u2684','\u2685'];
+function diceEmoji(val) { return DICE_FACES[(val || 1) - 1] || '\uD83C\uDFB2'; }
+
+function ordSuffix(n) {
+  if (n % 100 >= 11 && n % 100 <= 13) return 'th';
+  switch (n % 10) {
+    case 1: return 'st'; case 2: return 'nd'; case 3: return 'rd'; default: return 'th';
+  }
+}
+
 function locationEmoji(name, special) {
   const l = (name || '').toLowerCase();
   if (l.includes('store') || l.includes('shop') || l.includes('market')) return '🏪';
@@ -704,10 +799,248 @@ function locationEmoji(name, special) {
   if (l.includes('bank')) return '🏦';
   if (l.includes('jail') || l.includes('prison')) return '🔒';
   if (l.includes('station') || l.includes('train')) return '🚂';
+  if (l.includes('forest') || l.includes('wood')) return '🌲';
+  if (l.includes('castle') || l.includes('tower')) return '🏰';
+  if (l.includes('temple') || l.includes('shrine')) return '⛩️';
+  if (l.includes('camp') || l.includes('tent')) return '⛺';
   if (special === 'random_draw') return '🎲';
   if (special === 'peek') return '👁️';
   if (special === 'swap') return '🔄';
   return '📍';
+}
+
+function parseHSL(str) {
+  const parts = str.split(',').map(s => parseFloat(s.trim()));
+  return { h: parts[0], s: parts[1], l: parts[2] };
+}
+
+/* ═══════════════════════════════════════════════
+   THEME MAP
+   ═══════════════════════════════════════════════ */
+const THEME_MAP = {
+  emperorsClothes: {
+    name: "Emperor's Clothes",
+    primary: "45, 80%, 55%",
+    accent: "25, 90%, 45%",
+    surface: "35, 20%, 12%",
+    text: "40, 20%, 90%",
+    fontFamily: "'Playfair Display', serif",
+    fontAccent: "'Source Sans 3', sans-serif",
+    mood: "western"
+  },
+  fairyTaleStitch: {
+    name: "Fairy Tale Stitch",
+    primary: "280, 60%, 65%",
+    accent: "330, 70%, 60%",
+    surface: "270, 15%, 12%",
+    text: "280, 15%, 90%",
+    fontFamily: "'Quicksand', sans-serif",
+    fontAccent: "'Nunito', sans-serif",
+    mood: "whimsical"
+  },
+  soldiersAndHeroes: {
+    name: "Soldiers & Heroes",
+    primary: "140, 50%, 40%",
+    accent: "35, 80%, 50%",
+    surface: "150, 15%, 10%",
+    text: "140, 10%, 88%",
+    fontFamily: "'Oswald', sans-serif",
+    fontAccent: "'Roboto Condensed', sans-serif",
+    mood: "tactical"
+  },
+  bedtimeStory: {
+    name: "Bedtime Story",
+    primary: "220, 60%, 55%",
+    accent: "45, 80%, 70%",
+    surface: "230, 25%, 12%",
+    text: "220, 20%, 90%",
+    fontFamily: "'Fredoka', sans-serif",
+    fontAccent: "'Nunito', sans-serif",
+    mood: "cozy"
+  },
+  powerCard: {
+    name: "Power Card",
+    primary: "0, 80%, 55%",
+    accent: "210, 90%, 55%",
+    surface: "0, 0%, 8%",
+    text: "0, 0%, 95%",
+    fontFamily: "'Russo One', sans-serif",
+    fontAccent: "'Exo 2', sans-serif",
+    mood: "intense"
+  },
+  default: {
+    name: "TailorPlayed",
+    primary: "250, 65%, 60%",
+    accent: "35, 90%, 55%",
+    surface: "240, 15%, 11%",
+    text: "240, 15%, 90%",
+    fontFamily: "'Inter', sans-serif",
+    fontAccent: "'Inter', sans-serif",
+    mood: "neutral"
+  }
+};
+
+/* ═══════════════════════════════════════════════
+   THEME ENGINE
+   ═══════════════════════════════════════════════ */
+const ThemeEngine = {
+  applied: false,
+
+  applyTheme(game) {
+    if (this.applied) return;
+    const artStyle = game?.meta?.art_style;
+    const theme = THEME_MAP[artStyle] || THEME_MAP.default;
+    const root = document.documentElement;
+
+    const p = parseHSL(theme.primary);
+    const a = parseHSL(theme.accent);
+    const s = parseHSL(theme.surface);
+    const t = parseHSL(theme.text);
+
+    // Primary family
+    root.style.setProperty('--c-primary', `hsl(${p.h}, ${p.s}%, ${p.l}%)`);
+    root.style.setProperty('--c-primary-light', `hsl(${p.h}, ${Math.max(0, p.s - 10)}%, ${Math.min(100, p.l + 15)}%)`);
+    root.style.setProperty('--c-primary-dim', `hsl(${p.h}, ${p.s}%, ${Math.max(0, p.l - 15)}%)`);
+
+    // Accent
+    root.style.setProperty('--c-accent', `hsl(${a.h}, ${a.s}%, ${a.l}%)`);
+
+    // Surface family
+    root.style.setProperty('--c-bg', `hsl(${s.h}, ${s.s}%, ${Math.max(0, s.l - 4)}%)`);
+    root.style.setProperty('--c-bg-surface', `hsl(${s.h}, ${s.s}%, ${s.l}%)`);
+    root.style.setProperty('--c-bg-card', `hsl(${s.h}, ${s.s}%, ${s.l + 5}%)`);
+
+    // Text family
+    root.style.setProperty('--c-text', `hsl(${t.h}, ${t.s}%, ${t.l}%)`);
+    root.style.setProperty('--c-text-muted', `hsl(${t.h}, ${Math.max(0, t.s - 5)}%, ${Math.max(0, t.l - 30)}%)`);
+    root.style.setProperty('--c-text-dim', `hsl(${t.h}, ${Math.max(0, t.s - 10)}%, ${Math.max(0, t.l - 45)}%)`);
+
+    // Borders
+    root.style.setProperty('--c-border', `hsl(${p.h}, ${p.s}%, ${Math.max(0, p.l - 20)}%)`);
+    root.style.setProperty('--c-border-subtle', `hsl(${s.h}, ${s.s}%, ${s.l + 8}%)`);
+
+    // Derived shades
+    root.style.setProperty('--primary-dim', `hsl(${p.h}, ${p.s}%, ${Math.max(0, p.l - 20)}%)`);
+    root.style.setProperty('--primary-glow', `hsla(${p.h}, ${p.s}%, ${p.l}%, 0.3)`);
+    root.style.setProperty('--surface-2', `hsl(${s.h}, ${s.s}%, ${s.l + 5}%)`);
+
+    // Fonts
+    root.style.setProperty('--font-heading', theme.fontFamily);
+    root.style.setProperty('--font-body', theme.fontAccent);
+
+    // Mood attribute
+    document.body.setAttribute('data-mood', theme.mood);
+
+    // Background gradient uses theme colors
+    document.body.style.backgroundImage =
+      `radial-gradient(ellipse at 15% 5%, hsla(${p.h}, ${p.s}%, ${p.l}%, 0.12) 0%, transparent 50%),` +
+      `radial-gradient(ellipse at 85% 95%, hsla(${a.h}, ${a.s}%, ${a.l}%, 0.06) 0%, transparent 50%)`;
+
+    // Inject fonts
+    this.injectFonts(theme);
+
+    this.applied = true;
+  },
+
+  injectFonts(theme) {
+    const prev = document.getElementById('theme-fonts');
+    if (prev) prev.remove();
+
+    const families = new Set();
+    [theme.fontFamily, theme.fontAccent].forEach(f => {
+      const match = f.match(/['"]([^'"]+)['"]/);
+      if (match && match[1]) families.add(match[1]);
+    });
+
+    // Filter out already-loaded fonts
+    const loaded = new Set(['Fredoka', 'Nunito', 'Inter']);
+    const toLoad = [...families].filter(f => !loaded.has(f));
+    if (!toLoad.length) return;
+
+    const url = 'https://fonts.googleapis.com/css2?' +
+      toLoad.map(f => `family=${encodeURIComponent(f)}:wght@300;400;500;600;700`).join('&') +
+      '&display=swap';
+
+    const link = document.createElement('link');
+    link.id = 'theme-fonts';
+    link.rel = 'stylesheet';
+    link.href = url;
+    document.head.appendChild(link);
+  }
+};
+
+/* ═══════════════════════════════════════════════
+   ACTION TYPE RENDERERS
+   ═══════════════════════════════════════════════ */
+const ACTION_RENDER = {
+  select_location: (a) => ({
+    icon: '→',
+    label: a.target_name || '',
+    extraClass: ''
+  }),
+  play_card: (a) => ({
+    icon: '🃏',
+    label: `Played: ${a.card_name || a.target_name || 'card'}`,
+    extraClass: ''
+  }),
+  trade: (a) => ({
+    icon: '↔',
+    label: `${a.player_name} offered ${a.offer || '?'} to ${a.trade_target_name || '?'} for ${a.wants || '?'}`,
+    extraClass: ''
+  }),
+  bid: (a) => ({
+    icon: '🔨',
+    label: `Bid: ${a.amount ?? a.value ?? '?'}`,
+    extraClass: ''
+  }),
+  roll_dice: (a) => ({
+    icon: diceEmoji(a.value),
+    label: `Rolled: ${a.value ?? '?'}`,
+    extraClass: 'dice'
+  }),
+  move: (a) => ({
+    icon: '🚶',
+    label: `${a.from_name || '?'} → ${a.target_name || '?'}`,
+    extraClass: ''
+  }),
+  activate_ability: (a) => ({
+    icon: '✨',
+    label: `Used: ${a.ability_name || a.target_name || '?'}`,
+    extraClass: 'sparkle'
+  }),
+  collect: (a) => ({
+    icon: '📦',
+    label: `Collected: ${a.token_type || a.target_name || '?'}`,
+    extraClass: ''
+  }),
+  convert: (a) => ({
+    icon: '🔄',
+    label: `${a.from_amount || '?'} ${a.from_type || '?'} → ${a.to_amount || '?'} ${a.to_type || '?'}`,
+    extraClass: ''
+  }),
+  investigate: (a) => ({
+    icon: '🔍',
+    label: `Investigated: ${a.target_name || '?'}${a.found ? ' — found ' + a.found : ''}`,
+    extraClass: ''
+  }),
+  push_luck: (a) => ({
+    icon: '🎰',
+    label: a.stopped
+      ? `Stopped — banked ${a.banked ?? '?'} tokens`
+      : `Pushed again... (${a.push_count || '?'}${ordSuffix(a.push_count || 1)} push)`,
+    extraClass: ''
+  })
+};
+
+function getActionRender(action) {
+  const renderer = ACTION_RENDER[action.action_type];
+  if (renderer) return renderer(action);
+  // Fallback: generic render
+  return {
+    icon: '→',
+    label: action.target_name || action.action_type || '',
+    extraClass: ''
+  };
 }
 
 /* ═══════════════════════════════════════════════
@@ -793,65 +1126,205 @@ const DataLoader = {
    ═══════════════════════════════════════════════ */
 const Board = {
   layout: null,
+  layoutType: 'freeform',
   W: 860,
   H: 520,
   playerEls: {},
   tokenGroups: {},
 
-  generateLayout(locations) {
-    const cx = this.W / 2, cy = this.H / 2;
-    const n = locations.length;
-    const radius = Math.min(this.W, this.H) * 0.35;
+  generateLayout(game) {
+    const locs = game.board.locations;
+    const type = game.board?.layout_type || 'freeform';
     const pos = {};
-    locations.forEach((loc, i) => {
-      const angle = -Math.PI / 2 + (2 * Math.PI * i) / n;
-      const r = loc.special ? radius * 0.9 : radius;
-      pos[loc.id] = {
-        x: cx + r * Math.cos(angle),
-        y: cy + r * Math.sin(angle),
-        name: loc.name, special: loc.special,
-        emoji: locationEmoji(loc.name, loc.special)
-      };
-    });
+
+    if (type === 'linear') {
+      const padding = 70;
+      const trackY = this.H / 2;
+      const n = locs.length;
+      const spacing = n > 1 ? (this.W - 2 * padding) / (n - 1) : 0;
+      locs.forEach((loc, i) => {
+        pos[loc.id] = {
+          x: n > 1 ? padding + i * spacing : this.W / 2,
+          y: trackY,
+          name: loc.name, special: loc.special,
+          emoji: locationEmoji(loc.name, loc.special)
+        };
+      });
+    } else if (type === 'grid') {
+      const cols = game.board?.grid_columns || 4;
+      const rows = Math.ceil(locs.length / cols);
+      const padX = 60, padY = 50;
+      const cellW = (this.W - 2 * padX) / cols;
+      const cellH = (this.H - 2 * padY) / Math.max(rows, 1);
+      locs.forEach((loc, i) => {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        pos[loc.id] = {
+          x: padX + col * cellW + cellW / 2,
+          y: padY + row * cellH + cellH / 2,
+          name: loc.name, special: loc.special,
+          emoji: locationEmoji(loc.name, loc.special),
+          gridCol: col, gridRow: row
+        };
+      });
+    } else {
+      // Freeform: use x/y coords if present, else circle
+      const hasCoords = locs.length > 0 && locs.every(l => l.x != null && l.y != null);
+      if (hasCoords) {
+        const xs = locs.map(l => l.x), ys = locs.map(l => l.y);
+        const minX = Math.min(...xs), maxX = Math.max(...xs);
+        const minY = Math.min(...ys), maxY = Math.max(...ys);
+        const rangeX = maxX - minX || 1, rangeY = maxY - minY || 1;
+        const pad = 80;
+        locs.forEach(loc => {
+          pos[loc.id] = {
+            x: pad + ((loc.x - minX) / rangeX) * (this.W - 2 * pad),
+            y: pad + ((loc.y - minY) / rangeY) * (this.H - 2 * pad),
+            name: loc.name, special: loc.special,
+            emoji: locationEmoji(loc.name, loc.special)
+          };
+        });
+      } else {
+        const cx = this.W / 2, cy = this.H / 2;
+        const n = locs.length;
+        const radius = Math.min(this.W, this.H) * 0.35;
+        locs.forEach((loc, i) => {
+          const angle = -Math.PI / 2 + (2 * Math.PI * i) / n;
+          const r = loc.special ? radius * 0.9 : radius;
+          pos[loc.id] = {
+            x: cx + r * Math.cos(angle),
+            y: cy + r * Math.sin(angle),
+            name: loc.name, special: loc.special,
+            emoji: locationEmoji(loc.name, loc.special)
+          };
+        });
+      }
+    }
     return pos;
   },
 
+  renderConnections(game) {
+    const svg = $('#board-svg');
+    const type = this.layoutType;
+    const connG = svgEl('g', { class: 'connections', opacity: '0.35' });
+
+    if (type === 'linear') {
+      // Track line
+      const locs = game.board.locations;
+      if (locs.length > 1) {
+        const first = this.layout[locs[0].id];
+        const last = this.layout[locs[locs.length - 1].id];
+        connG.appendChild(svgEl('line', {
+          x1: first.x, y1: first.y, x2: last.x, y2: last.y,
+          stroke: '#4C1D95', 'stroke-width': '3', 'stroke-linecap': 'round'
+        }));
+        // Directional arrows between nodes
+        for (let i = 0; i < locs.length - 1; i++) {
+          const a = this.layout[locs[i].id], b = this.layout[locs[i + 1].id];
+          if (!a || !b) continue;
+          const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+          const dx = b.x - a.x, dy = b.y - a.y;
+          const len = Math.hypot(dx, dy) || 1;
+          const ux = dx / len, uy = dy / len;
+          const px = -uy, py = ux; // perpendicular
+          connG.appendChild(svgEl('polygon', {
+            points: `${mx + ux * 6},${my + uy * 6} ${mx - ux * 4 + px * 5},${my - uy * 4 + py * 5} ${mx - ux * 4 - px * 5},${my - uy * 4 - py * 5}`,
+            fill: '#6D28D9', opacity: '0.7'
+          }));
+        }
+      }
+    } else if (type === 'grid') {
+      const locs = game.board.locations;
+      const cols = game.board?.grid_columns || 4;
+      if (game.board.connections?.length) {
+        // Explicit connections
+        game.board.connections.forEach(c => {
+          const a = this.layout[c.from], b = this.layout[c.to];
+          if (!a || !b) return;
+          connG.appendChild(svgEl('line', {
+            x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+            stroke: '#4C1D95', 'stroke-width': '1.5'
+          }));
+        });
+      } else {
+        // Auto-generate adjacency
+        locs.forEach((loc, i) => {
+          const col = i % cols, row = Math.floor(i / cols);
+          // Right neighbor
+          if (col < cols - 1 && i + 1 < locs.length) {
+            const a = this.layout[loc.id], b = this.layout[locs[i + 1].id];
+            if (a && b) connG.appendChild(svgEl('line', {
+              x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+              stroke: '#4C1D95', 'stroke-width': '1.5'
+            }));
+          }
+          // Bottom neighbor
+          if (i + cols < locs.length) {
+            const a = this.layout[loc.id], b = this.layout[locs[i + cols].id];
+            if (a && b) connG.appendChild(svgEl('line', {
+              x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+              stroke: '#4C1D95', 'stroke-width': '1.5'
+            }));
+          }
+        });
+      }
+    } else {
+      // Freeform: curved paths
+      if (game.board.connections?.length) {
+        game.board.connections.forEach(c => {
+          const a = this.layout[c.from], b = this.layout[c.to];
+          if (!a || !b) return;
+          const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+          const dx = b.x - a.x, dy = b.y - a.y;
+          const len = Math.hypot(dx, dy) || 1;
+          const off = 25;
+          const cpx = mx - (dy / len) * off, cpy = my + (dx / len) * off;
+          connG.appendChild(svgEl('path', {
+            d: `M${a.x},${a.y} Q${cpx},${cpy} ${b.x},${b.y}`,
+            stroke: '#4C1D95', 'stroke-width': '2', fill: 'none',
+            'stroke-dasharray': '6 4'
+          }));
+        });
+      }
+    }
+    svg.appendChild(connG);
+  },
+
   render(game, roundIdx) {
+    this.layoutType = game.board?.layout_type || 'freeform';
+    const replayLayout = $('#replay-layout');
+
+    // Handle "none" layout — hide board, expand commentary
+    if (this.layoutType === 'none') {
+      replayLayout.classList.add('replay-layout--no-board');
+      this.layout = {};
+      this.playerEls = {};
+      this.tokenGroups = {};
+      return;
+    }
+    replayLayout.classList.remove('replay-layout--no-board');
+
     const svg = $('#board-svg');
     svg.innerHTML = '';
     svg.setAttribute('viewBox', `0 0 ${this.W} ${this.H}`);
 
-    this.layout = this.generateLayout(game.board.locations);
+    this.layout = this.generateLayout(game);
     this.playerEls = {};
     this.tokenGroups = {};
 
-    // Draw connections if present
-    if (game.board.connections?.length) {
-      const connG = svgEl('g', { class: 'connections', opacity: '0.3' });
-      game.board.connections.forEach(c => {
-        const a = this.layout[c.from], b = this.layout[c.to];
-        if (!a || !b) return;
-        const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
-        const dx = b.x - a.x, dy = b.y - a.y;
-        const len = Math.hypot(dx, dy) || 1;
-        const off = 25;
-        const cpx = mx - (dy / len) * off, cpy = my + (dx / len) * off;
-        const path = svgEl('path', {
-          d: `M${a.x},${a.y} Q${cpx},${cpy} ${b.x},${b.y}`,
-          stroke: '#4C1D95', 'stroke-width': '2', fill: 'none',
-          'stroke-dasharray': '6 4'
-        });
-        connG.appendChild(path);
-      });
-      svg.appendChild(connG);
-    }
+    // Connections
+    this.renderConnections(game);
 
-    // Draw location cards
+    // Location cards — size adapts to layout type
+    const isGrid = this.layoutType === 'grid';
+    const cols = game.board?.grid_columns || 4;
+    const rows = Math.ceil((game.board.locations?.length || 1) / cols);
+    const cw = isGrid ? Math.min(100, (this.W - 120) / cols * 0.82) : 116;
+    const ch = isGrid ? Math.min(60, (this.H - 100) / rows * 0.78) : 68;
+
     for (const [id, p] of Object.entries(this.layout)) {
-      const cw = 116, ch = 68;
-      const g = svgEl('g', { class: 'loc-card', 'data-loc': id, transform: `translate(${p.x - cw/2}, ${p.y - ch/2})` });
+      const g = svgEl('g', { class: 'loc-card', 'data-loc': id, transform: `translate(${p.x - cw / 2}, ${p.y - ch / 2})` });
 
-      // Background with gradient
       const rect = svgEl('rect', {
         width: cw, height: ch, rx: '10', ry: '10',
         fill: '#16213E',
@@ -860,33 +1333,30 @@ const Board = {
       });
       g.appendChild(rect);
 
-      // Special glow
       if (p.special) {
-        const glow = svgEl('rect', {
+        g.appendChild(svgEl('rect', {
           width: cw, height: ch, rx: '10', ry: '10',
           fill: 'none', stroke: 'rgba(245,158,11,0.2)', 'stroke-width': '6',
           filter: 'blur(4px)'
-        });
-        g.appendChild(glow);
+        }));
       }
 
-      // Emoji
       const em = svgEl('text', {
-        x: cw / 2, y: '24', 'text-anchor': 'middle', 'font-size': '18'
+        x: cw / 2, y: ch * 0.35, 'text-anchor': 'middle', 'font-size': isGrid ? '14' : '18'
       });
       em.textContent = p.emoji;
       g.appendChild(em);
 
-      // Name
+      const maxLen = isGrid ? 10 : 15;
       const nm = svgEl('text', {
-        x: cw / 2, y: '43', 'text-anchor': 'middle',
-        fill: '#E2E8F0', 'font-size': '10.5', 'font-family': 'Nunito, sans-serif', 'font-weight': '600'
+        x: cw / 2, y: ch * 0.65, 'text-anchor': 'middle',
+        fill: '#E2E8F0', 'font-size': isGrid ? '9' : '10.5',
+        'font-family': 'Nunito, sans-serif', 'font-weight': '600'
       });
-      nm.textContent = p.name.length > 15 ? p.name.slice(0, 13) + '..' : p.name;
+      nm.textContent = p.name.length > maxLen ? p.name.slice(0, maxLen - 2) + '..' : p.name;
       g.appendChild(nm);
 
-      // Token dots placeholder
-      const tg = svgEl('g', { class: 'loc-tokens', transform: `translate(${cw/2}, 58)` });
+      const tg = svgEl('g', { class: 'loc-tokens', transform: `translate(${cw / 2}, ${ch - 10})` });
       g.appendChild(tg);
       this.tokenGroups[id] = tg;
 
@@ -897,14 +1367,12 @@ const Board = {
     const ptLayer = svgEl('g', { class: 'player-tokens-layer' });
     svg.appendChild(ptLayer);
 
-    // Create player tokens
     game.meta.players.forEach(p => {
       const g = svgEl('g', { class: 'player-token', 'data-player': p.id });
-      const circle = svgEl('circle', {
+      g.appendChild(svgEl('circle', {
         cx: '0', cy: '0', r: '11',
         fill: p.color, stroke: '#fff', 'stroke-width': '2'
-      });
-      g.appendChild(circle);
+      }));
       const txt = svgEl('text', {
         x: '0', y: '4', 'text-anchor': 'middle',
         fill: '#fff', 'font-size': '10', 'font-weight': '700',
@@ -916,46 +1384,82 @@ const Board = {
       this.playerEls[p.id] = g;
     });
 
-    // Position for initial round
     this.updateRound(game, roundIdx, false);
   },
 
   updateRound(game, roundIdx, animate) {
+    if (this.layoutType === 'none') return;
     const round = game.rounds[roundIdx];
     if (!round) return;
 
-    // Group players by target
-    const byLoc = {};
-    round.actions.forEach(a => {
-      if (!byLoc[a.target]) byLoc[a.target] = [];
-      byLoc[a.target].push(a);
-    });
+    // Determine player positions: prefer state_after.players[].location, fallback to action targets
+    const playerLocs = {};
+    const stateAfter = round.state_after;
 
-    // Position players
-    for (const [locId, actions] of Object.entries(byLoc)) {
+    if (stateAfter?.players) {
+      stateAfter.players.forEach(ps => {
+        if (ps.location && this.layout[ps.location]) {
+          if (!playerLocs[ps.location]) playerLocs[ps.location] = [];
+          playerLocs[ps.location].push(ps.id);
+        }
+      });
+    }
+
+    // Fallback: group by action target
+    if (Object.keys(playerLocs).length === 0) {
+      round.actions.forEach(a => {
+        const target = a.target || a.target_id;
+        if (target && this.layout[target]) {
+          if (!playerLocs[target]) playerLocs[target] = [];
+          playerLocs[target].push(a.player_id);
+        }
+      });
+    }
+
+    // Position players at their locations
+    for (const [locId, pids] of Object.entries(playerLocs)) {
       const loc = this.layout[locId];
       if (!loc) continue;
-      const n = actions.length;
+      const n = pids.length;
       const spacing = Math.min(24, 80 / n);
       const totalW = (n - 1) * spacing;
       const startX = loc.x - totalW / 2;
       const markerY = loc.y - 48;
 
-      actions.forEach((action, i) => {
-        const el = this.playerEls[action.player_id];
+      pids.forEach((pid, i) => {
+        const el = this.playerEls[pid];
         if (!el) return;
         const tx = startX + i * spacing;
-        const ty = markerY;
         if (animate) {
-          gsap.to(el, { x: tx, y: ty, duration: 0.7, ease: 'back.out(1.3)' });
+          gsap.to(el, { x: tx, y: markerY, duration: 0.7, ease: 'back.out(1.3)' });
         } else {
-          gsap.set(el, { x: tx, y: ty });
+          gsap.set(el, { x: tx, y: markerY });
+        }
+      });
+    }
+
+    // Animate move actions: draw temporary path line
+    if (animate) {
+      round.actions.forEach(a => {
+        if (a.action_type === 'move' && a.from) {
+          const fromLoc = this.layout[a.from];
+          const toLoc = this.layout[a.target || a.target_id];
+          if (fromLoc && toLoc) {
+            const svg = $('#board-svg');
+            const trail = svgEl('line', {
+              x1: fromLoc.x, y1: fromLoc.y - 48,
+              x2: toLoc.x, y2: toLoc.y - 48,
+              stroke: game.meta.players.find(p => p.id === a.player_id)?.color || '#fff',
+              'stroke-width': '2', opacity: '0.6', 'stroke-dasharray': '4 3'
+            });
+            svg.appendChild(trail);
+            gsap.to(trail, { opacity: 0, duration: 1.5, delay: 0.5, onComplete: () => trail.remove() });
+          }
         }
       });
     }
 
     // Update location tokens
-    const stateAfter = round.state_after;
     if (stateAfter?.locations) {
       stateAfter.locations.forEach(loc => {
         const tg = this.tokenGroups[loc.id];
@@ -963,11 +1467,11 @@ const Board = {
         tg.innerHTML = '';
         const tokens = loc.tokens || [];
         const max = Math.min(tokens.length, 8);
-        const dotR = 4, spacing = 10;
-        const startX = -(max - 1) * spacing / 2;
+        const dotR = 4, spc = 10;
+        const startX = -(max - 1) * spc / 2;
         tokens.slice(0, max).forEach((t, i) => {
           const dot = svgEl('circle', {
-            cx: startX + i * spacing, cy: '0', r: dotR,
+            cx: startX + i * spc, cy: '0', r: dotR,
             fill: tokenColor(t), opacity: '0.9'
           });
           if (animate) {
@@ -977,7 +1481,7 @@ const Board = {
         });
         if (tokens.length > max) {
           const more = svgEl('text', {
-            x: startX + max * spacing + 4, y: '4',
+            x: startX + max * spc + 4, y: '4',
             fill: '#94A3B8', 'font-size': '9', 'font-family': 'Nunito, sans-serif'
           });
           more.textContent = `+${tokens.length - max}`;
@@ -1031,30 +1535,36 @@ const Commentary = {
   renderRound(round, players, animate) {
     this.clear();
 
-    // Collisions first
+    // Collisions
     if (round.resolution?.collisions?.length) {
       round.resolution.collisions.forEach(c => {
         const pNames = c.players.map(pid => {
           const p = players.find(x => x.id === pid);
           return p ? p.name : pid;
         }).join(', ');
-        this.addSystemMsg(`Collision at ${c.location_name}! ${pNames} (${c.player_count} players)`, 'collision');
+        this.addSystemMsg(`💥 Collision at ${c.location_name}! ${pNames} (${c.player_count} players)`, 'collision');
         if (c.resolution_rule) {
           this.addSystemMsg(c.resolution_rule, 'info');
         }
       });
     }
 
-    // Player thoughts
+    // Player actions (protocol-aware)
     round.actions.forEach((action, i) => {
       const player = players.find(p => p.id === action.player_id);
       this.addBubble(action, player, animate, i * 0.15);
     });
 
-    // Referee flags
+    // Resolution outcomes (mini-feed)
+    if (round.resolution?.outcomes?.length) {
+      this.renderOutcomes(round.resolution.outcomes, players);
+    }
+
+    // Referee flags as warning banners
     if (round.referee_flags?.length) {
       round.referee_flags.forEach(f => {
-        this.addSystemMsg(`Referee Flag: ${typeof f === 'string' ? f : JSON.stringify(f)}`, 'flag');
+        const text = typeof f === 'string' ? f : (f.message || f.description || JSON.stringify(f));
+        this.addSystemMsg(`⚠️ Rule Gap: ${text}`, 'warning');
       });
     }
 
@@ -1069,18 +1579,33 @@ const Commentary = {
   addBubble(action, player, animate, delay) {
     const pers = personalityOf(player?.personality);
     const color = player?.color || pers.fallbackColor;
+    const ar = getActionRender(action);
 
     const div = document.createElement('div');
     div.className = 'bubble';
+    if (ar.extraClass === 'sparkle') div.classList.add('bubble--sparkle');
     div.style.setProperty('--bubble-color', color);
     if (animate) div.style.animationDelay = `${delay}s`;
 
+    // Header with action-type awareness
     const header = document.createElement('div');
     header.className = 'bubble__header';
+
+    let targetHTML;
+    if (action.action_type === 'roll_dice') {
+      targetHTML = `<span class="bubble__dice">${ar.icon}</span> <span class="bubble__target">${ar.label}</span>`;
+    } else if (action.action_type === 'trade') {
+      targetHTML = `<span class="bubble__action-badge">↔ Trade</span> <span class="bubble__target">${ar.label}</span>`;
+    } else if (action.action_type && action.action_type !== 'select_location') {
+      targetHTML = `<span class="bubble__action-badge">${ar.icon} ${action.action_type.replace(/_/g, ' ')}</span> <span class="bubble__target">${ar.label}</span>`;
+    } else {
+      targetHTML = `<span class="bubble__target">${ar.icon} ${ar.label}</span>`;
+    }
+
     header.innerHTML = `
       <span class="bubble__emoji">${pers.emoji}</span>
       <span class="bubble__name" style="color:${color}">${action.player_name || 'Agent'}</span>
-      <span class="bubble__target">→ ${action.target_name || ''}</span>
+      ${targetHTML}
     `;
     div.appendChild(header);
 
@@ -1112,6 +1637,11 @@ const Commentary = {
     this.feed.appendChild(div);
     this._trimBubbles();
 
+    // Check if this action was involved in a collision
+    if (action._collision) {
+      div.classList.add('bubble--collision-flash');
+    }
+
     if (animate && action.thought) {
       const tw = gsap.to(thought, {
         duration: Math.min(action.thought.length * 0.025, 2.5),
@@ -1125,6 +1655,28 @@ const Commentary = {
       thought.textContent = action.thought || '';
     }
 
+    if (this.autoScroll) this.feed.scrollTop = this.feed.scrollHeight;
+  },
+
+  renderOutcomes(outcomes, players) {
+    const outDiv = document.createElement('div');
+    outDiv.className = 'outcome-feed';
+
+    const title = document.createElement('div');
+    title.className = 'outcome-feed__title';
+    title.textContent = 'Round Outcomes';
+    outDiv.appendChild(title);
+
+    outcomes.forEach(outcome => {
+      const line = document.createElement('div');
+      line.className = 'outcome-line';
+      const player = players.find(p => p.id === outcome.player_id);
+      const dotHTML = player ? `<span class="outcome-dot" style="background:${player.color}"></span>` : '';
+      line.innerHTML = `${dotHTML}<span>${outcome.description || outcome.text || JSON.stringify(outcome)}</span>`;
+      outDiv.appendChild(line);
+    });
+
+    this.feed.appendChild(outDiv);
     if (this.autoScroll) this.feed.scrollTop = this.feed.scrollHeight;
   },
 
@@ -1152,7 +1704,7 @@ const Commentary = {
   },
 
   _trimBubbles() {
-    const bubbles = $$('.bubble, .system-msg', this.feed);
+    const bubbles = $$('.bubble, .system-msg, .outcome-feed', this.feed);
     while (bubbles.length > this.maxBubbles) {
       bubbles.shift().remove();
     }
@@ -1167,7 +1719,6 @@ const Timeline = {
     const el = $('#timeline');
     const total = game.rounds.length;
 
-    // Build collision/flag index
     const roundMeta = game.rounds.map(r => ({
       hasCollision: r.resolution?.collisions?.length > 0,
       hasFlag: r.referee_flags?.length > 0
@@ -1190,7 +1741,6 @@ const Timeline = {
     html += `<div class="timeline__info" id="timeline-info">Round ${State.currentRound + 1}/${total}</div>`;
     el.innerHTML = html;
 
-    // Event handlers
     $('#btn-prev').onclick = () => { if (!State.isFirst) Viewer.goToRound(State.currentRound - 1); };
     $('#btn-next').onclick = () => { if (!State.isLast) Viewer.goToRound(State.currentRound + 1); };
     $('#btn-play').onclick = () => Viewer.toggleAutoplay();
@@ -1206,11 +1756,9 @@ const Timeline = {
     const info = $('#timeline-info');
     if (info) info.textContent = `Round ${roundIdx + 1}/${State.totalRounds}`;
 
-    // Scroll active into view
     const active = $('.timeline__round--active');
     if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
 
-    // Update button states
     const prev = $('#btn-prev');
     const next = $('#btn-next');
     if (prev) prev.disabled = roundIdx === 0;
@@ -1239,10 +1787,11 @@ const Scoreboard = {
     const stateAfter = round.state_after;
     const playerStates = stateAfter?.players || [];
 
-    // Find leader
+    // Find leader by score (use generic score field, fallback to cases_completed)
     let maxScore = -1, leaderId = null;
     playerStates.forEach(ps => {
-      if (ps.cases_completed > maxScore) { maxScore = ps.cases_completed; leaderId = ps.id; }
+      const score = ps.score ?? ps.cases_completed ?? 0;
+      if (score > maxScore) { maxScore = score; leaderId = ps.id; }
     });
 
     let html = '';
@@ -1250,7 +1799,7 @@ const Scoreboard = {
       const ps = playerStates.find(x => x.id === p.id);
       if (!ps) return;
       const pers = personalityOf(p.personality);
-      const score = ps.cases_completed || 0;
+      const score = ps.score ?? ps.cases_completed ?? 0;
       const pct = Math.min(100, (score / winTarget) * 100);
       const isLeader = p.id === leaderId && maxScore > 0;
 
@@ -1259,7 +1808,7 @@ const Scoreboard = {
       html += `<div class="player-card__avatar" style="background:${p.color}">${p.name[0]}</div>`;
       html += `<span class="player-card__name">${pers.emoji} ${p.name}</span>`;
       html += `</div>`;
-      html += `<div class="player-card__character">${ps.character || p.character}</div>`;
+      html += `<div class="player-card__character">${ps.character || p.character || ''}</div>`;
       html += `<div class="player-card__progress">`;
       html += `<div class="player-card__bar"><div class="player-card__bar-fill" style="width:${pct}%;background:${p.color}"></div></div>`;
       html += `<span class="player-card__score" data-score="${p.id}">${score}/${winTarget}</span>`;
@@ -1276,16 +1825,18 @@ const Scoreboard = {
       html += `</div>`;
     });
 
-    // Supply tracker
-    const bagCount = stateAfter?.bag_count ?? '?';
-    const initBag = State.initialBagCount[State.currentGameIndex] || bagCount;
-    const bagPct = typeof bagCount === 'number' ? Math.max(0, (bagCount / initBag) * 100) : 50;
-
-    html += `<div class="supply-tracker">`;
-    html += `<div class="supply-tracker__label">Supply Bag</div>`;
-    html += `<div class="supply-tracker__value">${bagCount}</div>`;
-    html += `<div class="supply-tracker__bar"><div class="supply-tracker__bar-fill" style="width:${bagPct}%"></div></div>`;
-    html += `</div>`;
+    // Supply tracker (show if bag_count or supply exists)
+    const bagCount = stateAfter?.bag_count ?? stateAfter?.supply_count;
+    if (bagCount != null) {
+      const initBag = State.initialBagCount[State.currentGameIndex] || bagCount;
+      const bagPct = typeof bagCount === 'number' ? Math.max(0, (bagCount / initBag) * 100) : 50;
+      const supplyLabel = stateAfter?.supply_label || 'Supply Bag';
+      html += `<div class="supply-tracker">`;
+      html += `<div class="supply-tracker__label">${supplyLabel}</div>`;
+      html += `<div class="supply-tracker__value">${bagCount}</div>`;
+      html += `<div class="supply-tracker__bar"><div class="supply-tracker__bar-fill" style="width:${bagPct}%"></div></div>`;
+      html += `</div>`;
+    }
 
     el.innerHTML = html;
   },
@@ -1294,18 +1845,19 @@ const Scoreboard = {
     if (!fromRound || !toRound) return;
     const fromPlayers = fromRound.state_after?.players || [];
     const toPlayers = toRound.state_after?.players || [];
+    const winTarget = game.meta.win_target || 3;
 
     toPlayers.forEach(tp => {
       const fp = fromPlayers.find(x => x.id === tp.id);
-      const fromScore = fp?.cases_completed || 0;
-      const toScore = tp.cases_completed || 0;
+      const fromScore = fp?.score ?? fp?.cases_completed ?? 0;
+      const toScore = tp.score ?? tp.cases_completed ?? 0;
       if (fromScore !== toScore) {
         const el = $(`[data-score="${tp.id}"]`);
         if (el) {
           const obj = { val: fromScore };
           gsap.to(obj, {
             val: toScore, duration: 0.6, ease: 'power2.out',
-            onUpdate: () => { el.textContent = `${Math.round(obj.val)}/${game.meta.win_target || 3}`; }
+            onUpdate: () => { el.textContent = `${Math.round(obj.val)}/${winTarget}`; }
           });
         }
       }
@@ -1322,7 +1874,6 @@ const SummaryView = {
     const icons = { pass: '✅', guardrail: '⚠️', fail: '❌' };
     const labels = { pass: 'All Clear', guardrail: 'Guardrail — Items need review', fail: 'Critical issues found' };
 
-    // Banner
     const banner = $('#summary-banner');
     banner.className = `summary__banner summary__banner--${verdict}`;
     banner.innerHTML = `
@@ -1330,7 +1881,6 @@ const SummaryView = {
       <span class="summary__banner-text">${labels[verdict] || report?.verdict || 'Unknown'}</span>
     `;
 
-    // Meta
     const meta = $('#summary-meta');
     meta.innerHTML = `
       <span><strong>${report?.game_title || games[0]?.meta?.game_title || 'Game'}</strong></span>
@@ -1338,7 +1888,6 @@ const SummaryView = {
       <span>Players: ${[...new Set(report?.player_counts || games.map(g => g.meta.player_count))].join(', ')}</span>
     `;
 
-    // Grid
     const grid = $('#summary-grid');
     grid.innerHTML = '';
 
@@ -1398,11 +1947,9 @@ const Animator = {
 
     const tl = gsap.timeline({
       onComplete: () => {
-        // Check win on last round
         if (roundIdx === game.rounds.length - 1 && game.meta.status === 'completed') {
           this._celebrateWin(game);
         }
-        // Auto-advance
         if (State.isPlaying && !State.isLast) {
           State.playInterval = setTimeout(() => {
             if (State.isPlaying) Viewer.goToRound(State.currentRound + 1);
@@ -1414,27 +1961,23 @@ const Animator = {
     });
     this._tl = tl;
 
-    // Phase 1: Typing indicator
     tl.call(() => {
       Commentary.showTyping();
       Timeline.updateActive(roundIdx);
     });
     tl.to({}, { duration: 0.25 });
 
-    // Phase 2: Move tokens
     tl.call(() => {
       Board.updateRound(game, roundIdx, true);
       Commentary.removeTyping();
     });
     tl.to({}, { duration: 0.8 });
 
-    // Phase 3: Commentary
     tl.call(() => {
       Commentary.renderRound(round, game.meta.players, true);
     });
     tl.to({}, { duration: Math.min(round.actions.length * 0.5 + 0.8, 3) });
 
-    // Phase 4: Scoreboard
     tl.call(() => {
       const prevRound = roundIdx > 0 ? game.rounds[roundIdx - 1] : null;
       Scoreboard.render(game, roundIdx);
@@ -1446,7 +1989,6 @@ const Animator = {
     const winner = game.meta.players.find(p => p.id === game.meta.winner);
     if (!winner) return;
 
-    // Confetti
     if (typeof confetti === 'function') {
       const color = winner.color || '#fcb700';
       confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, colors: [color, '#fcb700', '#7C3AED', '#fff'] });
@@ -1458,7 +2000,6 @@ const Animator = {
       }, 600);
     }
 
-    // Overlay
     const overlay = $('#winner-overlay');
     $('#winner-name').textContent = `${winner.name} Wins!`;
     $('#winner-condition').textContent = game.final_analysis?.win_condition_met || 'Victory!';
@@ -1483,7 +2024,6 @@ const Viewer = {
     const el = $(`#${name}-view`);
     if (el) el.classList.add('active');
 
-    // Header updates
     const back = $('#btn-back');
     const gameTitle = $('#header-game-title');
     back.hidden = name !== 'replay';
@@ -1491,7 +2031,6 @@ const Viewer = {
       ? State.game.meta.game_title + (State.game.meta.game_title_original ? ` (${State.game.meta.game_title_original})` : '')
       : State.report?.game_title || '';
 
-    // Verdict badge
     const verdict = State.report?.verdict?.toLowerCase();
     const vBadge = $('#header-verdict');
     if (verdict && name !== 'loading') {
@@ -1513,9 +2052,12 @@ const Viewer = {
 
     // Track initial bag count
     if (State.initialBagCount[gameIdx] === undefined) {
-      const firstBag = game.rounds[0]?.state_after?.bag_count;
+      const firstBag = game.rounds[0]?.state_after?.bag_count ?? game.rounds[0]?.state_after?.supply_count;
       State.initialBagCount[gameIdx] = firstBag ? firstBag + 6 : 40;
     }
+
+    // Apply theme from first game (once)
+    ThemeEngine.applyTheme(game);
 
     this.showView('replay');
     Board.render(game, 0);
@@ -1540,7 +2082,6 @@ const Viewer = {
       if (!State.isLast) {
         Viewer.goToRound(State.currentRound + 1);
       } else {
-        // Restart from beginning
         State.currentRound = 0;
         Viewer.goToRound(0);
       }
@@ -1557,19 +2098,16 @@ const Viewer = {
     gsap.registerPlugin(Flip, MotionPathPlugin, TextPlugin);
     Commentary.init();
 
-    // Back button
     $('#btn-back').onclick = () => {
       Animator.kill();
       this.stopAutoplay();
       this.showView('summary');
     };
 
-    // Winner close
     $('#winner-close').onclick = () => {
       $('#winner-overlay').classList.remove('active');
     };
 
-    // Parse URL
     const params = new URLSearchParams(window.location.search);
     const order = params.get('order');
 
@@ -1578,11 +2116,9 @@ const Viewer = {
       return;
     }
 
-    // Try loading
     this.showView('loading');
     document.title = `Playtest: ${order} — TailorPlayed`;
 
-    // 1. Try report
     const report = await DataLoader.loadReport(order);
     let games = [];
 
@@ -1591,7 +2127,6 @@ const Viewer = {
       games = await DataLoader.loadAllFromReport(order, report);
     }
 
-    // 2. Fallback discovery
     if (!games.length) {
       games = await DataLoader.discover(order);
     }
@@ -1601,15 +2136,15 @@ const Viewer = {
       return;
     }
 
-    // Sort by game number
     games.sort((a, b) => (a.meta.game_number || 0) - (b.meta.game_number || 0));
     State.games = games;
 
-    // Show summary
+    // Apply theme from first game
+    ThemeEngine.applyTheme(games[0]);
+
     SummaryView.render(report, games);
     this.showView('summary');
 
-    // If single game, go straight to replay
     if (games.length === 1) {
       this.enterReplay(0);
     }
