@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playtest Findings — Gold Hunt (TP-2026-00040)</title>
+<title>ממצאי פלייטסט — Gold Hunt (TP-2026-00040)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -15,6 +15,8 @@ body {
   color: #ffd54f;
   min-height: 100vh;
   padding: 24px 32px 120px;
+  direction: rtl;
+  text-align: right;
 }
 
 a { color: #fcb700; }
@@ -63,21 +65,52 @@ a { color: #fcb700; }
 
 .progress-bar strong { color: #fcb700; }
 
-/* Sections */
-.section-title {
+/* Severity groups (collapsible) */
+.severity-group {
   max-width: 1100px;
-  margin: 40px auto 16px;
-  color: #fcb700;
-  font-size: 22px;
-  font-weight: 700;
-  border-bottom: 1px solid rgba(252,183,0,0.2);
-  padding-bottom: 8px;
+  margin: 0 auto 24px;
+}
+
+.severity-group summary {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #1a0033;
+  border-radius: 12px;
+  border: 1px solid rgba(252,183,0,0.15);
+  font-size: 18px;
+  font-weight: 600;
+  list-style: none;
+  user-select: none;
+}
+
+.severity-group summary::-webkit-details-marker { display: none; }
+
+.severity-group summary::before {
+  content: "\25BE";
+  margin-left: 8px;
+  transition: transform 0.2s;
+  font-size: 14px;
+}
+
+.severity-group:not([open]) summary::before {
+  transform: rotate(90deg);
+}
+
+.group-progress {
+  font-size: 14px;
+  color: #ffd54f88;
+  font-weight: 400;
+}
+
+.severity-group .cards {
+  margin-top: 12px;
 }
 
 /* Cards */
 .cards {
-  max-width: 1100px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -133,7 +166,8 @@ a { color: #fcb700; }
 }
 
 .status-indicator {
-  margin-left: auto;
+  margin-right: auto;
+  margin-left: 0;
   font-size: 18px;
   min-width: 28px;
   text-align: center;
@@ -144,6 +178,8 @@ a { color: #fcb700; }
   line-height: 1.5;
   margin-bottom: 12px;
   color: #ffd54f;
+  direction: ltr;
+  text-align: left;
 }
 
 .card-evidence {
@@ -153,7 +189,10 @@ a { color: #fcb700; }
   padding: 8px 12px;
   background: rgba(255,213,79,0.04);
   border-radius: 8px;
-  border-left: 3px solid rgba(252,183,0,0.3);
+  border-right: 3px solid rgba(252,183,0,0.3);
+  border-left: none;
+  direction: ltr;
+  text-align: left;
 }
 
 .card-evidence strong { color: #ffd54f; }
@@ -179,6 +218,8 @@ a { color: #fcb700; }
   font-size: 14px;
   line-height: 1.5;
   color: #ffd54f;
+  direction: ltr;
+  text-align: left;
 }
 
 /* Options */
@@ -200,6 +241,8 @@ a { color: #fcb700; }
   transition: all 0.15s;
   flex: 1 1 auto;
   min-width: 180px;
+  direction: ltr;
+  text-align: left;
 }
 
 .option-card:hover { background: rgba(252,183,0,0.12); border-color: rgba(252,183,0,0.4); }
@@ -268,6 +311,8 @@ a { color: #fcb700; }
   resize: vertical;
   min-height: 32px;
   transition: min-height 0.2s;
+  direction: rtl;
+  text-align: right;
 }
 
 .notes-area textarea:focus {
@@ -286,11 +331,23 @@ a { color: #fcb700; }
 
 .card.pass-card .card-header { margin-bottom: 0; }
 
+.card.pass-card .pass-title {
+  font-size: 14px;
+  color: #00BA7B;
+  direction: ltr;
+  text-align: left;
+}
+
 /* Confusion cards */
 .confusion-meta {
   font-size: 13px;
   color: #ffd54faa;
   margin-bottom: 8px;
+}
+
+.confusion-text {
+  direction: ltr;
+  text-align: left;
 }
 
 /* Footer */
@@ -336,11 +393,11 @@ a { color: #fcb700; }
 
 .btn-export:hover { background: #ffd54f; transform: translateY(-1px); }
 
-/* Decided card styles */
-.card.decided-approved { border-left: 3px solid #00BA7B; }
-.card.decided-not_clear { border-left: 3px solid #fcb700; }
-.card.decided-dismissed { border-left: 3px solid #ff4d6d; }
-.card.decided-monitor { border-left: 3px solid #ffd54f88; }
+/* Decided card styles — RTL: border-right */
+.card.decided-approved { border-right: 3px solid #00BA7B; }
+.card.decided-not_clear { border-right: 3px solid #fcb700; }
+.card.decided-dismissed { border-right: 3px solid #ff4d6d; }
+.card.decided-monitor { border-right: 3px solid #ffd54f88; }
 
 @media (max-width: 768px) {
   body { padding: 16px 12px 120px; }
@@ -352,17 +409,17 @@ a { color: #fcb700; }
 <body>
 
 <div class="header">
-  <h1>Playtest Findings — Gold Hunt (TP-2026-00040)</h1>
+  <h1>ממצאי פלייטסט — Gold Hunt (TP-2026-00040)</h1>
   <div class="summary-bar">
-    <span class="summary-pill pill-critical">CRITICAL: <strong id="count-critical">0</strong></span>
-    <span class="summary-pill pill-warning">WARNING: <strong id="count-warning">0</strong></span>
-    <span class="summary-pill pill-finding">FINDING: <strong id="count-finding">0</strong></span>
-    <span class="summary-pill pill-pass">PASS: <strong id="count-pass">0</strong></span>
-    <span style="margin-left: 8px; font-size: 14px; color: #ffd54faa;">|</span>
-    <span class="summary-pill" style="background: rgba(255,213,79,0.05); color: #ffd54f; border: 1px solid rgba(255,213,79,0.15);">Total: <strong id="count-total">0</strong></span>
+    <span class="summary-pill pill-critical">קריטי: <strong id="count-critical">0</strong></span>
+    <span class="summary-pill pill-warning">אזהרה: <strong id="count-warning">0</strong></span>
+    <span class="summary-pill pill-finding">ממצא: <strong id="count-finding">0</strong></span>
+    <span class="summary-pill pill-pass">תקין: <strong id="count-pass">0</strong></span>
+    <span style="margin-right: 8px; font-size: 14px; color: #ffd54faa;">|</span>
+    <span class="summary-pill" style="background: rgba(255,213,79,0.05); color: #ffd54f; border: 1px solid rgba(255,213,79,0.15);">סה"כ: <strong id="count-total">0</strong></span>
   </div>
   <div class="progress-bar">
-    <strong id="reviewed-count">0</strong> of <strong id="total-reviewable">0</strong> reviewed
+    <strong id="reviewed-count">0</strong> מתוך <strong id="total-reviewable">0</strong> נבדקו
   </div>
 </div>
 
@@ -372,23 +429,25 @@ a { color: #fcb700; }
 <div class="footer">
   <div class="footer-left">
     <div class="progress-bar">
-      <strong id="footer-reviewed">0</strong> of <strong id="footer-total">0</strong> reviewed
+      <strong id="footer-reviewed">0</strong> מתוך <strong id="footer-total">0</strong> נבדקו
     </div>
     <div class="footer-warning" id="critical-warning" style="display:none;">
-      CRITICAL findings still pending
+      ממצאים קריטיים עדיין ממתינים
     </div>
   </div>
-  <button class="btn-export" onclick="exportJSON()">Export JSON</button>
+  <button class="btn-export" onclick="exportJSON()">ייצוא JSON</button>
 </div>
 
 <script>
 // ---- DATA ----
 
+const SEVERITY_LABELS = { CRITICAL: "\u05E7\u05E8\u05D9\u05D8\u05D9", WARNING: "\u05D0\u05D6\u05D4\u05E8\u05D4", FINDING: "\u05DE\u05DE\u05E6\u05D0", PASS: "\u05EA\u05E7\u05D9\u05DF" };
+
 const FINDINGS = [
   {
     id: "F-001", title: "Tiebreaker chain works correctly",
     severity: "PASS", games: "1, 4", category: "mechanics",
-    description: "Tiebreaker chain works correctly (excess tokens -> priority). Tested in Games 1 and 4.",
+    description: "Tiebreaker chain works correctly (excess tokens \u2192 priority). Tested in Games 1 and 4.",
     evidence: null,
     recommendation: null, options: null
   },
@@ -396,13 +455,13 @@ const FINDINGS = [
     id: "F-002", title: "Sheriff-holder rarely triggers ability in 2p",
     severity: "FINDING", games: "1", category: "balance",
     description: "Sheriff-holder rarely triggers ability in 2-player games. The sheriff has high priority and almost never goes empty-handed.",
-    evidence: "Gold Heart (Adiko, P4): Never triggered in Game 1 — sheriff rarely goes empty-handed in 2p.",
+    evidence: "Gold Heart (Adiko, P4): Never triggered in Game 1 \u2014 sheriff rarely goes empty-handed in 2p.",
     recommendation: null, options: null
   },
   {
     id: "F-003", title: "Token type scarcity (darkred/green droughts via RNG)",
     severity: "WARNING", games: "1, 2, 4", category: "economy",
-    description: "Token type scarcity creates multi-round droughts. Darkred had a 4-round drought in Game 1. Green was scarce in Games 2 and 4 — only available at Mazok and Subaru via setup, with replenishment being random from bag.",
+    description: "Token type scarcity creates multi-round droughts. Darkred had a 4-round drought in Game 1. Green was scarce in Games 2 and 4 \u2014 only available at Mazok and Subaru via setup, with replenishment being random from bag.",
     evidence: "Game 1: 4-round darkred drought. Games 2,4: players stalled 2-3 rounds waiting for green. Replenishment sometimes creates all-same-type locations.",
     recommendation: "Consider seeded replenishment (not pure random) to ensure minimum type diversity across locations.",
     options: null
@@ -417,7 +476,7 @@ const FINDINGS = [
     id: "F-005", title: "\"You Know\" ability + same-round completion combo",
     severity: "FINDING", games: "2", category: "balance",
     description: "Yermi's \"You Know\" ability (draw 2 from bag) enabled a same-round case completion in Game 2. Drew 2 tokens AND completed a case in the same round.",
-    evidence: "You Know (Yermi, P3): Triggered once in Game 2. Strong — drew 2 from bag AND completed case in same round.",
+    evidence: "You Know (Yermi, P3): Triggered once in Game 2. Strong \u2014 drew 2 from bag AND completed case in same round.",
     recommendation: null, options: null
   },
   {
@@ -437,14 +496,14 @@ const FINDINGS = [
   {
     id: "F-008", title: "Priority decisive at 2-token non-sheriff collisions",
     severity: "FINDING", games: "2", category: "mechanics",
-    description: "In collisions at 2-token locations without the sheriff, priority order is decisive — higher priority takes both tokens.",
+    description: "In collisions at 2-token locations without the sheriff, priority order is decisive \u2014 higher priority takes both tokens.",
     evidence: null, recommendation: null, options: null
   },
   {
     id: "F-009", title: "Milano Express is disproportionately strong",
     severity: "WARNING", games: "2", category: "balance",
     description: "Milano Express (Mai, P2) is a guaranteed 2 tokens from any uncontested location. It won the game single-handedly in Game 2. Strictly better than most other abilities.",
-    evidence: "Milano Express (Mai, P2): Triggered once in Game 2 — guaranteed 2 tokens from any uncontested location. Won the game single-handedly. Assessment: OVERPOWERED.",
+    evidence: "Milano Express (Mai, P2): Triggered once in Game 2 \u2014 guaranteed 2 tokens from any uncontested location. Won the game single-handedly. Assessment: OVERPOWERED.",
     recommendation: "Balance Milano Express. It's strictly better than most abilities.",
     options: [
       "Limit to 1 extra token (take location max or +1, whichever is less)",
@@ -462,7 +521,7 @@ const FINDINGS = [
     id: "F-011", title: "Dead locations at 4p (Messy Closet, Rosa Salon)",
     severity: "WARNING", games: "2", category: "location-usage",
     description: "Messy Closet and Rosa Salon had zero visits in the 4-player game. Rosa Salon has 3 orange tokens but nobody needed pure orange. At 6+ players all locations see use.",
-    evidence: "Messy Closet: 0 visits at 4p, occasional use at 6-8p. Rosa Salon: 0 visits at 4p — 3 orange but nobody needed pure orange.",
+    evidence: "Messy Closet: 0 visits at 4p, occasional use at 6-8p. Rosa Salon: 0 visits at 4p \u2014 3 orange but nobody needed pure orange.",
     recommendation: null, options: null
   },
   {
@@ -478,7 +537,7 @@ const FINDINGS = [
     severity: "WARNING", games: "3", category: "balance",
     description: "Zero abilities triggered in the 6-player game (0 out of 6 possible). At 6 players, players spread across 8 locations, reducing collision frequency and making the \"empty-handed\" trigger nearly impossible.",
     evidence: "Game 3 (6p): 0/6 abilities triggered. Players spread across 8 locations. Collision rate was 0.60/round vs GSD estimate of 2.07-2.92.",
-    recommendation: "Part of the systemic ability trigger issue — see F-022.",
+    recommendation: "Part of the systemic ability trigger issue \u2014 see F-022.",
     options: null
   },
   {
@@ -512,7 +571,7 @@ const FINDINGS = [
     id: "F-018", title: "Shaika Trail Tracker timing contradiction",
     severity: "CRITICAL", games: "4", category: "rule-gap",
     description: "Shaika Trail Tracker ability has a timing conflict: \"peek before reveal\" contradicts \"trigger on empty-handed after collection.\" Peek must happen BEFORE reveal but empty-handedness is only known AFTER collection. The ability text is self-contradictory and cannot be executed as written.",
-    evidence: "Trail Tracker (Shaika, P6): Never triggered in Game 3. Assessment: BROKEN — timing contradiction prevents meaningful use. The ability requires peeking before reveal but triggers on empty-handed which is only known after collection.",
+    evidence: "Trail Tracker (Shaika, P6): Never triggered in Game 3. Assessment: BROKEN \u2014 timing contradiction prevents meaningful use. The ability requires peeking before reveal but triggers on empty-handed which is only known after collection.",
     recommendation: "Rewrite Shaika Trail Tracker ability. Either change the trigger (not empty-handed) or change the effect (not peek-before-reveal). Current text is self-contradictory.",
     options: [
       "Change trigger: activate on \"collected fewer than max tokens\" instead of empty-handed",
@@ -530,7 +589,7 @@ const FINDINGS = [
   {
     id: "F-020", title: "First cases trivially easy at 8p",
     severity: "FINDING", games: "4", category: "balance",
-    description: "At 8 players, first case completion was trivially easy — 6 players completed their first case by Round 2. Token abundance at high player counts (more replenishment cycles) makes early cases effortless.",
+    description: "At 8 players, first case completion was trivially easy \u2014 6 players completed their first case by Round 2. Token abundance at high player counts (more replenishment cycles) makes early cases effortless.",
     evidence: "Game 4 (8p): 6 completions in Round 2.",
     recommendation: null, options: null
   },
@@ -578,12 +637,12 @@ const CONFUSIONS = [
   },
   {
     id: "C-005",
-    text: "Draining a 2-token location when alone (take all) — intended?",
+    text: "Draining a 2-token location when alone (take all) \u2014 intended?",
     raised_by: "Ronit (chaotic)", games: "2", severity: "FINDING"
   },
   {
     id: "C-006",
-    text: "Simultaneous completion tiebreaker for 3-case wins — how resolved?",
+    text: "Simultaneous completion tiebreaker for 3-case wins \u2014 how resolved?",
     raised_by: "Ronit (chaotic)", games: "2", severity: "WARNING"
   }
 ];
@@ -616,83 +675,117 @@ function severityClass(s) {
 }
 
 function statusEmoji(decision) {
-  const map = { pending: "\u23F3", approved: "\u2705", not_clear: "\u2753", dismissed: "\u274C", monitor: "\uD83D\uDC41\uFE0F", pass: "\u2705" };
+  const map = {
+    pending: "\u23F3",
+    approved: "\u2705",
+    not_clear: "\u2753",
+    dismissed: "\u274C",
+    monitor: "\uD83D\uDC41\uFE0F",
+    pass: "\u2705"
+  };
   return map[decision] || "\u23F3";
+}
+
+function groupProgress(severity) {
+  const items = FINDINGS.filter(f => f.severity === severity && severity !== "PASS");
+  if (items.length === 0) return "";
+  const reviewed = items.filter(f => state[f.id].decision !== "pending").length;
+  return reviewed + "/" + items.length + " \u05E0\u05D1\u05D3\u05E7\u05D5";
+}
+
+function confusionProgress() {
+  const reviewed = CONFUSIONS.filter(c => state[c.id].decision !== "pending").length;
+  return reviewed + "/" + CONFUSIONS.length + " \u05E0\u05D1\u05D3\u05E7\u05D5";
 }
 
 function renderFindings() {
   const container = document.getElementById("findings-container");
   const severityOrder = ["CRITICAL", "WARNING", "FINDING", "PASS"];
-
   let html = "";
-  let currentSeverity = null;
 
-  const sorted = [...FINDINGS].sort((a, b) => severityOrder.indexOf(a.severity) - severityOrder.indexOf(b.severity));
+  severityOrder.forEach(sev => {
+    const items = FINDINGS.filter(f => f.severity === sev);
+    if (items.length === 0) return;
 
-  sorted.forEach(f => {
-    if (f.severity !== currentSeverity) {
-      if (currentSeverity !== null) html += "</div>";
-      currentSeverity = f.severity;
-      html += `<h2 class="section-title">${currentSeverity} Findings</h2><div class="cards">`;
-    }
+    const isPass = sev === "PASS";
+    const openAttr = isPass ? "" : " open";
+    const label = SEVERITY_LABELS[sev];
+    const progress = isPass ? "" : `<span class="group-progress">${groupProgress(sev)}</span>`;
 
-    if (f.severity === "PASS") {
+    html += `<details${openAttr} class="severity-group severity-${severityClass(sev)}">
+      <summary>
+        <span class="group-badge summary-pill pill-${severityClass(sev)}">${label} (${items.length})</span>
+        ${progress}
+      </summary>
+      <div class="cards">`;
+
+    items.forEach(f => {
+      if (isPass) {
+        html += `
+          <div class="card pass-card" id="card-${f.id}">
+            <div class="card-header">
+              <span class="finding-id">${f.id}</span>
+              <span class="severity-badge badge-pass">${SEVERITY_LABELS.PASS}</span>
+              <span class="category-tag">${f.category}</span>
+              <span style="flex:1"></span>
+              <span class="pass-title">${f.title}</span>
+              <span class="status-indicator">\u2705</span>
+            </div>
+          </div>`;
+        return;
+      }
+
+      const s = state[f.id];
+      const approveLabel = f.recommendation
+        ? "\u05D0\u05D9\u05E9\u05D5\u05E8: " + (f.recommendation.length > 50 ? f.recommendation.substring(0, 47) + "..." : f.recommendation)
+        : "\u05D0\u05D9\u05E9\u05D5\u05E8";
+
       html += `
-        <div class="card pass-card" id="card-${f.id}">
+        <div class="card ${s.decision !== 'pending' ? 'decided-' + s.decision : ''}" id="card-${f.id}">
           <div class="card-header">
             <span class="finding-id">${f.id}</span>
-            <span class="severity-badge badge-pass">PASS</span>
+            <span class="severity-badge badge-${severityClass(f.severity)}">${SEVERITY_LABELS[f.severity]}</span>
             <span class="category-tag">${f.category}</span>
             <span style="flex:1"></span>
-            <span style="font-size:14px;color:#00BA7B;">${f.title}</span>
-            <span class="status-indicator">\u2705</span>
+            <span class="status-indicator" id="status-${f.id}">${statusEmoji(s.decision)}</span>
+          </div>
+          <div class="card-description">${f.description}</div>
+          ${f.evidence ? `<div class="card-evidence"><strong>\u05E2\u05D3\u05D5\u05EA:</strong> ${f.evidence}</div>` : ""}
+          ${f.recommendation ? `
+            <div class="recommendation-box">
+              <div class="rec-label">\u05D4\u05DE\u05DC\u05E6\u05EA \u05D4\u05D7\u05D9\u05D9\u05D6\u05E8\u05D9\u05DD</div>
+              <div class="rec-text">${f.recommendation}</div>
+            </div>` : ""}
+          ${f.options ? `
+            <div class="options-grid" id="options-${f.id}">
+              ${f.options.map((o, i) => `<div class="option-card ${s.selected_option === o ? 'selected' : ''}" onclick="selectOption('${f.id}', ${i})">${String.fromCharCode(65 + i)}) ${o}</div>`).join("")}
+            </div>` : ""}
+          <div class="decision-controls">
+            <button class="btn btn-approve ${s.decision === 'approved' ? 'active' : ''}" onclick="decide('${f.id}', 'approved')">${approveLabel}</button>
+            <button class="btn btn-notclear ${s.decision === 'not_clear' ? 'active' : ''}" onclick="decide('${f.id}', 'not_clear')">\u05DC\u05D0 \u05D1\u05E8\u05D5\u05E8</button>
+            <button class="btn btn-dismiss ${s.decision === 'dismissed' ? 'active' : ''}" onclick="decide('${f.id}', 'dismissed')">\u05D3\u05D7\u05D9\u05D9\u05D4</button>
+            <button class="btn btn-monitor ${s.decision === 'monitor' ? 'active' : ''}" onclick="decide('${f.id}', 'monitor')">\u05DE\u05E2\u05E7\u05D1</button>
+          </div>
+          <div class="notes-area">
+            <textarea id="notes-${f.id}" placeholder="\u05D4\u05E2\u05E8\u05D5\u05EA..." oninput="updateNotes('${f.id}')">${s.notes}</textarea>
           </div>
         </div>`;
-      return;
-    }
+    });
 
-    const s = state[f.id];
-    html += `
-      <div class="card ${s.decision !== 'pending' ? 'decided-' + s.decision : ''}" id="card-${f.id}">
-        <div class="card-header">
-          <span class="finding-id">${f.id}</span>
-          <span class="severity-badge badge-${severityClass(f.severity)}">${f.severity}</span>
-          <span class="category-tag">${f.category}</span>
-          <span style="flex:1"></span>
-          <span class="status-indicator" id="status-${f.id}">${statusEmoji(s.decision)}</span>
-        </div>
-        <div class="card-description">${f.description}</div>
-        ${f.evidence ? `<div class="card-evidence"><strong>Evidence:</strong> ${f.evidence}</div>` : ""}
-        ${f.recommendation ? `
-          <div class="recommendation-box">
-            <div class="rec-label">Aliens' Recommendation</div>
-            <div class="rec-text">${f.recommendation}</div>
-          </div>` : ""}
-        ${f.options ? `
-          <div class="options-grid" id="options-${f.id}">
-            ${f.options.map((o, i) => `<div class="option-card ${s.selected_option === o ? 'selected' : ''}" onclick="selectOption('${f.id}', ${i})">${String.fromCharCode(65 + i)}) ${o}</div>`).join("")}
-          </div>` : ""}
-        <div class="decision-controls">
-          <button class="btn btn-approve ${s.decision === 'approved' ? 'active' : ''}" onclick="decide('${f.id}', 'approved')">
-            ${f.recommendation ? "Approve: " + (f.recommendation.length > 60 ? f.recommendation.substring(0, 57) + "..." : f.recommendation) : "Approve"}
-          </button>
-          <button class="btn btn-notclear ${s.decision === 'not_clear' ? 'active' : ''}" onclick="decide('${f.id}', 'not_clear')">Not Clear</button>
-          <button class="btn btn-dismiss ${s.decision === 'dismissed' ? 'active' : ''}" onclick="decide('${f.id}', 'dismissed')">Dismiss</button>
-          ${f.severity === "FINDING" ? `<button class="btn btn-monitor ${s.decision === 'monitor' ? 'active' : ''}" onclick="decide('${f.id}', 'monitor')">Monitor</button>` : ""}
-        </div>
-        <div class="notes-area">
-          <textarea id="notes-${f.id}" placeholder="Notes..." oninput="updateNotes('${f.id}')">${s.notes}</textarea>
-        </div>
-      </div>`;
+    html += `</div></details>`;
   });
 
-  if (currentSeverity !== null) html += "</div>";
   container.innerHTML = html;
 }
 
 function renderConfusions() {
   const container = document.getElementById("confusions-container");
-  let html = `<h2 class="section-title">Player Confusions</h2><div class="cards">`;
+  let html = `<details open class="severity-group severity-confusion">
+    <summary>
+      <span class="group-badge summary-pill" style="background: rgba(42,126,255,0.15); color: #2A7EFF; border: 1px solid rgba(42,126,255,0.3); padding: 4px 14px; border-radius: 20px; font-size: 14px;">\u05D1\u05DC\u05D1\u05D5\u05DC\u05D9 \u05E9\u05D7\u05E7\u05E0\u05D9\u05DD (${CONFUSIONS.length})</span>
+      <span class="group-progress">${confusionProgress()}</span>
+    </summary>
+    <div class="cards">`;
 
   CONFUSIONS.forEach(c => {
     const s = state[c.id];
@@ -700,24 +793,25 @@ function renderConfusions() {
       <div class="card ${s.decision !== 'pending' ? 'decided-' + s.decision : ''}" id="card-${c.id}">
         <div class="card-header">
           <span class="finding-id">${c.id}</span>
-          <span class="severity-badge badge-${severityClass(c.severity)}">${c.severity}</span>
+          <span class="severity-badge badge-${severityClass(c.severity)}">${SEVERITY_LABELS[c.severity]}</span>
           <span style="flex:1"></span>
           <span class="status-indicator" id="status-${c.id}">${statusEmoji(s.decision)}</span>
         </div>
-        <div class="card-description">${c.text}</div>
-        <div class="confusion-meta">Raised by: <strong>${c.raised_by}</strong> | Games: ${c.games}</div>
+        <div class="card-description confusion-text">${c.text}</div>
+        <div class="confusion-meta">\u05D4\u05D5\u05E2\u05DC\u05D4 \u05E2"\u05D9: <strong>${c.raised_by}</strong> | \u05DE\u05E9\u05D7\u05E7\u05D9\u05DD: ${c.games}</div>
         <div class="decision-controls">
-          <button class="btn btn-approve ${s.decision === 'approved' ? 'active' : ''}" onclick="decide('${c.id}', 'approved')">Approve Fix</button>
-          <button class="btn btn-notclear ${s.decision === 'not_clear' ? 'active' : ''}" onclick="decide('${c.id}', 'not_clear')">Not Clear</button>
-          <button class="btn btn-dismiss ${s.decision === 'dismissed' ? 'active' : ''}" onclick="decide('${c.id}', 'dismissed')">Dismiss</button>
+          <button class="btn btn-approve ${s.decision === 'approved' ? 'active' : ''}" onclick="decide('${c.id}', 'approved')">\u05D0\u05D9\u05E9\u05D5\u05E8 \u05EA\u05D9\u05E7\u05D5\u05DF</button>
+          <button class="btn btn-notclear ${s.decision === 'not_clear' ? 'active' : ''}" onclick="decide('${c.id}', 'not_clear')">\u05DC\u05D0 \u05D1\u05E8\u05D5\u05E8</button>
+          <button class="btn btn-dismiss ${s.decision === 'dismissed' ? 'active' : ''}" onclick="decide('${c.id}', 'dismissed')">\u05D3\u05D7\u05D9\u05D9\u05D4</button>
+          <button class="btn btn-monitor ${s.decision === 'monitor' ? 'active' : ''}" onclick="decide('${c.id}', 'monitor')">\u05DE\u05E2\u05E7\u05D1</button>
         </div>
         <div class="notes-area">
-          <textarea id="notes-${c.id}" placeholder="Notes..." oninput="updateNotes('${c.id}')">${s.notes}</textarea>
+          <textarea id="notes-${c.id}" placeholder="\u05D4\u05E2\u05E8\u05D5\u05EA..." oninput="updateNotes('${c.id}')">${s.notes}</textarea>
         </div>
       </div>`;
   });
 
-  html += "</div>";
+  html += `</div></details>`;
   container.innerHTML = html;
 }
 
@@ -725,7 +819,6 @@ function renderConfusions() {
 
 function decide(id, decision) {
   const current = state[id].decision;
-  // Toggle off if clicking same decision
   state[id].decision = current === decision ? "pending" : decision;
   render();
 }
@@ -753,7 +846,6 @@ function updateCounts() {
   document.getElementById("count-pass").textContent = severities.PASS;
   document.getElementById("count-total").textContent = FINDINGS.length;
 
-  // Reviewable = non-PASS findings + confusions
   const reviewable = FINDINGS.filter(f => f.severity !== "PASS").length + CONFUSIONS.length;
   let reviewed = 0;
   FINDINGS.forEach(f => { if (f.severity !== "PASS" && state[f.id].decision !== "pending") reviewed++; });
@@ -764,13 +856,11 @@ function updateCounts() {
   document.getElementById("footer-reviewed").textContent = reviewed;
   document.getElementById("footer-total").textContent = reviewable;
 
-  // Critical warning
   const critPending = FINDINGS.filter(f => f.severity === "CRITICAL" && state[f.id].decision === "pending").length;
   document.getElementById("critical-warning").style.display = critPending > 0 ? "block" : "none";
 }
 
 function render() {
-  // Preserve notes before re-render
   const noteValues = {};
   Object.keys(state).forEach(id => {
     const el = document.getElementById("notes-" + id);
@@ -781,7 +871,6 @@ function render() {
   renderConfusions();
   updateCounts();
 
-  // Restore notes
   Object.keys(noteValues).forEach(id => {
     const el = document.getElementById("notes-" + id);
     if (el) {
@@ -840,7 +929,7 @@ function exportJSON() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `findings-TP-2026-00040-${now.slice(0, 10)}.json`;
+  a.download = "findings-decisions.json";
   a.click();
   URL.revokeObjectURL(url);
 }
