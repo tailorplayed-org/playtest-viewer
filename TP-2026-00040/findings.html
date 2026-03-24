@@ -178,8 +178,8 @@ a { color: #fcb700; }
   line-height: 1.5;
   margin-bottom: 12px;
   color: #ffd54f;
-  direction: ltr;
-  text-align: left;
+  direction: rtl;
+  text-align: right;
 }
 
 .card-evidence {
@@ -191,8 +191,8 @@ a { color: #fcb700; }
   border-radius: 8px;
   border-right: 3px solid rgba(252,183,0,0.3);
   border-left: none;
-  direction: ltr;
-  text-align: left;
+  direction: rtl;
+  text-align: right;
 }
 
 .card-evidence strong { color: #ffd54f; }
@@ -218,8 +218,8 @@ a { color: #fcb700; }
   font-size: 14px;
   line-height: 1.5;
   color: #ffd54f;
-  direction: ltr;
-  text-align: left;
+  direction: rtl;
+  text-align: right;
 }
 
 /* Options */
@@ -241,8 +241,8 @@ a { color: #fcb700; }
   transition: all 0.15s;
   flex: 1 1 auto;
   min-width: 180px;
-  direction: ltr;
-  text-align: left;
+  direction: rtl;
+  text-align: right;
 }
 
 .option-card:hover { background: rgba(252,183,0,0.12); border-color: rgba(252,183,0,0.4); }
@@ -334,8 +334,8 @@ a { color: #fcb700; }
 .card.pass-card .pass-title {
   font-size: 14px;
   color: #00BA7B;
-  direction: ltr;
-  text-align: left;
+  direction: rtl;
+  text-align: right;
 }
 
 /* Confusion cards */
@@ -346,8 +346,8 @@ a { color: #fcb700; }
 }
 
 .confusion-text {
-  direction: ltr;
-  text-align: left;
+  direction: rtl;
+  text-align: right;
 }
 
 /* Footer */
@@ -445,171 +445,171 @@ const SEVERITY_LABELS = { CRITICAL: "\u05E7\u05E8\u05D9\u05D8\u05D9", WARNING: "
 
 const FINDINGS = [
   {
-    id: "F-001", title: "Tiebreaker chain works correctly",
+    id: "F-001", title: "שרשרת שוברי שוויון עובדת כמו שצריך",
     severity: "PASS", games: "1, 4", category: "mechanics",
-    description: "Tiebreaker chain works correctly (excess tokens \u2192 priority). Tested in Games 1 and 4.",
+    description: "שרשרת שוברי השוויון עובדת כמו שצריך (עודף אסימונים → עדיפות). נבדק במשחקים 1 ו-4.",
     evidence: null,
     recommendation: null, options: null
   },
   {
-    id: "F-002", title: "Sheriff-holder rarely triggers ability in 2p",
+    id: "F-002", title: "מחזיק הכוכב כמעט אף פעם לא מפעיל יכולת ב-2 שחקנים",
     severity: "FINDING", games: "1", category: "balance",
-    description: "Sheriff-holder rarely triggers ability in 2-player games. The sheriff has high priority and almost never goes empty-handed.",
-    evidence: "Gold Heart (Adiko, P4): Never triggered in Game 1 \u2014 sheriff rarely goes empty-handed in 2p.",
+    description: "מחזיק הכוכב כמעט אף פעם לא מפעיל יכולת במשחקי 2 שחקנים. לכוכב עדיפות גבוהה והוא כמעט אף פעם לא נשאר בידיים ריקות.",
+    evidence: "לב זהב (אדיקו, P4): לא הופעל אף פעם במשחק 1 — הכוכב כמעט אף פעם לא נשאר בידיים ריקות ב-2 שחקנים.",
     recommendation: null, options: null
   },
   {
-    id: "F-003", title: "Token type scarcity (darkred/green droughts via RNG)",
+    id: "F-003", title: "מחסור בסוגי אסימונים (בצורות ירוק/כהה דרך ההגרלה)",
     severity: "WARNING", games: "1, 2, 4", category: "economy",
-    description: "Token type scarcity creates multi-round droughts. Darkred had a 4-round drought in Game 1. Green was scarce in Games 2 and 4 \u2014 only available at Mazok and Subaru via setup, with replenishment being random from bag.",
-    evidence: "Game 1: 4-round darkred drought. Games 2,4: players stalled 2-3 rounds waiting for green. Replenishment sometimes creates all-same-type locations.",
-    recommendation: "Consider seeded replenishment (not pure random) to ensure minimum type diversity across locations.",
+    description: "מחסור בסוגי אסימונים יוצר בצורות של כמה סיבובים. כהה-אדום חווה בצורת של 4 סיבובים במשחק 1. ירוק היה נדיר במשחקים 2 ו-4 — זמין רק במזוק וסובארו דרך ההקמה, כשמילוי מחדש הוא אקראי מהשקית.",
+    evidence: "משחק 1: בצורת כהה-אדום של 4 סיבובים. משחקים 2, 4: שחקנים נתקעו 2-3 סיבובים בהמתנה לירוק. מילוי מחדש לפעמים יוצר מיקומים עם סוג אחד בלבד.",
+    recommendation: "שקלו מילוי מחדש מכוון (לא אקראי לגמרי) כדי להבטיח מגוון סוגים מינימלי בין מיקומים.",
     options: null
   },
   {
-    id: "F-004", title: "Sheriff bonus at 2-token locations = opponent guaranteed 0",
+    id: "F-004", title: "בונוס כוכב ב-2 אסימונים = היריב מקבל 0",
     severity: "FINDING", games: "1, 4", category: "balance",
-    description: "At 2-token locations, the sheriff takes both tokens in a collision, leaving the opponent with nothing. This is especially impactful in 2-player games.",
+    description: "במיקומים עם 2 אסימונים, הכוכב לוקח את שני האסימונים בהתנגשות ומשאיר את היריב בידיים ריקות. משמעותי במיוחד במשחקי 2 שחקנים.",
     evidence: null, recommendation: null, options: null
   },
   {
-    id: "F-005", title: "\"You Know\" ability + same-round completion combo",
+    id: "F-005", title: "יכולת 'אתה יודע' + השלמת תיק באותו סיבוב",
     severity: "FINDING", games: "2", category: "balance",
-    description: "Yermi's \"You Know\" ability (draw 2 from bag) enabled a same-round case completion in Game 2. Drew 2 tokens AND completed a case in the same round.",
-    evidence: "You Know (Yermi, P3): Triggered once in Game 2. Strong \u2014 drew 2 from bag AND completed case in same round.",
+    description: "יכולת 'אתה יודע' של ירמי (שליפת 2 מהשקית) אפשרה השלמת תיק חקירה באותו סיבוב במשחק 2. שלף 2 אסימונים וגם השלים תיק באותו סיבוב.",
+    evidence: "אתה יודע (ירמי, P3): הופעל פעם אחת במשחק 2. חזק — שלף 2 מהשקית וגם השלים תיק באותו סיבוב.",
     recommendation: null, options: null
   },
   {
-    id: "F-006", title: "Public cases enable strategic pivots",
+    id: "F-006", title: "תיקים ציבוריים מאפשרים שינויי כיוון אסטרטגיים",
     severity: "PASS", games: "2, 4", category: "mechanics",
-    description: "Public cases function as intended, enabling strategic pivots when private case progress stalls.",
+    description: "תיקים ציבוריים עובדים כמתוכנן, מאפשרים שינויי כיוון אסטרטגיים כשהתקדמות בתיקים פרטיים נתקעת.",
     evidence: null, recommendation: null, options: null
   },
   {
-    id: "F-007", title: "Green token scarcity creates multi-round stalls",
+    id: "F-007", title: "מחסור באסימונים ירוקים יוצר עיכוב של כמה סיבובים",
     severity: "WARNING", games: "2, 4", category: "economy",
-    description: "Green tokens are particularly scarce. Only green sources via board are Mazok and Subaru (setup). Replenishment is random from bag, so green droughts can last 2-3 rounds.",
-    evidence: "Games 2, 4: Players stalled 2-3 rounds waiting for green. Only Mazok and Subaru have green at setup.",
-    recommendation: "Consider minimum-diversity rules for replenishment if human playtesting confirms the issue.",
+    description: "אסימונים ירוקים נדירים במיוחד. מקורות הירוק היחידים בלוח הם מזוק וסובארו (הקמה). מילוי מחדש אקראי מהשקית, כך שבצורות ירוק יכולות להימשך 2-3 סיבובים.",
+    evidence: "משחקים 2, 4: שחקנים נתקעו 2-3 סיבובים בהמתנה לירוק. רק במזוק וסובארו יש ירוק בהקמה.",
+    recommendation: "שקלו כללי מגוון מינימלי למילוי מחדש אם פלייטסט אנושי מאשר את הבעיה.",
     options: null
   },
   {
-    id: "F-008", title: "Priority decisive at 2-token non-sheriff collisions",
+    id: "F-008", title: "עדיפות מכרעת בהתנגשות 2 אסימונים ללא כוכב",
     severity: "FINDING", games: "2", category: "mechanics",
-    description: "In collisions at 2-token locations without the sheriff, priority order is decisive \u2014 higher priority takes both tokens.",
+    description: "בהתנגשויות במיקומים עם 2 אסימונים ללא כוכב, סדר העדיפות מכריע — בעל העדיפות הגבוהה לוקח את שני האסימונים.",
     evidence: null, recommendation: null, options: null
   },
   {
-    id: "F-009", title: "Milano Express is disproportionately strong",
+    id: "F-009", title: "מילאנו אקספרס חזקה מדי ביחס לשאר היכולות",
     severity: "WARNING", games: "2", category: "balance",
-    description: "Milano Express (Mai, P2) is a guaranteed 2 tokens from any uncontested location. It won the game single-handedly in Game 2. Strictly better than most other abilities.",
-    evidence: "Milano Express (Mai, P2): Triggered once in Game 2 \u2014 guaranteed 2 tokens from any uncontested location. Won the game single-handedly. Assessment: OVERPOWERED.",
-    recommendation: "Balance Milano Express. It's strictly better than most abilities.",
+    description: "מילאנו אקספרס (מאי, P2) מבטיחה 2 אסימונים מכל מיקום ללא התנגשות. היא ניצחה את משחק 2 לבדה. חזקה משמעותית מרוב היכולות האחרות.",
+    evidence: "מילאנו אקספרס (מאי, P2): הופעלה פעם אחת במשחק 2 — 2 אסימונים מובטחים מכל מיקום ללא התנגשות. ניצחה את המשחק לבדה. הערכה: חזקה מדי.",
+    recommendation: "לאזן את מילאנו אקספרס. היא חזקה משמעותית מרוב היכולות.",
     options: [
-      "Limit to 1 extra token (take location max or +1, whichever is less)",
-      "Restrict to adjacent/specific locations only",
-      "Change to draw from bag instead of guaranteed location tokens"
+      "הגבלה לאסימון נוסף 1 (מקסימום המיקום או +1, הנמוך מביניהם)",
+      "הגבלה למיקומים סמוכים/ספציפיים בלבד",
+      "שינוי לשליפה מהשקית במקום אסימוני מיקום מובטחים"
     ]
   },
   {
-    id: "F-010", title: "3+ collision at 2-token: lowest priority gets nothing",
+    id: "F-010", title: "התנגשות 3+ ב-2 אסימונים: עדיפות נמוכה לא מקבלת כלום",
     severity: "FINDING", games: "2, 4", category: "mechanics",
-    description: "In 3+ player collisions at locations with only 2 tokens, the lowest priority player(s) get nothing. This is a natural consequence of the priority system.",
+    description: "בהתנגשויות של 3+ שחקנים במיקומים עם 2 אסימונים בלבד, בעל העדיפות הנמוכה ביותר לא מקבל כלום. זו תוצאה טבעית של מערכת העדיפויות.",
     evidence: null, recommendation: null, options: null
   },
   {
-    id: "F-011", title: "Dead locations at 4p (Messy Closet, Rosa Salon)",
+    id: "F-011", title: "מיקומים מתים ב-4 שחקנים (ארון מבולגן, סלון רוזה)",
     severity: "WARNING", games: "2", category: "location-usage",
-    description: "Messy Closet and Rosa Salon had zero visits in the 4-player game. Rosa Salon has 3 orange tokens but nobody needed pure orange. At 6+ players all locations see use.",
-    evidence: "Messy Closet: 0 visits at 4p, occasional use at 6-8p. Rosa Salon: 0 visits at 4p \u2014 3 orange but nobody needed pure orange.",
+    description: "ארון מבולגן וסלון רוזה קיבלו אפס ביקורים במשחק 4 שחקנים. לסלון רוזה יש 3 אסימונים כתומים אבל אף אחד לא היה צריך כתום טהור. ב-6+ שחקנים כל המיקומים פעילים.",
+    evidence: "ארון מבולגן: 0 ביקורים ב-4 שחקנים, שימוש מזדמן ב-6-8 שחקנים. סלון רוזה: 0 ביקורים ב-4 שחקנים — 3 כתומים אבל אף אחד לא היה צריך כתום טהור.",
     recommendation: null, options: null
   },
   {
-    id: "F-012", title: "Setup ambiguity: \"maintain 2 cases\" vs \"start with 1\"",
+    id: "F-012", title: "עמימות בהקמה: 'שמור על 2 תיקים' מול 'התחל עם 1'",
     severity: "WARNING", games: "2, 3, 4", category: "rule-gap",
-    description: "Rule 3c says \"maintain exactly 2 private cases\" but 4+ player setup says \"start with 1 private case.\" When does the player go from 1 to 2? After first completion? The transition point is never specified.",
-    evidence: "Affected Games 2, 3, and 4 (all 4+ player games). Referee resolved using best interpretation but text is ambiguous.",
-    recommendation: "Resolve the \"maintain 2 private cases\" vs \"start with 1\" setup discrepancy for 4+ players. Add explicit text to Section 3.2 of the GSD.",
+    description: "כלל 3c אומר 'שמור על בדיוק 2 תיקים פרטיים' אבל הקמת 4+ שחקנים אומרת 'התחל עם תיק פרטי 1.' מתי השחקן עובר מ-1 ל-2? אחרי השלמה ראשונה? נקודת המעבר לא מפורשת.",
+    evidence: "השפיע על משחקים 2, 3 ו-4 (כל משחקי ה-4+ שחקנים). השופט פתר לפי הפרשנות הטובה ביותר אבל הטקסט עמום.",
+    recommendation: "לפתור את הסתירה 'שמור על 2 תיקים פרטיים' מול 'התחל עם 1' עבור 4+ שחקנים. להוסיף טקסט מפורש לסעיף 3.2 ב-GSD.",
     options: null
   },
   {
-    id: "F-013", title: "Abilities never triggered at 6p (0/6)",
+    id: "F-013", title: "יכולות לא הופעלו כלל ב-6 שחקנים (0 מתוך 6)",
     severity: "WARNING", games: "3", category: "balance",
-    description: "Zero abilities triggered in the 6-player game (0 out of 6 possible). At 6 players, players spread across 8 locations, reducing collision frequency and making the \"empty-handed\" trigger nearly impossible.",
-    evidence: "Game 3 (6p): 0/6 abilities triggered. Players spread across 8 locations. Collision rate was 0.60/round vs GSD estimate of 2.07-2.92.",
-    recommendation: "Part of the systemic ability trigger issue \u2014 see F-022.",
+    description: "אפס יכולות הופעלו במשחק 6 שחקנים (0 מתוך 6 אפשריות). ב-6 שחקנים, השחקנים מתפזרים על 8 מיקומים, מה שמוריד את תדירות ההתנגשויות והופך את הטריגר 'בידיים ריקות' לכמעט בלתי אפשרי.",
+    evidence: "משחק 3 (6 שחקנים): 0/6 יכולות הופעלו. שחקנים מתפזרים על 8 מיקומים. שיעור התנגשויות היה 0.60/סיבוב מול הערכת GSD של 2.07-2.92.",
+    recommendation: "חלק מבעיית הטריגר המערכתית של יכולות — ראה F-022.",
     options: null
   },
   {
-    id: "F-014", title: "Low collision rate vs GSD estimates",
+    id: "F-014", title: "שיעור התנגשויות נמוך מהתחזיות",
     severity: "FINDING", games: "3, 4", category: "collision-rate",
-    description: "Observed collision rates are significantly lower than GSD estimates across all player counts. LLM players are better at avoiding collisions than random play, but even with human variance the rates may be lower than expected.",
-    evidence: "2p: 0.20 vs 0.67 expected. 4p: 0.80 vs 1.32. 6p: 0.60 vs 2.07-2.92. 8p: 1.33 vs 4.86. Note: GSD assumes random distribution.",
+    description: "שיעורי ההתנגשויות בפועל נמוכים משמעותית מהערכות ה-GSD בכל מספרי השחקנים. שחקני LLM טובים יותר בהימנעות מהתנגשויות מאשר משחק אקראי, אבל גם עם שונות אנושית השיעורים עשויים להיות נמוכים מהצפוי.",
+    evidence: "2 שחקנים: 0.20 מול 0.67 צפוי. 4 שחקנים: 0.80 מול 1.32. 6 שחקנים: 0.60 מול 2.07-2.92. 8 שחקנים: 1.33 מול 4.86. הערה: GSD מניח התפלגות אקראית.",
     recommendation: null, options: null
   },
   {
-    id: "F-015", title: "All locations active at 6p (no dead zones)",
+    id: "F-015", title: "כל המיקומים פעילים ב-6 שחקנים",
     severity: "PASS", games: "3", category: "location-usage",
-    description: "All 8 locations saw meaningful use at 6 players. No dead zones. This is the sweet spot player count for location utilization.",
+    description: "כל 8 המיקומים ראו שימוש משמעותי ב-6 שחקנים. אין מיקומים מתים. זהו מספר השחקנים האופטימלי לניצול מיקומים.",
     evidence: null, recommendation: null, options: null
   },
   {
-    id: "F-016", title: "Public cases underutilized (1 completed in 4 games)",
+    id: "F-016", title: "תיקים ציבוריים כמעט לא הושלמו (1 ב-4 משחקים)",
     severity: "FINDING", games: "all", category: "mechanics",
-    description: "Only 1 public case was completed across all 4 games. Players consistently prioritized private cases. Public cases may need to be more attractive or private cases harder to make public cases a real strategic option.",
-    evidence: "1 public case completion out of 38 total completions across 4 games.",
+    description: "רק תיק ציבורי 1 הושלם בכל 4 המשחקים. שחקנים העדיפו באופן עקבי תיקים פרטיים. ייתכן שתיקים ציבוריים צריכים להיות אטרקטיביים יותר או תיקים פרטיים קשים יותר כדי שתיקים ציבוריים יהפכו לאופציה אסטרטגית אמיתית.",
+    evidence: "השלמת תיק ציבורי 1 מתוך 38 השלמות כולל ב-4 משחקים.",
     recommendation: null, options: null
   },
   {
-    id: "F-017", title: "Messy Closet bag draws rarely produce needed tokens",
+    id: "F-017", title: "שליפה מהשקית בארון המבולגן לרוב לא מייצרת אסימון שצריך",
     severity: "FINDING", games: "3", category: "location-usage",
-    description: "Messy Closet's bag-draw mechanic rarely produces the tokens players need. The randomness of bag draws makes it an unreliable location choice compared to deterministic token locations.",
-    evidence: "Game 3: Messy Closet used twice but bag draws didn't produce needed tokens.",
+    description: "מכניקת השליפה מהשקית של ארון מבולגן לרוב לא מייצרת את האסימונים שהשחקנים צריכים. האקראיות של שליפות מהשקית הופכת אותו למיקום לא אמין בהשוואה למיקומי אסימונים דטרמיניסטיים.",
+    evidence: "משחק 3: ארון מבולגן שומש פעמיים אבל שליפות מהשקית לא הניבו אסימונים נדרשים.",
     recommendation: null, options: null
   },
   {
-    id: "F-018", title: "Shaika Trail Tracker timing contradiction",
+    id: "F-018", title: "סתירת תזמון ביכולת של שייקה עוקב השבילים",
     severity: "CRITICAL", games: "4", category: "rule-gap",
-    description: "Shaika Trail Tracker ability has a timing conflict: \"peek before reveal\" contradicts \"trigger on empty-handed after collection.\" Peek must happen BEFORE reveal but empty-handedness is only known AFTER collection. The ability text is self-contradictory and cannot be executed as written.",
-    evidence: "Trail Tracker (Shaika, P6): Never triggered in Game 3. Assessment: BROKEN \u2014 timing contradiction prevents meaningful use. The ability requires peeking before reveal but triggers on empty-handed which is only known after collection.",
-    recommendation: "Rewrite Shaika Trail Tracker ability. Either change the trigger (not empty-handed) or change the effect (not peek-before-reveal). Current text is self-contradictory.",
+    description: "ליכולת עוקב השבילים של שייקה יש סתירת תזמון: 'הצצה לפני חשיפה' סותר 'הפעלה בידיים ריקות אחרי איסוף.' ההצצה חייבת לקרות לפני החשיפה אבל בידיים ריקות ידוע רק אחרי האיסוף. טקסט היכולת סותר את עצמו ולא ניתן לביצוע כפי שנכתב.",
+    evidence: "עוקב השבילים (שייקה, P6): לא הופעל אף פעם במשחק 3. הערכה: שבור — סתירת תזמון מונעת שימוש משמעותי. היכולת דורשת הצצה לפני חשיפה אבל מופעלת בידיים ריקות שידוע רק אחרי איסוף.",
+    recommendation: "לשכתב את יכולת עוקב השבילים של שייקה. או לשנות את הטריגר (לא בידיים ריקות) או לשנות את האפקט (לא הצצה-לפני-חשיפה). הטקסט הנוכחי סותר את עצמו.",
     options: [
-      "Change trigger: activate on \"collected fewer than max tokens\" instead of empty-handed",
-      "Change effect: instead of peek-before-reveal, give a different scouting benefit after collection",
-      "Full redesign: give Shaika a completely different thematic ability"
+      "שינוי טריגר: הפעלה על 'אסף פחות אסימונים מהמקסימום' במקום בידיים ריקות",
+      "שינוי אפקט: במקום הצצה-לפני-חשיפה, לתת יתרון סיור אחר אחרי איסוף",
+      "עיצוב מחדש מלא: לתת לשייקה יכולת תמטית שונה לחלוטין"
     ]
   },
   {
-    id: "F-019", title: "4-way simultaneous win at 8p (tiebreaker works but diluted)",
+    id: "F-019", title: "ניצחון מרובע ב-8 שחקנים (שוברי שוויון עובדים אבל מדולל)",
     severity: "FINDING", games: "4", category: "balance",
-    description: "4 players achieved 3-case completion simultaneously in Game 4 (8 players). The tiebreaker mechanism worked correctly but the simultaneous win dilutes the endgame excitement.",
-    evidence: "Game 4 (8p): 4-way simultaneous win. Tiebreaker resolved correctly (fewest excess tokens). Winner: Danny/Nadavch.",
+    description: "4 שחקנים הגיעו להשלמת 3 תיקים בו-זמנית במשחק 4 (8 שחקנים). מנגנון שובר השוויון עבד נכון אבל הניצחון הבו-זמני מדלל את ההתרגשות בסיום.",
+    evidence: "משחק 4 (8 שחקנים): ניצחון מרובע. שובר שוויון נפתר נכון (מינימום עודף אסימונים). מנצח: דני/נדבצ'.",
     recommendation: null, options: null
   },
   {
-    id: "F-020", title: "First cases trivially easy at 8p",
+    id: "F-020", title: "תיקים ראשונים קלים מדי ב-8 שחקנים",
     severity: "FINDING", games: "4", category: "balance",
-    description: "At 8 players, first case completion was trivially easy \u2014 6 players completed their first case by Round 2. Token abundance at high player counts (more replenishment cycles) makes early cases effortless.",
-    evidence: "Game 4 (8p): 6 completions in Round 2.",
+    description: "ב-8 שחקנים, השלמת התיק הראשון הייתה קלה מאוד — 6 שחקנים השלימו את התיק הראשון עד סיבוב 2. שפע אסימונים במספרי שחקנים גבוהים (יותר מחזורי מילוי מחדש) הופך תיקים מוקדמים לפשוטים.",
+    evidence: "משחק 4 (8 שחקנים): 6 השלמות בסיבוב 2.",
     recommendation: null, options: null
   },
   {
-    id: "F-021", title: "Deck exhaustion at Round 4 in 8p",
+    id: "F-021", title: "חפיסת תיקים נגמרת בסיבוב 4 ב-8 שחקנים",
     severity: "FINDING", games: "4", category: "economy",
-    description: "The token bag/deck was exhausted by Round 4 in the 8-player game. This limits replenishment and can create dead locations in late rounds.",
-    evidence: "Game 4 (8p): Deck exhaustion at Round 4.",
+    description: "שקית/חפיסת האסימונים נגמרה בסיבוב 4 במשחק 8 שחקנים. זה מגביל מילוי מחדש ויכול ליצור מיקומים מתים בסיבובים מאוחרים.",
+    evidence: "משחק 4 (8 שחקנים): חפיסה נגמרה בסיבוב 4.",
     recommendation: null, options: null
   },
   {
-    id: "F-022", title: "Ability trigger rate 13.6% across all games (Catch-22 design)",
+    id: "F-022", title: "שיעור הפעלת יכולות 13.6% בכל המשחקים (בעיית Catch-22)",
     severity: "WARNING", games: "all", category: "balance",
-    description: "Only 3 out of 22 player-ability slots triggered across all games (13.6%). The design intent is \"low priority = stronger ability\" but the empty-handed trigger creates a Catch-22: high priority players rarely trigger (they pick first), and low priority players still get tokens in most collisions. Only in 3+ collisions at token-scarce locations do players go empty-handed.",
-    evidence: "Total ability triggers: 3/22 (13.6%). At 6 and 8 players, rate was especially low because players spread across 8 locations. Abilities that triggered: Milano Express (1x), Sly Argument (1x), You Know (1x). Abilities that never triggered: Gold Heart, Full Case, Trail Tracker, Order in Town, General Renovation.",
-    recommendation: "Rethink ability trigger mechanism. \"Empty-handed\" triggers too rarely at 4+ players.",
+    description: "רק 3 מתוך 22 משבצות שחקן-יכולת הופעלו בכל המשחקים (13.6%). כוונת העיצוב היא 'עדיפות נמוכה = יכולת חזקה יותר' אבל טריגר בידיים ריקות יוצר Catch-22: שחקני עדיפות גבוהה כמעט אף פעם לא מפעילים (הם בוחרים ראשונים), ושחקני עדיפות נמוכה עדיין מקבלים אסימונים ברוב ההתנגשויות. רק בהתנגשויות 3+ במיקומים דלי אסימונים שחקנים נשארים בידיים ריקות.",
+    evidence: "סה\"כ הפעלות יכולות: 3/22 (13.6%). ב-6 ו-8 שחקנים, השיעור היה נמוך במיוחד כי שחקנים מתפזרים על 8 מיקומים. יכולות שהופעלו: מילאנו אקספרס (1x), ויכוח ערמומי (1x), אתה יודע (1x). יכולות שלא הופעלו: לב זהב, תיק מלא, עוקב שבילים, סדר בעיר, שיפוץ כללי.",
+    recommendation: "לחשוב מחדש על מנגנון הטריגר של יכולות. 'בידיים ריקות' מופעל לעתים רחוקות מדי ב-4+ שחקנים.",
     options: [
-      "Trigger on \"collected fewer tokens than maximum\" instead of \"zero tokens\"",
-      "Give each ability a different trigger condition tailored to the character",
-      "Make abilities reusable (cooldown-based) instead of one-time"
+      "טריגר על 'אסף פחות אסימונים מהמקסימום' במקום 'אפס אסימונים'",
+      "לתת לכל יכולת תנאי טריגר שונה מותאם לדמות",
+      "להפוך יכולות לניתנות לשימוש חוזר (עם זמן מנוחה) במקום חד-פעמיות"
     ]
   }
 ];
@@ -617,33 +617,33 @@ const FINDINGS = [
 const CONFUSIONS = [
   {
     id: "C-001",
-    text: "Does \"empty-handed\" mean collecting 0 tokens, or landing on an empty location?",
-    raised_by: "Yossi (rules-lawyer)", games: "1", severity: "WARNING"
+    text: "האם 'בידיים ריקות' זה לאסוף 0 אסימונים, או לנחות על מיקום ריק?",
+    raised_by: "יוסי (עורך דין של חוקים)", games: "1", severity: "WARNING"
   },
   {
     id: "C-002",
-    text: "Are players still \"at the location\" during ability resolution for steal/interaction abilities?",
-    raised_by: "Yossi (rules-lawyer)", games: "1", severity: "WARNING"
+    text: "האם שחקנים עדיין 'נמצאים במיקום' בזמן הפעלת יכולות לגנוב/אינטראקציה?",
+    raised_by: "יוסי (עורך דין של חוקים)", games: "1", severity: "WARNING"
   },
   {
     id: "C-003",
-    text: "Sheriff supplement from bag: does location refill BEFORE sheriff takes, or after?",
-    raised_by: "Yossi (rules-lawyer)", games: "1", severity: "WARNING"
+    text: "השלמה מהשקית לכוכב: האם המיקום מתמלא לפני שהכוכב לוקח, או אחרי?",
+    raised_by: "יוסי (עורך דין של חוקים)", games: "1", severity: "WARNING"
   },
   {
     id: "C-004",
-    text: "Does Sheriff always override Priority in 2-player collisions?",
-    raised_by: "Yossi (rules-lawyer)", games: "2", severity: "WARNING"
+    text: "האם הכוכב תמיד דורס עדיפות בהתנגשות 2 שחקנים?",
+    raised_by: "יוסי (עורך דין של חוקים)", games: "2", severity: "WARNING"
   },
   {
     id: "C-005",
-    text: "Draining a 2-token location when alone (take all) \u2014 intended?",
-    raised_by: "Ronit (chaotic)", games: "2", severity: "FINDING"
+    text: "ריקון מיקום עם 2 אסימונים כשלבד (לוקח הכל) — מכוון?",
+    raised_by: "רונית (כאוטית)", games: "2", severity: "FINDING"
   },
   {
     id: "C-006",
-    text: "Simultaneous completion tiebreaker for 3-case wins \u2014 how resolved?",
-    raised_by: "Ronit (chaotic)", games: "2", severity: "WARNING"
+    text: "שובר שוויון בניצחון מרובע של 3 תיקים",
+    raised_by: "רונית (כאוטית)", games: "2", severity: "WARNING"
   }
 ];
 
