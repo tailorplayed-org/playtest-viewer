@@ -448,8 +448,9 @@
         "abilities_triggered": []
       },
       "state_after": {
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "orange"
             ],
@@ -459,7 +460,8 @@
             ],
             "ability_available": true
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "orange",
               "orange"
@@ -470,7 +472,8 @@
             ],
             "ability_available": true
           },
-          "player-3": {
+          {
+            "id": "player-3",
             "tokens": [
               "green"
             ],
@@ -480,7 +483,8 @@
             ],
             "ability_available": true
           },
-          "player-4": {
+          {
+            "id": "player-4",
             "tokens": [
               "blue",
               "orange"
@@ -491,7 +495,8 @@
             ],
             "ability_available": true
           },
-          "player-5": {
+          {
+            "id": "player-5",
             "tokens": [
               "darkred",
               "darkred"
@@ -502,7 +507,8 @@
             ],
             "ability_available": true
           },
-          "player-6": {
+          {
+            "id": "player-6",
             "tokens": [
               "green",
               "brown"
@@ -513,7 +519,7 @@
             ],
             "ability_available": true
           }
-        },
+        ],
         "board": {
           "mazok_shop": [
             "brown"
@@ -810,8 +816,9 @@
         "abilities_triggered": []
       },
       "state_after": {
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "orange",
               "blue"
@@ -822,7 +829,8 @@
             ],
             "ability_available": true
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "blue"
             ],
@@ -835,7 +843,8 @@
             ],
             "ability_available": true
           },
-          "player-3": {
+          {
+            "id": "player-3",
             "tokens": [
               "green",
               "brown",
@@ -847,7 +856,8 @@
             ],
             "ability_available": true
           },
-          "player-4": {
+          {
+            "id": "player-4",
             "tokens": [
               "blue",
               "orange",
@@ -859,7 +869,8 @@
             ],
             "ability_available": true
           },
-          "player-5": {
+          {
+            "id": "player-5",
             "tokens": [],
             "cases_complete": 1,
             "completed_cases": [
@@ -870,7 +881,8 @@
             ],
             "ability_available": true
           },
-          "player-6": {
+          {
+            "id": "player-6",
             "tokens": [
               "green",
               "brown",
@@ -883,7 +895,7 @@
             ],
             "ability_available": true
           }
-        },
+        ],
         "board": {
           "mazok_shop": [
             "brown",
@@ -1192,8 +1204,9 @@
         "abilities_triggered": []
       },
       "state_after": {
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "blue"
             ],
@@ -1206,7 +1219,8 @@
             ],
             "ability_available": true
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "blue",
               "brown",
@@ -1221,7 +1235,8 @@
             ],
             "ability_available": true
           },
-          "player-3": {
+          {
+            "id": "player-3",
             "tokens": [
               "orange",
               "darkred"
@@ -1235,7 +1250,8 @@
             ],
             "ability_available": true
           },
-          "player-4": {
+          {
+            "id": "player-4",
             "tokens": [
               "orange",
               "darkred"
@@ -1249,7 +1265,8 @@
             ],
             "ability_available": true
           },
-          "player-5": {
+          {
+            "id": "player-5",
             "tokens": [
               "blue",
               "darkred"
@@ -1263,7 +1280,8 @@
             ],
             "ability_available": true
           },
-          "player-6": {
+          {
+            "id": "player-6",
             "tokens": [
               "green",
               "brown",
@@ -1278,7 +1296,7 @@
             ],
             "ability_available": true
           }
-        },
+        ],
         "board": {
           "mazok_shop": [
             "brown",
@@ -1583,8 +1601,9 @@
         "abilities_triggered": []
       },
       "state_after": {
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "blue",
               "orange",
@@ -1599,7 +1618,8 @@
             ],
             "ability_available": true
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "blue",
               "blue"
@@ -1614,7 +1634,8 @@
             ],
             "ability_available": true
           },
-          "player-3": {
+          {
+            "id": "player-3",
             "tokens": [
               "brown"
             ],
@@ -1628,7 +1649,8 @@
             ],
             "ability_available": true
           },
-          "player-4": {
+          {
+            "id": "player-4",
             "tokens": [
               "orange",
               "darkred",
@@ -1644,7 +1666,8 @@
             ],
             "ability_available": true
           },
-          "player-5": {
+          {
+            "id": "player-5",
             "tokens": [
               "blue",
               "darkred",
@@ -1660,7 +1683,8 @@
             ],
             "ability_available": true
           },
-          "player-6": {
+          {
+            "id": "player-6",
             "tokens": [
               "brown",
               "brown",
@@ -1677,7 +1701,7 @@
             ],
             "ability_available": true
           }
-        },
+        ],
         "board": {
           "mazok_shop": [],
           "eilat_reef": [
@@ -1986,8 +2010,9 @@
         "abilities_triggered": []
       },
       "state_after": {
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "darkred",
               "brown"
@@ -1998,7 +2023,8 @@
               11
             ]
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "blue",
               "blue",
@@ -2010,7 +2036,8 @@
               19
             ]
           },
-          "player-3": {
+          {
+            "id": "player-3",
             "tokens": [],
             "cases_complete": 3,
             "completed_cases": [
@@ -2019,7 +2046,8 @@
               12
             ]
           },
-          "player-4": {
+          {
+            "id": "player-4",
             "tokens": [
               "darkred",
               "blue"
@@ -2030,7 +2058,8 @@
               13
             ]
           },
-          "player-5": {
+          {
+            "id": "player-5",
             "tokens": [
               "blue",
               "darkred",
@@ -2044,7 +2073,8 @@
               4
             ]
           },
-          "player-6": {
+          {
+            "id": "player-6",
             "tokens": [
               "brown",
               "darkred",
@@ -2057,7 +2087,7 @@
               1
             ]
           }
-        },
+        ],
         "score_gap": 2,
         "catch_up_triggered": false
       },

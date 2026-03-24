@@ -172,8 +172,9 @@
           ]
         },
         "bag_size": 30,
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "green",
               "orange"
@@ -182,7 +183,8 @@
             "has_sheriff": true,
             "ability_available": true
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "orange",
               "orange"
@@ -191,7 +193,7 @@
             "has_sheriff": false,
             "ability_available": true
           }
-        },
+        ],
         "score_gap": 0,
         "catch_up_triggered": false
       },
@@ -328,8 +330,9 @@
           ]
         },
         "bag_size": 32,
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "orange"
             ],
@@ -339,7 +342,8 @@
             "has_sheriff": true,
             "ability_available": true
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "brown"
             ],
@@ -349,7 +353,7 @@
             "has_sheriff": false,
             "ability_available": true
           }
-        },
+        ],
         "score_gap": 0,
         "catch_up_triggered": false
       },
@@ -444,8 +448,9 @@
           ]
         },
         "bag_size": 30,
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "orange",
               "blue"
@@ -456,7 +461,8 @@
             "has_sheriff": true,
             "ability_available": true
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "brown",
               "green"
@@ -467,7 +473,7 @@
             "has_sheriff": false,
             "ability_available": false
           }
-        },
+        ],
         "score_gap": 0,
         "catch_up_triggered": false
       },
@@ -560,8 +566,9 @@
           ]
         },
         "bag_size": 26,
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "orange",
               "orange",
@@ -574,7 +581,8 @@
             "has_sheriff": true,
             "ability_available": true
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "brown",
               "green",
@@ -587,7 +595,7 @@
             "has_sheriff": false,
             "ability_available": false
           }
-        },
+        ],
         "score_gap": 0,
         "catch_up_triggered": false
       },
@@ -690,8 +698,9 @@
         ]
       },
       "state_after": {
-        "players": {
-          "player-1": {
+        "players": [
+          {
+            "id": "player-1",
             "tokens": [
               "orange",
               "orange",
@@ -703,7 +712,8 @@
             ],
             "total_completed": 2
           },
-          "player-2": {
+          {
+            "id": "player-2",
             "tokens": [
               "brown",
               "blue",
@@ -715,7 +725,7 @@
             ],
             "total_completed": 2
           }
-        }
+        ]
       },
       "referee_flags": [
         {
