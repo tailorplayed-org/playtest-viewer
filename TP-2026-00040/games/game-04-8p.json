@@ -1,0 +1,483 @@
+{
+  "meta": {
+    "order_id": "TP-2026-00040",
+    "game_title": "Gold Hunt",
+    "game_title_original": "ציד הזהב",
+    "game_number": 4,
+    "total_games": 4,
+    "player_count": 8,
+    "players": [
+      {"id": "player-1", "name": "Nadavch the Sheriff", "name_original": "נדבץ׳ השריף", "personality": "strategist", "personality_name": "Danny", "priority": 8, "color": "#d4a843"},
+      {"id": "player-2", "name": "Adiko Goldheart", "name_original": "עדיקו לב הזהב", "personality": "casual", "personality_name": "Michal", "priority": 4, "color": "#f97316"},
+      {"id": "player-3", "name": "Alex the Stranger", "name_original": "אלכס הזר", "personality": "rules-lawyer", "personality_name": "Yossi", "priority": 1, "color": "#172554"},
+      {"id": "player-4", "name": "Yermi the Dinosaur", "name_original": "ירמי הדינוזאור", "personality": "chaotic", "personality_name": "Ronit", "priority": 3, "color": "#166534"},
+      {"id": "player-5", "name": "Alonzo the Sly", "name_original": "אלונזו הממולח", "personality": "strategist-variant", "personality_name": "Danny2", "priority": 5, "color": "#78350f"},
+      {"id": "player-6", "name": "Mai the Red Lipstick", "name_original": "מיי השפתון האדום", "personality": "casual-variant", "personality_name": "Michal2", "priority": 2, "color": "#E24B4A"},
+      {"id": "player-7", "name": "Shaika the Trail Tracker", "name_original": "שייקה עוקב השבילים", "personality": "rules-lawyer-variant", "personality_name": "Yossi2", "priority": 6, "color": "#4B0082"},
+      {"id": "player-8", "name": "Ilanit The Full Case", "name_original": "אילנית התיק המלא", "personality": "chaotic-variant", "personality_name": "Ronit2", "priority": 7, "color": "#7f1d1d"}
+    ],
+    "protocols": ["simultaneous-selection", "set-collection", "role-power-activation", "catch-up-escalation"],
+    "status": "completed",
+    "started_at": "2026-03-24T06:00:00Z",
+    "ended_at": "2026-03-24T06:25:00Z",
+    "winner": "player-1",
+    "winner_name": "Danny (Nadavch the Sheriff)",
+    "win_method": "tiebreaker_fewest_excess",
+    "total_rounds": 6,
+    "win_condition": "3 cases (8-player mode, 4-way simultaneous completion, tiebreaker: fewest excess tokens)"
+  },
+  "setup": {
+    "character_assignment": "Random draw from bag (base colors). Shuffled order: Nadavch, Adiko, Alex, Yermi, Alonzo, Mai, Shaika, Ilanit",
+    "board": {
+      "mazok_shop": {"tokens": ["green", "brown", "orange"], "type": "fixed-diverse"},
+      "eilat_reef": {"tokens": ["blue", "blue", "blue"], "type": "fixed-specialized"},
+      "messy_closet": {"tokens": [], "type": "bag-draw"},
+      "rosa_salon": {"tokens": ["orange", "orange", "orange"], "type": "fixed-specialized"},
+      "dizengoff_cabin": {"tokens": ["darkred", "darkred"], "type": "fixed-specialized-reduced"},
+      "nadav_hq": {"tokens": ["blue", "green", "brown"], "type": "random-draw"},
+      "subaru_wagon": {"tokens": ["green", "orange", "green"], "type": "random-draw"},
+      "barka_salon": {"tokens": ["blue", "green", "darkred"], "type": "random-draw"}
+    },
+    "tokens_on_board": 20,
+    "tokens_in_bag": 20,
+    "bag_composition": {"green": 3, "brown": 6, "darkred": 5, "orange": 3, "blue": 3},
+    "case_deck_order": [19, 17, 18, 20, 16, 13, 9, 1, 15, 8, 2, 14, 4, 12, 3, 10, 11, 6, 7, 5],
+    "case_draft": {
+      "player-1": {"drew": [19, 17], "kept": 19, "returned": 17},
+      "player-2": {"drew": [18, 20], "kept": 18, "returned": 20},
+      "player-3": {"drew": [16, 13], "kept": 16, "returned": 13},
+      "player-4": {"drew": [9, 1], "kept": 9, "returned": 1},
+      "player-5": {"drew": [15, 8], "kept": 15, "returned": 8},
+      "player-6": {"drew": [2, 14], "kept": 14, "returned": 2},
+      "player-7": {"drew": [4, 12], "kept": 4, "returned": 12},
+      "player-8": {"drew": [3, 10], "kept": 10, "returned": 3}
+    },
+    "public_cases": [11, 6],
+    "initial_sheriff": "player-3",
+    "initial_sheriff_reason": "Alex has lowest priority (P1) among all 8 characters"
+  },
+  "rounds": [
+    {
+      "number": 1,
+      "sheriff": "player-3",
+      "actions": [
+        {"player_id": "player-1", "player_name": "Danny", "character": "Nadavch", "personality": "strategist", "action_type": "select_location", "target": "mazok_shop", "target_name": "Mazok Shop", "thought": "Case 19 needs orange+darkred+brown. Mazok has brown and orange - two of three needed tokens. Best opening move.", "confusion": null, "tokens_collected": ["orange", "brown"]},
+        {"player_id": "player-2", "player_name": "Michal", "character": "Adiko", "personality": "casual", "action_type": "select_location", "target": "nadav_hq", "target_name": "Nadav HQ", "thought": "Case 18 needs blue+brown+green. Nadav HQ has all three colors I need! Simple choice.", "confusion": null, "tokens_collected": ["blue", "green"], "location_bonus": "case_swap_declined"},
+        {"player_id": "player-3", "player_name": "Yossi", "character": "Alex", "personality": "rules-lawyer", "action_type": "select_location", "target": "barka_salon", "target_name": "Barka Salon", "thought": "Case 16 needs blue+orange+darkred. Barka has blue and darkred. As sheriff, even in collision I pick first.", "confusion": null, "tokens_collected": ["blue", "darkred"]},
+        {"player_id": "player-4", "player_name": "Ronit", "character": "Yermi", "personality": "chaotic", "action_type": "select_location", "target": "rosa_salon", "target_name": "Rosa Salon", "thought": "Case 9 needs orange+darkred+green. Rosa has triple orange! Maximum tokens even if I only need one.", "confusion": null, "tokens_collected": ["orange", "orange"]},
+        {"player_id": "player-5", "player_name": "Danny2", "character": "Alonzo", "personality": "strategist-variant", "action_type": "select_location", "target": "subaru_wagon", "target_name": "Subaru Wagon", "thought": "Case 15 needs 2green+brown. Subaru has 2 green tokens! Perfect first move to get half my case done.", "confusion": null, "tokens_collected": ["green", "green"], "location_bonus": "token_swap_declined"},
+        {"player_id": "player-6", "player_name": "Michal2", "character": "Mai", "personality": "casual-variant", "action_type": "select_location", "target": "dizengoff_cabin", "target_name": "Dizengoff Cabin", "thought": "Case 14 needs blue+darkred+orange. Dizengoff has 2 darkred - grab one now while they last.", "confusion": null, "tokens_collected": ["darkred"]},
+        {"player_id": "player-7", "player_name": "Yossi2", "character": "Shaika", "personality": "rules-lawyer-variant", "action_type": "select_location", "target": "dizengoff_cabin", "target_name": "Dizengoff Cabin", "thought": "Case 4 needs 2darkred+green. Dizengoff is the only darkred-specialized location. Must grab darkred even with collision risk.", "confusion": null, "tokens_collected": ["darkred"]},
+        {"player_id": "player-8", "player_name": "Ronit2", "character": "Ilanit", "personality": "chaotic-variant", "action_type": "select_location", "target": "eilat_reef", "target_name": "Eilat Reef", "thought": "Case 10 needs 2blue+green. Eilat has 3 blue! Going alone means I take 2 blue in one shot.", "confusion": null, "tokens_collected": ["blue", "blue"]}
+      ],
+      "resolution": {
+        "collisions": [
+          {"location": "dizengoff_cabin", "players": ["player-7", "player-6"], "resolution_rule": "2-player collision, no sheriff. Priority order: Shaika(P6) first, Mai(P2) second. Each takes 1 token from 2 available."}
+        ],
+        "replenishment": [
+          {"location": "mazok_shop", "from": 1, "tokens_added": ["brown"]},
+          {"location": "eilat_reef", "from": 1, "tokens_added": ["darkred"]},
+          {"location": "rosa_salon", "from": 1, "tokens_added": ["brown"]},
+          {"location": "dizengoff_cabin", "from": 0, "tokens_added": ["darkred", "darkred"]},
+          {"location": "nadav_hq", "from": 1, "tokens_added": ["green"]},
+          {"location": "subaru_wagon", "from": 1, "tokens_added": ["blue"]},
+          {"location": "barka_salon", "from": 1, "tokens_added": ["green"]}
+        ],
+        "completions": [],
+        "sheriff_transfer": {"from": "player-3", "to": "player-6", "reason": "Tie at 0 cases. Michal2(Mai P2) and Yossi2(Shaika P6) tied at 1 token each. Lower priority (P2) gets sheriff."},
+        "outcomes": ["Collision at Dizengoff: Yossi2(P6) takes darkred, Michal2(P2) takes darkred. All other locations uncontested. No completions."]
+      },
+      "state_after": {
+        "score_gap": 0,
+        "catch_up_triggered": false,
+        "board": {
+          "mazok_shop": ["green", "brown"],
+          "eilat_reef": ["blue", "darkred"],
+          "messy_closet": [],
+          "rosa_salon": ["orange", "brown"],
+          "dizengoff_cabin": ["darkred", "darkred"],
+          "nadav_hq": ["brown", "green"],
+          "subaru_wagon": ["orange", "blue"],
+          "barka_salon": ["green", "green"]
+        },
+        "bag": {"green": 1, "brown": 4, "darkred": 2, "orange": 3, "blue": 2, "total": 12},
+        "players": [
+          {"id": "player-1", "tokens": ["orange", "brown"], "cases_complete": 0, "cases_held": [19], "abilities_available": ["Order in Town"], "abilities_used": []},
+          {"id": "player-2", "tokens": ["blue", "green"], "cases_complete": 0, "cases_held": [18], "abilities_available": ["Goldheart"], "abilities_used": []},
+          {"id": "player-3", "tokens": ["blue", "darkred"], "cases_complete": 0, "cases_held": [16], "abilities_available": ["Full Renovation"], "abilities_used": []},
+          {"id": "player-4", "tokens": ["orange", "orange"], "cases_complete": 0, "cases_held": [9], "abilities_available": ["You Know"], "abilities_used": []},
+          {"id": "player-5", "tokens": ["green", "green"], "cases_complete": 0, "cases_held": [15], "abilities_available": ["Sly Argument"], "abilities_used": []},
+          {"id": "player-6", "tokens": ["darkred"], "cases_complete": 0, "cases_held": [14], "abilities_available": ["Milano Express"], "abilities_used": []},
+          {"id": "player-7", "tokens": ["darkred"], "cases_complete": 0, "cases_held": [4], "abilities_available": ["Trail Tracking"], "abilities_used": []},
+          {"id": "player-8", "tokens": ["blue", "blue"], "cases_complete": 0, "cases_held": [10], "abilities_available": ["The Full Case"], "abilities_used": []}
+        ]
+      },
+      "referee_flags": []
+    },
+    {
+      "number": 2,
+      "sheriff": "player-6",
+      "actions": [
+        {"player_id": "player-1", "player_name": "Danny", "character": "Nadavch", "action_type": "select_location", "target": "dizengoff_cabin", "target_name": "Dizengoff Cabin", "thought": "Need darkred to complete Case 19. Dizengoff has 2 darkred. Going there even with collision risk.", "tokens_collected": ["darkred"], "case_completed": {"case_id": 19, "case_name": "Birthday Investigation", "tokens_spent": ["orange", "darkred", "brown"]}},
+        {"player_id": "player-2", "player_name": "Michal", "character": "Adiko", "action_type": "select_location", "target": "mazok_shop", "target_name": "Mazok Shop", "thought": "Need brown for Case 18. Mazok has brown. Simple and direct.", "tokens_collected": ["brown", "green"], "case_completed": {"case_id": 18, "case_name": "Caravan Case", "tokens_spent": ["blue", "brown", "green"]}},
+        {"player_id": "player-3", "player_name": "Yossi", "character": "Alex", "action_type": "select_location", "target": "rosa_salon", "target_name": "Rosa Salon", "thought": "Need orange for Case 16. Rosa has orange and brown - alone I take both, complete my case!", "tokens_collected": ["orange", "brown"], "case_completed": {"case_id": 16, "case_name": "Singapore Mystery", "tokens_spent": ["blue", "orange", "darkred"]}},
+        {"player_id": "player-4", "player_name": "Ronit", "character": "Yermi", "action_type": "select_location", "target": "dizengoff_cabin", "target_name": "Dizengoff Cabin", "thought": "Need darkred for Case 9. Dizengoff is the darkred spot! Going in hot.", "tokens_collected": [], "ability_triggered": {"ability": "You Know", "description": "Empty-handed in 3-way collision (P3 lowest). Draws 2 from bag.", "result": ["darkred", "brown"]}},
+        {"player_id": "player-5", "player_name": "Danny2", "character": "Alonzo", "action_type": "select_location", "target": "nadav_hq", "target_name": "Nadav HQ", "thought": "Need brown for Case 15. Nadav has brown and green. Alone means I complete!", "tokens_collected": ["brown", "green"], "case_completed": {"case_id": 15, "case_name": "Thin Wall Case", "tokens_spent": ["green", "green", "brown"]}, "location_bonus": "case_swap_declined"},
+        {"player_id": "player-6", "player_name": "Michal2", "character": "Mai", "action_type": "select_location", "target": "subaru_wagon", "target_name": "Subaru Wagon", "thought": "As sheriff, I dominate any collision. Subaru has orange and blue - both needed for Case 14!", "tokens_collected": ["orange", "blue"], "case_completed": {"case_id": 14, "case_name": "Photographer Case", "tokens_spent": ["blue", "darkred", "orange"]}},
+        {"player_id": "player-7", "player_name": "Yossi2", "character": "Shaika", "action_type": "select_location", "target": "dizengoff_cabin", "target_name": "Dizengoff Cabin", "thought": "Need 1 more darkred for Case 4. Dizengoff has 2. Even in collision, P6 priority should get me one.", "tokens_collected": ["darkred"]},
+        {"player_id": "player-8", "player_name": "Ronit2", "character": "Ilanit", "action_type": "select_location", "target": "barka_salon", "target_name": "Barka Salon", "thought": "Need green for Case 10. Barka has 2 green! Alone I take both and complete!", "tokens_collected": ["green", "green"], "case_completed": {"case_id": 10, "case_name": "Diving Case", "tokens_spent": ["blue", "blue", "green"]}}
+      ],
+      "resolution": {
+        "collisions": [
+          {"location": "dizengoff_cabin", "players": ["player-1", "player-7", "player-4"], "resolution_rule": "3-way collision, no sheriff. Priority: Nadavch(P8) takes 1, Shaika(P6) takes 1, Yermi(P3) gets nothing -> ability triggers."}
+        ],
+        "replenishment": [
+          {"location": "mazok_shop", "from": 0, "tokens_added": ["brown", "orange"]},
+          {"location": "eilat_reef", "from": 2, "tokens_added": []},
+          {"location": "rosa_salon", "from": 0, "tokens_added": ["orange", "blue"]},
+          {"location": "dizengoff_cabin", "from": 0, "tokens_added": ["darkred", "darkred"]},
+          {"location": "nadav_hq", "from": 0, "tokens_added": ["green", "green"]},
+          {"location": "subaru_wagon", "from": 0, "tokens_added": ["brown", "blue"]},
+          {"location": "barka_salon", "from": 0, "tokens_added": ["green", "darkred"]}
+        ],
+        "completions": [
+          {"player": "player-2", "case_id": 18, "case_name": "Caravan Case"},
+          {"player": "player-3", "case_id": 16, "case_name": "Singapore Mystery"},
+          {"player": "player-1", "case_id": 19, "case_name": "Birthday Investigation"},
+          {"player": "player-5", "case_id": 15, "case_name": "Thin Wall Case"},
+          {"player": "player-6", "case_id": 14, "case_name": "Photographer Case"},
+          {"player": "player-8", "case_id": 10, "case_name": "Diving Case"}
+        ],
+        "cases_drawn": [
+          {"player": "player-2", "drew": 7},
+          {"player": "player-3", "drew": 5},
+          {"player": "player-1", "drew": 17},
+          {"player": "player-5", "drew": 20},
+          {"player": "player-6", "drew": 13},
+          {"player": "player-8", "drew": 1}
+        ],
+        "sheriff_transfer": {"from": "player-6", "to": "player-7", "reason": "Ronit(0 cases) and Yossi2(0 cases) tied. Yossi2 has 2 tokens vs Ronit's 4. Yossi2(Shaika P6) gets sheriff."},
+        "outcomes": ["EXPLOSIVE ROUND: 6 completions! 3-way collision at Dizengoff. Yermi ability triggers (draws darkred+brown from bag). Only Ronit and Yossi2 did not complete a case."]
+      },
+      "state_after": {
+        "score_gap": 1,
+        "catch_up_triggered": true,
+        "board": {
+          "mazok_shop": ["brown", "orange"],
+          "eilat_reef": ["blue", "darkred"],
+          "messy_closet": [],
+          "rosa_salon": ["orange", "blue"],
+          "dizengoff_cabin": ["darkred", "darkred"],
+          "nadav_hq": ["green", "green"],
+          "subaru_wagon": ["brown", "blue"],
+          "barka_salon": ["green", "darkred"]
+        },
+        "bag": {"green": 5, "brown": 6, "darkred": 4, "orange": 6, "blue": 7, "total": 28},
+        "players": [
+          {"id": "player-1", "tokens": [], "cases_complete": 1, "cases_held": [17], "abilities_available": ["Order in Town"], "abilities_used": []},
+          {"id": "player-2", "tokens": ["green"], "cases_complete": 1, "cases_held": [7], "abilities_available": ["Goldheart"], "abilities_used": []},
+          {"id": "player-3", "tokens": ["brown"], "cases_complete": 1, "cases_held": [5], "abilities_available": ["Full Renovation"], "abilities_used": []},
+          {"id": "player-4", "tokens": ["orange", "orange", "darkred", "brown"], "cases_complete": 0, "cases_held": [9], "abilities_available": [], "abilities_used": ["You Know"]},
+          {"id": "player-5", "tokens": ["green"], "cases_complete": 1, "cases_held": [20], "abilities_available": ["Sly Argument"], "abilities_used": []},
+          {"id": "player-6", "tokens": [], "cases_complete": 1, "cases_held": [13], "abilities_available": ["Milano Express"], "abilities_used": []},
+          {"id": "player-7", "tokens": ["darkred", "darkred"], "cases_complete": 0, "cases_held": [4], "abilities_available": ["Trail Tracking"], "abilities_used": []},
+          {"id": "player-8", "tokens": ["green"], "cases_complete": 1, "cases_held": [1], "abilities_available": ["The Full Case"], "abilities_used": []}
+        ]
+      },
+      "referee_flags": [
+        {"type": "finding", "id": "F-001", "severity": "FINDING", "content": "6 out of 8 players completed a case in Round 2. 75% completion rate in a single round is extremely high. Indicates that the 8-player setup with diverse board tokens makes first cases trivially easy."},
+        {"type": "finding", "id": "F-002", "severity": "FINDING", "content": "Yermi ability (draw 2 from bag) triggered in 3-way collision at Dizengoff. Draws were darkred+brown - neither was the green Ronit needed. Bag draw randomness can be frustrating when you need a specific color."}
+      ]
+    },
+    {
+      "number": 3,
+      "sheriff": "player-7",
+      "actions": [
+        {"player_id": "player-1", "player_name": "Danny", "character": "Nadavch", "action_type": "select_location", "target": "subaru_wagon", "target_name": "Subaru Wagon", "thought": "Case 17 needs 2green+orange. Subaru should have green and orange-ish tokens. Alone = take 2.", "tokens_collected": ["green", "orange"]},
+        {"player_id": "player-2", "player_name": "Michal", "character": "Adiko", "action_type": "select_location", "target": "eilat_reef", "target_name": "Eilat Reef", "thought": "Case 7 needs green+darkred+blue. Eilat has blue and darkred - two of my needs in one trip.", "tokens_collected": ["darkred"]},
+        {"player_id": "player-3", "player_name": "Yossi", "character": "Alex", "action_type": "select_location", "target": "rosa_salon", "target_name": "Rosa Salon", "thought": "Case 5 needs orange+blue+brown. Rosa has orange and blue! Both needed tokens in one location.", "tokens_collected": ["orange", "blue"], "case_completed": {"case_id": 5, "case_name": "Oracle Mystery", "tokens_spent": ["orange", "blue", "brown"]}},
+        {"player_id": "player-4", "player_name": "Ronit", "character": "Yermi", "action_type": "select_location", "target": "messy_closet", "target_name": "Messy Closet", "thought": "I desperately need green for Case 9. Normal locations are risky. Closet bag-draw is chaotic but maybe I get lucky!", "tokens_collected": ["orange", "darkred"], "messy_closet_draw": {"drew": ["darkred", "blue", "orange"], "kept": ["orange", "darkred"], "returned": ["blue"]}},
+        {"player_id": "player-5", "player_name": "Danny2", "character": "Alonzo", "action_type": "select_location", "target": "eilat_reef", "target_name": "Eilat Reef", "thought": "Case 20 needs 2blue+darkred. Eilat has blue and darkred. Even in collision I get one.", "tokens_collected": ["blue"]},
+        {"player_id": "player-6", "player_name": "Michal2", "character": "Mai", "action_type": "select_location", "target": "mazok_shop", "target_name": "Mazok Shop", "thought": "Case 13 needs 2orange+brown. Mazok has brown and orange. Get one of each.", "tokens_collected": ["brown"]},
+        {"player_id": "player-7", "player_name": "Yossi2", "character": "Shaika", "action_type": "select_location", "target": "dizengoff_cabin", "target_name": "Dizengoff Cabin", "thought": "As sheriff, I take 2 at any location. Dizengoff has 2 darkred but I need green for Case 4. Wait, it has green+darkred now. Perfect!", "tokens_collected": ["green", "darkred"], "case_completed": {"case_id": 4, "case_name": "Dracula Cape Investigation", "tokens_spent": ["darkred", "darkred", "green"]}},
+        {"player_id": "player-8", "player_name": "Ronit2", "character": "Ilanit", "action_type": "select_location", "target": "mazok_shop", "target_name": "Mazok Shop", "thought": "Case 1 needs orange+brown+green. Mazok has brown and orange. Collision with Michal2 but my P7 beats her P2.", "tokens_collected": ["orange"]}
+      ],
+      "resolution": {
+        "collisions": [
+          {"location": "eilat_reef", "players": ["player-5", "player-2"], "resolution_rule": "2-player, no sheriff. Alonzo(P5) first, Adiko(P4) second. Each takes 1."},
+          {"location": "mazok_shop", "players": ["player-8", "player-6"], "resolution_rule": "2-player, no sheriff. Ilanit(P7) first, Mai(P2) second. Each takes 1."}
+        ],
+        "replenishment": [
+          {"location": "mazok_shop", "from": 0, "tokens_added": ["blue", "brown"]},
+          {"location": "eilat_reef", "from": 0, "tokens_added": ["blue", "blue"]},
+          {"location": "rosa_salon", "from": 0, "tokens_added": ["orange", "blue"]},
+          {"location": "dizengoff_cabin", "from": 0, "tokens_added": ["green", "darkred"]},
+          {"location": "nadav_hq", "from": 2, "tokens_added": []},
+          {"location": "subaru_wagon", "from": 0, "tokens_added": ["brown", "blue"]},
+          {"location": "barka_salon", "from": 2, "tokens_added": []}
+        ],
+        "completions": [
+          {"player": "player-3", "case_id": 5, "case_name": "Oracle Mystery"},
+          {"player": "player-7", "case_id": 4, "case_name": "Dracula Cape Investigation"}
+        ],
+        "cases_drawn": [
+          {"player": "player-3", "drew": 8},
+          {"player": "player-7", "drew": 2}
+        ],
+        "sheriff_transfer": {"from": "player-7", "to": "player-7", "reason": "Ronit(0 cases) and Yossi2(1 case now). Ronit has fewest cases (0) but 6 tokens. No one else at 0. Actually ronit is only one with 0 cases. Sheriff -> Ronit? No wait. Fewest cases = Ronit(0). Sheriff to player-4(Ronit/Yermi)."},
+        "outcomes": ["Ronit Messy Closet drew darkred+blue+orange - no green again! Kept orange+darkred. Yossi completes 2nd case. Yossi2 completes 1st case with sheriff advantage at Dizengoff."]
+      },
+      "state_after": {
+        "score_gap": 2,
+        "catch_up_triggered": true,
+        "board": {
+          "mazok_shop": ["blue", "brown"],
+          "eilat_reef": ["blue", "blue"],
+          "messy_closet": [],
+          "rosa_salon": ["orange", "blue"],
+          "dizengoff_cabin": ["green", "darkred"],
+          "nadav_hq": ["green", "green"],
+          "subaru_wagon": ["brown", "blue"],
+          "barka_salon": ["green", "darkred"]
+        },
+        "bag": {"green": 1, "brown": 4, "darkred": 1, "orange": 2, "blue": 2, "total": 10},
+        "players": [
+          {"id": "player-1", "tokens": ["green", "orange"], "cases_complete": 1, "cases_held": [17], "abilities_available": ["Order in Town"], "abilities_used": []},
+          {"id": "player-2", "tokens": ["green", "darkred"], "cases_complete": 1, "cases_held": [7], "abilities_available": ["Goldheart"], "abilities_used": []},
+          {"id": "player-3", "tokens": [], "cases_complete": 2, "cases_held": [8], "abilities_available": ["Full Renovation"], "abilities_used": []},
+          {"id": "player-4", "tokens": ["orange", "orange", "darkred", "brown", "orange", "darkred"], "cases_complete": 0, "cases_held": [9], "abilities_available": [], "abilities_used": ["You Know"]},
+          {"id": "player-5", "tokens": ["green", "blue"], "cases_complete": 1, "cases_held": [20], "abilities_available": ["Sly Argument"], "abilities_used": []},
+          {"id": "player-6", "tokens": ["brown"], "cases_complete": 1, "cases_held": [13], "abilities_available": ["Milano Express"], "abilities_used": []},
+          {"id": "player-7", "tokens": ["darkred"], "cases_complete": 1, "cases_held": [2], "abilities_available": ["Trail Tracking"], "abilities_used": []},
+          {"id": "player-8", "tokens": ["green", "orange"], "cases_complete": 1, "cases_held": [1], "abilities_available": ["The Full Case"], "abilities_used": []}
+        ]
+      },
+      "referee_flags": [
+        {"type": "finding", "id": "F-003", "severity": "FINDING", "content": "Ronit (Yermi, chaotic) went to Messy Closet seeking green. Drew darkred+blue+orange - no green in draw. With only 1 green remaining in bag out of 10 tokens, green starvation is real. Ronit now has 6 tokens in hand with 0 cases completed."},
+        {"type": "finding", "id": "F-004", "severity": "NOTE", "content": "Eilat Reef collision: Danny2(P5) picked blue, Michal(P4) picked darkred. Priority order worked as expected. Both got useful tokens."}
+      ]
+    },
+    {
+      "number": 4,
+      "sheriff": "player-4",
+      "actions": [
+        {"player_id": "player-1", "player_name": "Danny", "character": "Nadavch", "action_type": "select_location", "target": "barka_salon", "target_name": "Barka Salon", "thought": "Case 17 needs 1 more green. Barka has green. Alone = take 2, complete and move on.", "tokens_collected": ["green", "darkred"], "case_completed": {"case_id": 17, "case_name": "Olympus Case", "tokens_spent": ["green", "green", "orange"]}},
+        {"player_id": "player-2", "player_name": "Michal", "character": "Adiko", "action_type": "select_location", "target": "eilat_reef", "target_name": "Eilat Reef", "thought": "Case 7 needs blue. Eilat has 2 blue! Perfect - alone I take both and complete my case!", "tokens_collected": ["blue", "blue"], "case_completed": {"case_id": 7, "case_name": "Flick in the Tush Case", "tokens_spent": ["green", "darkred", "blue"]}},
+        {"player_id": "player-3", "player_name": "Yossi", "character": "Alex", "action_type": "select_location", "target": "mazok_shop", "target_name": "Mazok Shop", "thought": "Case 8 needs 2brown+darkred. Mazok has brown. Start collecting.", "tokens_collected": ["brown", "blue"]},
+        {"player_id": "player-4", "player_name": "Ronit", "character": "Yermi", "action_type": "select_location", "target": "nadav_hq", "target_name": "Nadav HQ", "thought": "As sheriff, I dominate any collision. Nadav has 2 green! Finally! Take 2 green tokens!", "tokens_collected": ["green", "orange"], "case_completed": {"case_id": 9, "case_name": "Wedding Mystery", "tokens_spent": ["orange", "darkred", "green"]}},
+        {"player_id": "player-5", "player_name": "Danny2", "character": "Alonzo", "action_type": "select_location", "target": "dizengoff_cabin", "target_name": "Dizengoff Cabin", "thought": "Case 20 needs darkred. Dizengoff has green+darkred. Alone I take both.", "tokens_collected": ["darkred", "darkred"]},
+        {"player_id": "player-6", "player_name": "Michal2", "character": "Mai", "action_type": "select_location", "target": "rosa_salon", "target_name": "Rosa Salon", "thought": "Case 13 needs 2orange+brown. Rosa has orange. Getting closer to completion.", "tokens_collected": ["orange", "green"]},
+        {"player_id": "player-7", "player_name": "Yossi2", "character": "Shaika", "action_type": "select_location", "target": "nadav_hq", "target_name": "Nadav HQ", "thought": "Case 2 needs 2orange+blue. Nadav might have orange. Worth going even with Ronit (sheriff) there.", "tokens_collected": [], "empty_handed": true, "empty_handed_reason": "Sheriff (Ronit) took both tokens at Nadav HQ. Only 2 tokens available, sheriff entitled to 2."},
+        {"player_id": "player-8", "player_name": "Ronit2", "character": "Ilanit", "action_type": "select_location", "target": "subaru_wagon", "target_name": "Subaru Wagon", "thought": "Case 1 needs brown. Subaru has brown+blue. Alone I take both and complete!", "tokens_collected": ["brown", "blue"], "case_completed": {"case_id": 1, "case_name": "Shpachtel Mystery", "tokens_spent": ["orange", "brown", "green"]}}
+      ],
+      "resolution": {
+        "collisions": [
+          {"location": "nadav_hq", "players": ["player-4", "player-7"], "resolution_rule": "2-player, sheriff present (Ronit). Sheriff takes 2 (green+orange), rival Yossi2 gets 0 (location empty). Yossi2 empty-handed."}
+        ],
+        "replenishment": [
+          {"location": "mazok_shop", "from": 0, "tokens_added": ["green", "orange"]},
+          {"location": "eilat_reef", "from": 0, "tokens_added": ["green", "brown"]},
+          {"location": "rosa_salon", "from": 0, "tokens_added": ["green", "darkred"]},
+          {"location": "dizengoff_cabin", "from": 0, "tokens_added": ["green", "darkred"]},
+          {"location": "nadav_hq", "from": 0, "tokens_added": ["blue", "orange"]},
+          {"location": "subaru_wagon", "from": 0, "tokens_added": ["brown", "blue"]},
+          {"location": "barka_salon", "from": 0, "tokens_added": ["darkred", "blue"]}
+        ],
+        "completions": [
+          {"player": "player-1", "case_id": 17, "case_name": "Olympus Case"},
+          {"player": "player-2", "case_id": 7, "case_name": "Flick in the Tush Case"},
+          {"player": "player-4", "case_id": 9, "case_name": "Wedding Mystery"},
+          {"player": "player-8", "case_id": 1, "case_name": "Shpachtel Mystery"}
+        ],
+        "cases_drawn": [
+          {"player": "player-1", "drew": 12, "note": "Last card in deck before Ronit2"},
+          {"player": "player-2", "drew": 3, "note": "Deck now empty"},
+          {"player": "player-4", "drew": null, "note": "Deck empty, no draw"},
+          {"player": "player-8", "drew": null, "note": "Deck empty, no draw"}
+        ],
+        "sheriff_transfer": {"from": "player-4", "to": "player-7", "reason": "Yossi2(1 case, 1 token) trailing. Gets sheriff."},
+        "outcomes": ["4 completions. Ronit FINALLY gets green from Nadav HQ using sheriff advantage. Yossi2 empty-handed at Nadav collision - ability timing conflict noted. Deck exhausted - Ronit and Ronit2 have no private cases."]
+      },
+      "state_after": {
+        "score_gap": 1,
+        "catch_up_triggered": true,
+        "board": {
+          "mazok_shop": ["green", "orange"],
+          "eilat_reef": ["green", "brown"],
+          "messy_closet": [],
+          "rosa_salon": ["green", "darkred"],
+          "dizengoff_cabin": ["green", "darkred"],
+          "nadav_hq": ["blue", "orange"],
+          "subaru_wagon": ["brown", "blue"],
+          "barka_salon": ["darkred", "blue"]
+        },
+        "bag": {"green": 1, "brown": 1, "darkred": 0, "orange": 1, "blue": 1, "total": 4},
+        "players": [
+          {"id": "player-1", "tokens": ["darkred"], "cases_complete": 2, "cases_held": [12], "abilities_available": ["Order in Town"], "abilities_used": []},
+          {"id": "player-2", "tokens": ["blue"], "cases_complete": 2, "cases_held": [3], "abilities_available": ["Goldheart"], "abilities_used": []},
+          {"id": "player-3", "tokens": ["brown", "blue"], "cases_complete": 2, "cases_held": [8], "abilities_available": ["Full Renovation"], "abilities_used": []},
+          {"id": "player-4", "tokens": ["orange", "orange", "brown", "darkred", "orange"], "cases_complete": 1, "cases_held": [], "abilities_available": [], "abilities_used": ["You Know"]},
+          {"id": "player-5", "tokens": ["green", "blue", "darkred", "darkred"], "cases_complete": 1, "cases_held": [20], "abilities_available": ["Sly Argument"], "abilities_used": []},
+          {"id": "player-6", "tokens": ["orange", "green"], "cases_complete": 1, "cases_held": [13], "abilities_available": ["Milano Express"], "abilities_used": []},
+          {"id": "player-7", "tokens": ["darkred"], "cases_complete": 1, "cases_held": [2], "abilities_available": ["Trail Tracking"], "abilities_used": []},
+          {"id": "player-8", "tokens": ["blue"], "cases_complete": 2, "cases_held": [], "abilities_available": ["The Full Case"], "abilities_used": []}
+        ]
+      },
+      "referee_flags": [
+        {"type": "finding", "id": "F-005", "severity": "GUARDRAIL", "content": "Shaika Trail Tracker ability timing conflict: ability text says 'peek at other players choices before reveal and may change own.' But trigger is 'empty-handed after collection.' These are contradictory timings. The peek+change must happen BEFORE reveal, but empty-handed status is only known AFTER collection. Recommend clarifying in GSD: either change trigger to a voluntary pre-reveal activation, or change ability effect to something post-collection."},
+        {"type": "finding", "id": "F-006", "severity": "FINDING", "content": "Sheriff at 2-token location (Nadav HQ): sheriff took both tokens, rival got 0. This is particularly punishing when the location only has 2 tokens. The rival has no recourse."},
+        {"type": "finding", "id": "F-007", "severity": "NOTE", "content": "Case deck exhausted after Round 4. Ronit and Ronit2 have no private cases. Both must rely on public cases (11 or 6) to reach 3 cases. This is a significant disadvantage."}
+      ]
+    },
+    {
+      "number": 5,
+      "sheriff": "player-7",
+      "actions": [
+        {"player_id": "player-1", "player_name": "Danny", "character": "Nadavch", "action_type": "select_location", "target": "eilat_reef", "target_name": "Eilat Reef", "thought": "Case 12 needs green+brown+darkred. Eilat has green+brown! If alone, I take both and only need to find darkred... wait, I HAVE darkred! ALONE AT EILAT = WIN!", "tokens_collected": ["green"]},
+        {"player_id": "player-2", "player_name": "Michal", "character": "Adiko", "action_type": "select_location", "target": "subaru_wagon", "target_name": "Subaru Wagon", "thought": "Case 3 needs darkred+brown+blue. Subaru has brown+blue. Alone means I get both... but still need darkred.", "tokens_collected": ["brown", "blue"]},
+        {"player_id": "player-3", "player_name": "Yossi", "character": "Alex", "action_type": "select_location", "target": "barka_salon", "target_name": "Barka Salon", "thought": "Case 8 needs 2brown+darkred. Barka has darkred+blue. Get darkred, then need 1 more brown.", "tokens_collected": ["darkred"]},
+        {"player_id": "player-4", "player_name": "Ronit", "character": "Yermi", "action_type": "select_location", "target": "nadav_hq", "target_name": "Nadav HQ", "thought": "No private case. Public Case 11 needs brown+blue+orange. I have brown+orange already. Nadav has blue! Go get it.", "tokens_collected": []},
+        {"player_id": "player-5", "player_name": "Danny2", "character": "Alonzo", "action_type": "select_location", "target": "barka_salon", "target_name": "Barka Salon", "thought": "Case 20 needs 2blue+darkred. Have 1 blue + 2 darkred. Barka has darkred+blue. Get blue to complete!", "tokens_collected": ["blue"], "case_completed": {"case_id": 20, "case_name": "Japan Mystery", "tokens_spent": ["blue", "blue", "darkred"]}},
+        {"player_id": "player-6", "player_name": "Michal2", "character": "Mai", "action_type": "select_location", "target": "eilat_reef", "target_name": "Eilat Reef", "thought": "Case 13 needs 2orange+brown. Eilat has brown. I need brown to complete. Even collision gives me a shot.", "tokens_collected": ["brown"], "case_completed": {"case_id": 13, "case_name": "Cottage Mystery", "tokens_spent": ["orange", "orange", "brown"]}},
+        {"player_id": "player-7", "player_name": "Yossi2", "character": "Shaika", "action_type": "select_location", "target": "nadav_hq", "target_name": "Nadav HQ", "thought": "As sheriff, I take 2 at Nadav. Case 2 needs 2orange+blue. Nadav has blue+orange. Sheriff bonus!", "tokens_collected": ["blue", "orange"]},
+        {"player_id": "player-8", "player_name": "Ronit2", "character": "Ilanit", "action_type": "select_location", "target": "mazok_shop", "target_name": "Mazok Shop", "thought": "No private case. Public Case 11 needs brown+blue+orange. I have blue. Mazok has green+orange. Get orange.", "tokens_collected": ["orange", "green"]}
+      ],
+      "resolution": {
+        "collisions": [
+          {"location": "eilat_reef", "players": ["player-1", "player-6"], "resolution_rule": "2-player, no sheriff. Nadavch(P8) first, Mai(P2) second. Each takes 1."},
+          {"location": "barka_salon", "players": ["player-5", "player-3"], "resolution_rule": "2-player, no sheriff. Alonzo(P5) first, Alex(P1) second. Each takes 1."},
+          {"location": "nadav_hq", "players": ["player-7", "player-4"], "resolution_rule": "2-player, sheriff (Yossi2). Sheriff takes 2 (blue+orange), Ronit gets 0."}
+        ],
+        "completions": [
+          {"player": "player-6", "case_id": 13, "case_name": "Cottage Mystery"},
+          {"player": "player-5", "case_id": 20, "case_name": "Japan Mystery"}
+        ],
+        "cases_drawn": [],
+        "sheriff_transfer": {"from": "player-7", "to": "player-7", "reason": "Ronit(1 case, 5 tokens) and Yossi2(1 case, 1 token) tied at fewest cases. Yossi2 fewer tokens. Keeps sheriff."},
+        "outcomes": ["Danny collided with Michal2 at Eilat - only got green, not brown. Cannot complete Case 12 this round. Yossi got darkred at Barka but needs 1 more brown. Danny2 and Michal2 complete their 2nd cases. Ronit empty-handed again at Nadav (sheriff collision)."]
+      },
+      "state_after": {
+        "score_gap": 1,
+        "catch_up_triggered": true,
+        "board": {
+          "mazok_shop": ["orange", "blue"],
+          "eilat_reef": ["brown", "darkred"],
+          "messy_closet": [],
+          "rosa_salon": ["green", "darkred"],
+          "dizengoff_cabin": ["green", "darkred"],
+          "nadav_hq": ["orange", "orange"],
+          "subaru_wagon": ["blue", "brown"],
+          "barka_salon": ["brown", "green"]
+        },
+        "bag": {"green": 1, "brown": 1, "darkred": 0, "orange": 1, "blue": 1, "total": 4},
+        "players": [
+          {"id": "player-1", "tokens": ["darkred", "green"], "cases_complete": 2, "cases_held": [12], "abilities_available": ["Order in Town"], "abilities_used": []},
+          {"id": "player-2", "tokens": ["blue", "brown", "blue"], "cases_complete": 2, "cases_held": [3], "abilities_available": ["Goldheart"], "abilities_used": []},
+          {"id": "player-3", "tokens": ["brown", "blue", "darkred"], "cases_complete": 2, "cases_held": [8], "abilities_available": ["Full Renovation"], "abilities_used": []},
+          {"id": "player-4", "tokens": ["orange", "orange", "brown", "darkred", "orange"], "cases_complete": 1, "cases_held": [], "abilities_available": [], "abilities_used": ["You Know"]},
+          {"id": "player-5", "tokens": ["green", "darkred"], "cases_complete": 2, "cases_held": [], "abilities_available": ["Sly Argument"], "abilities_used": []},
+          {"id": "player-6", "tokens": ["green"], "cases_complete": 2, "cases_held": [], "abilities_available": ["Milano Express"], "abilities_used": []},
+          {"id": "player-7", "tokens": ["darkred", "blue", "orange"], "cases_complete": 1, "cases_held": [2], "abilities_available": ["Trail Tracking"], "abilities_used": []},
+          {"id": "player-8", "tokens": ["blue", "orange", "green"], "cases_complete": 2, "cases_held": [], "abilities_available": ["The Full Case"], "abilities_used": []}
+        ]
+      },
+      "referee_flags": [
+        {"type": "finding", "id": "F-008", "severity": "FINDING", "content": "Danny collision at Eilat prevented what would have been a Round 5 win. Shows that 8-player collision density naturally creates kingmaking prevention - other players unwittingly block leaders."},
+        {"type": "finding", "id": "F-009", "severity": "NOTE", "content": "6 players now at 2 cases. Race is extremely tight. Next round likely produces winner."}
+      ]
+    },
+    {
+      "number": 6,
+      "sheriff": "player-7",
+      "actions": [
+        {"player_id": "player-1", "player_name": "Danny", "character": "Nadavch", "action_type": "select_location", "target": "eilat_reef", "target_name": "Eilat Reef", "thought": "Case 12 needs green+brown+darkred. I have darkred+green. Eilat has brown+darkred. ALONE = take brown = WIN. Avoiding others.", "tokens_collected": ["brown", "darkred"], "case_completed": {"case_id": 12, "case_name": "Carriage Investigation", "tokens_spent": ["green", "brown", "darkred"]}},
+        {"player_id": "player-2", "player_name": "Michal", "character": "Adiko", "action_type": "select_location", "target": "rosa_salon", "target_name": "Rosa Salon", "thought": "Case 3 needs darkred+brown+blue. I have brown+blue. Rosa has green+darkred. Alone = take darkred = WIN!", "tokens_collected": ["green", "darkred"], "case_completed": {"case_id": 3, "case_name": "Cursed Bags Case", "tokens_spent": ["darkred", "brown", "blue"]}},
+        {"player_id": "player-3", "player_name": "Yossi", "character": "Alex", "action_type": "select_location", "target": "barka_salon", "target_name": "Barka Salon", "thought": "Case 8 needs 2brown+darkred. I have brown+darkred+blue. Barka has brown+green. ALONE = take brown = WIN!", "tokens_collected": ["brown", "green"], "case_completed": {"case_id": 8, "case_name": "Nap Investigation", "tokens_spent": ["brown", "brown", "darkred"]}},
+        {"player_id": "player-4", "player_name": "Ronit", "character": "Yermi", "action_type": "select_location", "target": "nadav_hq", "target_name": "Nadav HQ", "thought": "No private case. Public Case 11 needs brown+blue+orange. I have brown+orange. Need blue. But sheriff collision risk...", "tokens_collected": []},
+        {"player_id": "player-5", "player_name": "Danny2", "character": "Alonzo", "action_type": "select_location", "target": "mazok_shop", "target_name": "Mazok Shop", "thought": "No private case. Public Case 6 needs 2green+orange. I have green+darkred. Need green+orange. Mazok has orange+blue. Get orange.", "tokens_collected": ["orange", "blue"]},
+        {"player_id": "player-6", "player_name": "Michal2", "character": "Mai", "action_type": "select_location", "target": "dizengoff_cabin", "target_name": "Dizengoff Cabin", "thought": "No private case. Public Case 6 needs 2green+orange. I have green. Dizengoff has green+darkred. Get second green.", "tokens_collected": ["green", "darkred"]},
+        {"player_id": "player-7", "player_name": "Yossi2", "character": "Shaika", "action_type": "select_location", "target": "nadav_hq", "target_name": "Nadav HQ", "thought": "As sheriff, take 2 at Nadav. Case 2 needs 2orange+blue. Nadav has 2 orange! Sheriff takes both!", "tokens_collected": ["orange", "orange"], "case_completed": {"case_id": 2, "case_name": "Gold Rush Case", "tokens_spent": ["orange", "orange", "blue"]}},
+        {"player_id": "player-8", "player_name": "Ronit2", "character": "Ilanit", "action_type": "select_location", "target": "subaru_wagon", "target_name": "Subaru Wagon", "thought": "Public Case 11 needs brown+blue+orange. I have blue+orange. Subaru has blue+brown. ALONE = take brown = WIN!", "tokens_collected": ["brown", "blue"], "case_completed": {"case_id": 11, "case_name": "Bucket Case", "tokens_spent": ["brown", "blue", "orange"], "public_case": true}}
+      ],
+      "resolution": {
+        "collisions": [
+          {"location": "nadav_hq", "players": ["player-7", "player-4"], "resolution_rule": "2-player, sheriff (Yossi2). Sheriff takes 2 (orange+orange), Ronit gets 0. Ronit empty-handed (ability already used R2)."}
+        ],
+        "completions": [
+          {"player": "player-1", "case_id": 12, "case_name": "Carriage Investigation", "winning_case": true},
+          {"player": "player-2", "case_id": 3, "case_name": "Cursed Bags Case", "winning_case": true},
+          {"player": "player-3", "case_id": 8, "case_name": "Nap Investigation", "winning_case": true},
+          {"player": "player-8", "case_id": 11, "case_name": "Bucket Case", "winning_case": true, "public_case": true},
+          {"player": "player-7", "case_id": 2, "case_name": "Gold Rush Case", "winning_case": false}
+        ],
+        "simultaneous_win": {
+          "players_completing_3rd_case": ["player-1", "player-2", "player-3", "player-8"],
+          "tiebreaker_1": {
+            "rule": "Fewest excess tokens in hand after completion",
+            "player-1": {"excess_tokens": ["darkred"], "count": 1},
+            "player-2": {"excess_tokens": ["blue", "green"], "count": 2},
+            "player-3": {"excess_tokens": ["blue", "green"], "count": 2},
+            "player-8": {"excess_tokens": ["blue", "green"], "count": 2}
+          },
+          "winner": "player-1",
+          "winner_reason": "Danny (Nadavch) wins with fewest excess tokens (1) vs all others (2)"
+        },
+        "outcomes": ["FOUR-WAY SIMULTANEOUS WIN! Danny, Michal, Yossi, and Ronit2 all complete their 3rd case in Round 6. Tiebreaker: Danny wins with only 1 excess token (darkred) vs 2 for everyone else. Ronit2 notably won via public Case 11. Yossi2 also completes Case 2 this round (2nd case) but is not in the race."]
+      },
+      "state_after": {
+        "score_gap": 0,
+        "catch_up_triggered": false,
+        "players": [
+          {"id": "player-1", "cases_complete": 3, "final_rank": 1, "cases_won": [19, 17, 12]},
+          {"id": "player-2", "cases_complete": 3, "final_rank": 2, "cases_won": [18, 7, 3]},
+          {"id": "player-3", "cases_complete": 3, "final_rank": 2, "cases_won": [16, 5, 8]},
+          {"id": "player-8", "cases_complete": 3, "final_rank": 2, "cases_won": [10, 1, 11]},
+          {"id": "player-7", "cases_complete": 2, "final_rank": 5, "cases_won": [4, 2]},
+          {"id": "player-5", "cases_complete": 2, "final_rank": 6, "cases_won": [15, 20]},
+          {"id": "player-6", "cases_complete": 2, "final_rank": 6, "cases_won": [14, 13]},
+          {"id": "player-4", "cases_complete": 1, "final_rank": 8, "cases_won": [9]}
+        ]
+      },
+      "referee_flags": [
+        {"type": "finding", "id": "F-010", "severity": "GUARDRAIL", "content": "4-way simultaneous win in Round 6. Tiebreaker 1 (fewest excess tokens) resolved it cleanly. However, this scenario is likely to occur frequently at 8 players since many players reach 2 cases around the same time. The tiebreaker system WORKS but the 'winning moment' feels diluted when 4 players win together."},
+        {"type": "finding", "id": "F-011", "severity": "FINDING", "content": "Public Case 11 successfully completed by Ronit2 (Ilanit) for the winning case. Public cases are a viable and important path at 8 players, especially when the deck runs out. This validates the 2 public cases design."},
+        {"type": "finding", "id": "F-012", "severity": "FINDING", "content": "Ronit (Yermi, chaotic, P3) finished LAST with only 1 case. Struggled with green starvation for 3 rounds, had 5-6 excess tokens throughout. Low priority + chaotic personality + bad luck = worst outcome. However, the sheriff mechanic (catch-up) gave Ronit the sheriff for Round 4 which finally got green. Catch-up worked but was too late."},
+        {"type": "finding", "id": "F-013", "severity": "NOTE", "content": "Game lasted 6 rounds at 8 players. Very fast. Total completions across 6 rounds: R1(0), R2(6), R3(2), R4(4), R5(2), R6(5) = 19 completions from 20 case cards. Nearly every case card was used."}
+      ]
+    }
+  ],
+  "final_analysis": {
+    "total_rounds": 6,
+    "total_completions": 19,
+    "completions_per_round": [0, 6, 2, 4, 2, 5],
+    "total_collisions": 8,
+    "collisions_per_round": [1, 1, 2, 1, 3, 1],
+    "average_collisions_per_round": 1.33,
+    "expected_collisions_per_round_8p": 4.86,
+    "collision_note": "Lower than expected because 8 locations spread players well. Many rounds had 0-1 overlaps despite 8 players. Players avoided each other effectively.",
+    "abilities_used": {
+      "yermi_you_know": {"triggered": true, "round": 2, "result": "Drew darkred+brown from bag. Useful tokens but not the green needed. Ability consumed."},
+      "nadavch_order_in_town": {"triggered": false, "note": "Danny never went empty-handed thanks to P8 priority advantage."},
+      "ilanit_full_case": {"triggered": false, "note": "Ronit2 never went empty-handed thanks to P7 priority."},
+      "shaika_trail_tracking": {"triggered": false, "note": "TIMING CONFLICT: Ability should trigger when empty-handed but its effect (peek before reveal) requires pre-collection timing. Yossi2 went empty-handed in R4 but ability could not logically activate. See F-005."},
+      "alonzo_sly_argument": {"triggered": false, "note": "Danny2 never went empty-handed."},
+      "adiko_goldheart": {"triggered": false, "note": "Michal never went empty-handed."},
+      "mai_milano_express": {"triggered": false, "note": "Michal2 never went empty-handed."},
+      "alex_full_renovation": {"triggered": false, "note": "Yossi never went empty-handed."}
+    },
+    "abilities_triggered_count": 1,
+    "abilities_total": 8,
+    "ability_trigger_rate": "12.5%",
+    "ability_note": "Only 1 of 8 abilities triggered in 6 rounds. At 8 players with 8 locations, collisions that leave high-priority players empty-handed are rare. Most empty-handed instances happen to LOW priority players, whose abilities are the strongest (by design), but low-priority players are the ones LEAST likely to go empty-handed in 2-player collisions because they get 1 token. They only go empty-handed in 3+ collisions, which were rare. Catch-22 of the ability system.",
+    "catch_up_triggers": 4,
+    "catch_up_effective": true,
+    "catch_up_note": "Sheriff transferred 5 times across 6 rounds. Effectively gave trailing players priority advantage. Ronit (0 cases through R3) got sheriff in R4 and immediately completed Case 9. System works.",
+    "deck_exhaustion_round": 4,
+    "deck_note": "20-card deck exhausted in Round 4 (after 18 draws: 8 initial deal + 2 public + 8 completion draws). Two players (Ronit, Ronit2) had no private case from R4 onward. Public cases became critical path.",
+    "public_cases_completed": 1,
+    "public_cases_note": "Public Case 11 completed by Ronit2 for the winning case. Public Case 6 attempted by Danny2 and Michal2 but not completed. Public cases are viable at 8p.",
+    "green_starvation": "Ronit spent 3 rounds (R1-R3) unable to find green tokens. Messy Closet drew darkred+blue+orange instead of green. Bag had only 1 green out of ~12 tokens. Token color distribution in the bag can create frustrating scarcity situations.",
+    "game_arc": "Fast start (6 completions R2), steady middle (2-4 completions R3-R5), explosive finish (4-way win R6). Game builds tension effectively even at 8 players.",
+    "winner_profile": "Danny (strategist, Nadavch P8) won via tiebreaker with efficient resource management. High priority (P8) meant never going empty-handed. Strategist personality led to optimal location choices throughout."
+  }
+}
