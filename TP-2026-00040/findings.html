@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playtest Findings — Gold Hunt (TP-2026-00040)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  background: #120022;
+  color: #ffd54f;
+  min-height: 100vh;
+  padding: 24px 32px 120px;
+}
+
+a { color: #fcb700; }
+
+/* Header */
+.header {
+  max-width: 1100px;
+  margin: 0 auto 32px;
+}
+
+.header h1 {
+  color: #fcb700;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.summary-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.summary-pill {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pill-critical { background: rgba(255,77,109,0.15); color: #ff4d6d; border: 1px solid rgba(255,77,109,0.3); }
+.pill-warning  { background: rgba(252,183,0,0.15); color: #fcb700; border: 1px solid rgba(252,183,0,0.3); }
+.pill-finding  { background: rgba(255,213,79,0.08); color: #ffd54f88; border: 1px solid rgba(255,213,79,0.15); }
+.pill-pass     { background: rgba(0,186,123,0.15); color: #00BA7B; border: 1px solid rgba(0,186,123,0.3); }
+
+.progress-bar {
+  font-size: 15px;
+  color: #ffd54f;
+  opacity: 0.8;
+}
+
+.progress-bar strong { color: #fcb700; }
+
+/* Sections */
+.section-title {
+  max-width: 1100px;
+  margin: 40px auto 16px;
+  color: #fcb700;
+  font-size: 22px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(252,183,0,0.2);
+  padding-bottom: 8px;
+}
+
+/* Cards */
+.cards {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: #1a0033;
+  border: 1px solid rgba(252,183,0,0.2);
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: border-color 0.2s;
+}
+
+.card:hover { border-color: rgba(252,183,0,0.4); }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.finding-id {
+  font-weight: 700;
+  font-size: 15px;
+  color: #fcb700;
+  min-width: 50px;
+}
+
+.severity-badge {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-critical { background: #ff4d6d; color: #120022; }
+.badge-warning  { background: #fcb700; color: #120022; }
+.badge-finding  { background: rgba(255,213,79,0.25); color: #ffd54f; }
+.badge-pass     { background: #00BA7B; color: #120022; }
+
+.category-tag {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  background: rgba(255,213,79,0.08);
+  color: #ffd54f88;
+  border: 1px solid rgba(255,213,79,0.1);
+}
+
+.status-indicator {
+  margin-left: auto;
+  font-size: 18px;
+  min-width: 28px;
+  text-align: center;
+}
+
+.card-description {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: #ffd54f;
+}
+
+.card-evidence {
+  font-size: 13px;
+  color: #ffd54faa;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(255,213,79,0.04);
+  border-radius: 8px;
+  border-left: 3px solid rgba(252,183,0,0.3);
+}
+
+.card-evidence strong { color: #ffd54f; }
+
+.recommendation-box {
+  margin-bottom: 14px;
+  padding: 12px 16px;
+  background: rgba(252,183,0,0.06);
+  border: 1px solid rgba(252,183,0,0.15);
+  border-radius: 8px;
+}
+
+.recommendation-box .rec-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fcb700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.recommendation-box .rec-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ffd54f;
+}
+
+/* Options */
+.options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.option-card {
+  padding: 8px 14px;
+  background: rgba(255,213,79,0.05);
+  border: 1px solid rgba(252,183,0,0.2);
+  border-radius: 8px;
+  font-size: 13px;
+  color: #ffd54f;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex: 1 1 auto;
+  min-width: 180px;
+}
+
+.option-card:hover { background: rgba(252,183,0,0.12); border-color: rgba(252,183,0,0.4); }
+.option-card.selected { background: rgba(252,183,0,0.2); border-color: #fcb700; color: #fcb700; font-weight: 600; }
+
+/* Decision controls */
+.decision-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.btn {
+  padding: 8px 18px;
+  border: 1px solid;
+  border-radius: 8px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: transparent;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn-approve {
+  border-color: #00BA7B;
+  color: #00BA7B;
+}
+.btn-approve:hover, .btn-approve.active { background: #00BA7B; color: #120022; }
+
+.btn-notclear {
+  border-color: #fcb700;
+  color: #fcb700;
+}
+.btn-notclear:hover, .btn-notclear.active { background: #fcb700; color: #120022; }
+
+.btn-dismiss {
+  border-color: #ff4d6d;
+  color: #ff4d6d;
+}
+.btn-dismiss:hover, .btn-dismiss.active { background: #ff4d6d; color: #120022; }
+
+.btn-monitor {
+  border-color: #ffd54f88;
+  color: #ffd54f88;
+}
+.btn-monitor:hover, .btn-monitor.active { background: rgba(255,213,79,0.25); color: #ffd54f; }
+
+/* Notes */
+.notes-area {
+  margin-top: 12px;
+}
+
+.notes-area textarea {
+  width: 100%;
+  background: rgba(255,213,79,0.04);
+  border: 1px solid rgba(252,183,0,0.15);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 13px;
+  color: #ffd54f;
+  resize: vertical;
+  min-height: 32px;
+  transition: min-height 0.2s;
+}
+
+.notes-area textarea:focus {
+  outline: none;
+  border-color: rgba(252,183,0,0.4);
+  min-height: 72px;
+}
+
+.notes-area textarea::placeholder { color: #ffd54f44; }
+
+/* Pass cards (collapsed) */
+.card.pass-card {
+  padding: 12px 24px;
+  cursor: default;
+}
+
+.card.pass-card .card-header { margin-bottom: 0; }
+
+/* Confusion cards */
+.confusion-meta {
+  font-size: 13px;
+  color: #ffd54faa;
+  margin-bottom: 8px;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a0033;
+  border-top: 1px solid rgba(252,183,0,0.2);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 100;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-warning {
+  color: #ff4d6d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btn-export {
+  padding: 10px 28px;
+  background: #fcb700;
+  color: #120022;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-export:hover { background: #ffd54f; transform: translateY(-1px); }
+
+/* Decided card styles */
+.card.decided-approved { border-left: 3px solid #00BA7B; }
+.card.decided-not_clear { border-left: 3px solid #fcb700; }
+.card.decided-dismissed { border-left: 3px solid #ff4d6d; }
+.card.decided-monitor { border-left: 3px solid #ffd54f88; }
+
+@media (max-width: 768px) {
+  body { padding: 16px 12px 120px; }
+  .card { padding: 16px; }
+  .option-card { min-width: 140px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Playtest Findings — Gold Hunt (TP-2026-00040)</h1>
+  <div class="summary-bar">
+    <span class="summary-pill pill-critical">CRITICAL: <strong id="count-critical">0</strong></span>
+    <span class="summary-pill pill-warning">WARNING: <strong id="count-warning">0</strong></span>
+    <span class="summary-pill pill-finding">FINDING: <strong id="count-finding">0</strong></span>
+    <span class="summary-pill pill-pass">PASS: <strong id="count-pass">0</strong></span>
+    <span style="margin-left: 8px; font-size: 14px; color: #ffd54faa;">|</span>
+    <span class="summary-pill" style="background: rgba(255,213,79,0.05); color: #ffd54f; border: 1px solid rgba(255,213,79,0.15);">Total: <strong id="count-total">0</strong></span>
+  </div>
+  <div class="progress-bar">
+    <strong id="reviewed-count">0</strong> of <strong id="total-reviewable">0</strong> reviewed
+  </div>
+</div>
+
+<div id="findings-container"></div>
+<div id="confusions-container"></div>
+
+<div class="footer">
+  <div class="footer-left">
+    <div class="progress-bar">
+      <strong id="footer-reviewed">0</strong> of <strong id="footer-total">0</strong> reviewed
+    </div>
+    <div class="footer-warning" id="critical-warning" style="display:none;">
+      CRITICAL findings still pending
+    </div>
+  </div>
+  <button class="btn-export" onclick="exportJSON()">Export JSON</button>
+</div>
+
+<script>
+// ---- DATA ----
+
+const FINDINGS = [
+  {
+    id: "F-001", title: "Tiebreaker chain works correctly",
+    severity: "PASS", games: "1, 4", category: "mechanics",
+    description: "Tiebreaker chain works correctly (excess tokens -> priority). Tested in Games 1 and 4.",
+    evidence: null,
+    recommendation: null, options: null
+  },
+  {
+    id: "F-002", title: "Sheriff-holder rarely triggers ability in 2p",
+    severity: "FINDING", games: "1", category: "balance",
+    description: "Sheriff-holder rarely triggers ability in 2-player games. The sheriff has high priority and almost never goes empty-handed.",
+    evidence: "Gold Heart (Adiko, P4): Never triggered in Game 1 — sheriff rarely goes empty-handed in 2p.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-003", title: "Token type scarcity (darkred/green droughts via RNG)",
+    severity: "WARNING", games: "1, 2, 4", category: "economy",
+    description: "Token type scarcity creates multi-round droughts. Darkred had a 4-round drought in Game 1. Green was scarce in Games 2 and 4 — only available at Mazok and Subaru via setup, with replenishment being random from bag.",
+    evidence: "Game 1: 4-round darkred drought. Games 2,4: players stalled 2-3 rounds waiting for green. Replenishment sometimes creates all-same-type locations.",
+    recommendation: "Consider seeded replenishment (not pure random) to ensure minimum type diversity across locations.",
+    options: null
+  },
+  {
+    id: "F-004", title: "Sheriff bonus at 2-token locations = opponent guaranteed 0",
+    severity: "FINDING", games: "1, 4", category: "balance",
+    description: "At 2-token locations, the sheriff takes both tokens in a collision, leaving the opponent with nothing. This is especially impactful in 2-player games.",
+    evidence: null, recommendation: null, options: null
+  },
+  {
+    id: "F-005", title: "\"You Know\" ability + same-round completion combo",
+    severity: "FINDING", games: "2", category: "balance",
+    description: "Yermi's \"You Know\" ability (draw 2 from bag) enabled a same-round case completion in Game 2. Drew 2 tokens AND completed a case in the same round.",
+    evidence: "You Know (Yermi, P3): Triggered once in Game 2. Strong — drew 2 from bag AND completed case in same round.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-006", title: "Public cases enable strategic pivots",
+    severity: "PASS", games: "2, 4", category: "mechanics",
+    description: "Public cases function as intended, enabling strategic pivots when private case progress stalls.",
+    evidence: null, recommendation: null, options: null
+  },
+  {
+    id: "F-007", title: "Green token scarcity creates multi-round stalls",
+    severity: "WARNING", games: "2, 4", category: "economy",
+    description: "Green tokens are particularly scarce. Only green sources via board are Mazok and Subaru (setup). Replenishment is random from bag, so green droughts can last 2-3 rounds.",
+    evidence: "Games 2, 4: Players stalled 2-3 rounds waiting for green. Only Mazok and Subaru have green at setup.",
+    recommendation: "Consider minimum-diversity rules for replenishment if human playtesting confirms the issue.",
+    options: null
+  },
+  {
+    id: "F-008", title: "Priority decisive at 2-token non-sheriff collisions",
+    severity: "FINDING", games: "2", category: "mechanics",
+    description: "In collisions at 2-token locations without the sheriff, priority order is decisive — higher priority takes both tokens.",
+    evidence: null, recommendation: null, options: null
+  },
+  {
+    id: "F-009", title: "Milano Express is disproportionately strong",
+    severity: "WARNING", games: "2", category: "balance",
+    description: "Milano Express (Mai, P2) is a guaranteed 2 tokens from any uncontested location. It won the game single-handedly in Game 2. Strictly better than most other abilities.",
+    evidence: "Milano Express (Mai, P2): Triggered once in Game 2 — guaranteed 2 tokens from any uncontested location. Won the game single-handedly. Assessment: OVERPOWERED.",
+    recommendation: "Balance Milano Express. It's strictly better than most abilities.",
+    options: [
+      "Limit to 1 extra token (take location max or +1, whichever is less)",
+      "Restrict to adjacent/specific locations only",
+      "Change to draw from bag instead of guaranteed location tokens"
+    ]
+  },
+  {
+    id: "F-010", title: "3+ collision at 2-token: lowest priority gets nothing",
+    severity: "FINDING", games: "2, 4", category: "mechanics",
+    description: "In 3+ player collisions at locations with only 2 tokens, the lowest priority player(s) get nothing. This is a natural consequence of the priority system.",
+    evidence: null, recommendation: null, options: null
+  },
+  {
+    id: "F-011", title: "Dead locations at 4p (Messy Closet, Rosa Salon)",
+    severity: "WARNING", games: "2", category: "location-usage",
+    description: "Messy Closet and Rosa Salon had zero visits in the 4-player game. Rosa Salon has 3 orange tokens but nobody needed pure orange. At 6+ players all locations see use.",
+    evidence: "Messy Closet: 0 visits at 4p, occasional use at 6-8p. Rosa Salon: 0 visits at 4p — 3 orange but nobody needed pure orange.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-012", title: "Setup ambiguity: \"maintain 2 cases\" vs \"start with 1\"",
+    severity: "WARNING", games: "2, 3, 4", category: "rule-gap",
+    description: "Rule 3c says \"maintain exactly 2 private cases\" but 4+ player setup says \"start with 1 private case.\" When does the player go from 1 to 2? After first completion? The transition point is never specified.",
+    evidence: "Affected Games 2, 3, and 4 (all 4+ player games). Referee resolved using best interpretation but text is ambiguous.",
+    recommendation: "Resolve the \"maintain 2 private cases\" vs \"start with 1\" setup discrepancy for 4+ players. Add explicit text to Section 3.2 of the GSD.",
+    options: null
+  },
+  {
+    id: "F-013", title: "Abilities never triggered at 6p (0/6)",
+    severity: "WARNING", games: "3", category: "balance",
+    description: "Zero abilities triggered in the 6-player game (0 out of 6 possible). At 6 players, players spread across 8 locations, reducing collision frequency and making the \"empty-handed\" trigger nearly impossible.",
+    evidence: "Game 3 (6p): 0/6 abilities triggered. Players spread across 8 locations. Collision rate was 0.60/round vs GSD estimate of 2.07-2.92.",
+    recommendation: "Part of the systemic ability trigger issue — see F-022.",
+    options: null
+  },
+  {
+    id: "F-014", title: "Low collision rate vs GSD estimates",
+    severity: "FINDING", games: "3, 4", category: "collision-rate",
+    description: "Observed collision rates are significantly lower than GSD estimates across all player counts. LLM players are better at avoiding collisions than random play, but even with human variance the rates may be lower than expected.",
+    evidence: "2p: 0.20 vs 0.67 expected. 4p: 0.80 vs 1.32. 6p: 0.60 vs 2.07-2.92. 8p: 1.33 vs 4.86. Note: GSD assumes random distribution.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-015", title: "All locations active at 6p (no dead zones)",
+    severity: "PASS", games: "3", category: "location-usage",
+    description: "All 8 locations saw meaningful use at 6 players. No dead zones. This is the sweet spot player count for location utilization.",
+    evidence: null, recommendation: null, options: null
+  },
+  {
+    id: "F-016", title: "Public cases underutilized (1 completed in 4 games)",
+    severity: "FINDING", games: "all", category: "mechanics",
+    description: "Only 1 public case was completed across all 4 games. Players consistently prioritized private cases. Public cases may need to be more attractive or private cases harder to make public cases a real strategic option.",
+    evidence: "1 public case completion out of 38 total completions across 4 games.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-017", title: "Messy Closet bag draws rarely produce needed tokens",
+    severity: "FINDING", games: "3", category: "location-usage",
+    description: "Messy Closet's bag-draw mechanic rarely produces the tokens players need. The randomness of bag draws makes it an unreliable location choice compared to deterministic token locations.",
+    evidence: "Game 3: Messy Closet used twice but bag draws didn't produce needed tokens.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-018", title: "Shaika Trail Tracker timing contradiction",
+    severity: "CRITICAL", games: "4", category: "rule-gap",
+    description: "Shaika Trail Tracker ability has a timing conflict: \"peek before reveal\" contradicts \"trigger on empty-handed after collection.\" Peek must happen BEFORE reveal but empty-handedness is only known AFTER collection. The ability text is self-contradictory and cannot be executed as written.",
+    evidence: "Trail Tracker (Shaika, P6): Never triggered in Game 3. Assessment: BROKEN — timing contradiction prevents meaningful use. The ability requires peeking before reveal but triggers on empty-handed which is only known after collection.",
+    recommendation: "Rewrite Shaika Trail Tracker ability. Either change the trigger (not empty-handed) or change the effect (not peek-before-reveal). Current text is self-contradictory.",
+    options: [
+      "Change trigger: activate on \"collected fewer than max tokens\" instead of empty-handed",
+      "Change effect: instead of peek-before-reveal, give a different scouting benefit after collection",
+      "Full redesign: give Shaika a completely different thematic ability"
+    ]
+  },
+  {
+    id: "F-019", title: "4-way simultaneous win at 8p (tiebreaker works but diluted)",
+    severity: "FINDING", games: "4", category: "balance",
+    description: "4 players achieved 3-case completion simultaneously in Game 4 (8 players). The tiebreaker mechanism worked correctly but the simultaneous win dilutes the endgame excitement.",
+    evidence: "Game 4 (8p): 4-way simultaneous win. Tiebreaker resolved correctly (fewest excess tokens). Winner: Danny/Nadavch.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-020", title: "First cases trivially easy at 8p",
+    severity: "FINDING", games: "4", category: "balance",
+    description: "At 8 players, first case completion was trivially easy — 6 players completed their first case by Round 2. Token abundance at high player counts (more replenishment cycles) makes early cases effortless.",
+    evidence: "Game 4 (8p): 6 completions in Round 2.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-021", title: "Deck exhaustion at Round 4 in 8p",
+    severity: "FINDING", games: "4", category: "economy",
+    description: "The token bag/deck was exhausted by Round 4 in the 8-player game. This limits replenishment and can create dead locations in late rounds.",
+    evidence: "Game 4 (8p): Deck exhaustion at Round 4.",
+    recommendation: null, options: null
+  },
+  {
+    id: "F-022", title: "Ability trigger rate 13.6% across all games (Catch-22 design)",
+    severity: "WARNING", games: "all", category: "balance",
+    description: "Only 3 out of 22 player-ability slots triggered across all games (13.6%). The design intent is \"low priority = stronger ability\" but the empty-handed trigger creates a Catch-22: high priority players rarely trigger (they pick first), and low priority players still get tokens in most collisions. Only in 3+ collisions at token-scarce locations do players go empty-handed.",
+    evidence: "Total ability triggers: 3/22 (13.6%). At 6 and 8 players, rate was especially low because players spread across 8 locations. Abilities that triggered: Milano Express (1x), Sly Argument (1x), You Know (1x). Abilities that never triggered: Gold Heart, Full Case, Trail Tracker, Order in Town, General Renovation.",
+    recommendation: "Rethink ability trigger mechanism. \"Empty-handed\" triggers too rarely at 4+ players.",
+    options: [
+      "Trigger on \"collected fewer tokens than maximum\" instead of \"zero tokens\"",
+      "Give each ability a different trigger condition tailored to the character",
+      "Make abilities reusable (cooldown-based) instead of one-time"
+    ]
+  }
+];
+
+const CONFUSIONS = [
+  {
+    id: "C-001",
+    text: "Does \"empty-handed\" mean collecting 0 tokens, or landing on an empty location?",
+    raised_by: "Yossi (rules-lawyer)", games: "1", severity: "WARNING"
+  },
+  {
+    id: "C-002",
+    text: "Are players still \"at the location\" during ability resolution for steal/interaction abilities?",
+    raised_by: "Yossi (rules-lawyer)", games: "1", severity: "WARNING"
+  },
+  {
+    id: "C-003",
+    text: "Sheriff supplement from bag: does location refill BEFORE sheriff takes, or after?",
+    raised_by: "Yossi (rules-lawyer)", games: "1", severity: "WARNING"
+  },
+  {
+    id: "C-004",
+    text: "Does Sheriff always override Priority in 2-player collisions?",
+    raised_by: "Yossi (rules-lawyer)", games: "2", severity: "WARNING"
+  },
+  {
+    id: "C-005",
+    text: "Draining a 2-token location when alone (take all) — intended?",
+    raised_by: "Ronit (chaotic)", games: "2", severity: "FINDING"
+  },
+  {
+    id: "C-006",
+    text: "Simultaneous completion tiebreaker for 3-case wins — how resolved?",
+    raised_by: "Ronit (chaotic)", games: "2", severity: "WARNING"
+  }
+];
+
+// ---- STATE ----
+
+const state = {};
+
+function initState() {
+  FINDINGS.forEach(f => {
+    state[f.id] = {
+      decision: f.severity === "PASS" ? "pass" : "pending",
+      selected_option: null,
+      notes: ""
+    };
+  });
+  CONFUSIONS.forEach(c => {
+    state[c.id] = {
+      decision: "pending",
+      selected_option: null,
+      notes: ""
+    };
+  });
+}
+
+// ---- RENDER ----
+
+function severityClass(s) {
+  return s.toLowerCase();
+}
+
+function statusEmoji(decision) {
+  const map = { pending: "\u23F3", approved: "\u2705", not_clear: "\u2753", dismissed: "\u274C", monitor: "\uD83D\uDC41\uFE0F", pass: "\u2705" };
+  return map[decision] || "\u23F3";
+}
+
+function renderFindings() {
+  const container = document.getElementById("findings-container");
+  const severityOrder = ["CRITICAL", "WARNING", "FINDING", "PASS"];
+
+  let html = "";
+  let currentSeverity = null;
+
+  const sorted = [...FINDINGS].sort((a, b) => severityOrder.indexOf(a.severity) - severityOrder.indexOf(b.severity));
+
+  sorted.forEach(f => {
+    if (f.severity !== currentSeverity) {
+      if (currentSeverity !== null) html += "</div>";
+      currentSeverity = f.severity;
+      html += `<h2 class="section-title">${currentSeverity} Findings</h2><div class="cards">`;
+    }
+
+    if (f.severity === "PASS") {
+      html += `
+        <div class="card pass-card" id="card-${f.id}">
+          <div class="card-header">
+            <span class="finding-id">${f.id}</span>
+            <span class="severity-badge badge-pass">PASS</span>
+            <span class="category-tag">${f.category}</span>
+            <span style="flex:1"></span>
+            <span style="font-size:14px;color:#00BA7B;">${f.title}</span>
+            <span class="status-indicator">\u2705</span>
+          </div>
+        </div>`;
+      return;
+    }
+
+    const s = state[f.id];
+    html += `
+      <div class="card ${s.decision !== 'pending' ? 'decided-' + s.decision : ''}" id="card-${f.id}">
+        <div class="card-header">
+          <span class="finding-id">${f.id}</span>
+          <span class="severity-badge badge-${severityClass(f.severity)}">${f.severity}</span>
+          <span class="category-tag">${f.category}</span>
+          <span style="flex:1"></span>
+          <span class="status-indicator" id="status-${f.id}">${statusEmoji(s.decision)}</span>
+        </div>
+        <div class="card-description">${f.description}</div>
+        ${f.evidence ? `<div class="card-evidence"><strong>Evidence:</strong> ${f.evidence}</div>` : ""}
+        ${f.recommendation ? `
+          <div class="recommendation-box">
+            <div class="rec-label">Aliens' Recommendation</div>
+            <div class="rec-text">${f.recommendation}</div>
+          </div>` : ""}
+        ${f.options ? `
+          <div class="options-grid" id="options-${f.id}">
+            ${f.options.map((o, i) => `<div class="option-card ${s.selected_option === o ? 'selected' : ''}" onclick="selectOption('${f.id}', ${i})">${String.fromCharCode(65 + i)}) ${o}</div>`).join("")}
+          </div>` : ""}
+        <div class="decision-controls">
+          <button class="btn btn-approve ${s.decision === 'approved' ? 'active' : ''}" onclick="decide('${f.id}', 'approved')">
+            ${f.recommendation ? "Approve: " + (f.recommendation.length > 60 ? f.recommendation.substring(0, 57) + "..." : f.recommendation) : "Approve"}
+          </button>
+          <button class="btn btn-notclear ${s.decision === 'not_clear' ? 'active' : ''}" onclick="decide('${f.id}', 'not_clear')">Not Clear</button>
+          <button class="btn btn-dismiss ${s.decision === 'dismissed' ? 'active' : ''}" onclick="decide('${f.id}', 'dismissed')">Dismiss</button>
+          ${f.severity === "FINDING" ? `<button class="btn btn-monitor ${s.decision === 'monitor' ? 'active' : ''}" onclick="decide('${f.id}', 'monitor')">Monitor</button>` : ""}
+        </div>
+        <div class="notes-area">
+          <textarea id="notes-${f.id}" placeholder="Notes..." oninput="updateNotes('${f.id}')">${s.notes}</textarea>
+        </div>
+      </div>`;
+  });
+
+  if (currentSeverity !== null) html += "</div>";
+  container.innerHTML = html;
+}
+
+function renderConfusions() {
+  const container = document.getElementById("confusions-container");
+  let html = `<h2 class="section-title">Player Confusions</h2><div class="cards">`;
+
+  CONFUSIONS.forEach(c => {
+    const s = state[c.id];
+    html += `
+      <div class="card ${s.decision !== 'pending' ? 'decided-' + s.decision : ''}" id="card-${c.id}">
+        <div class="card-header">
+          <span class="finding-id">${c.id}</span>
+          <span class="severity-badge badge-${severityClass(c.severity)}">${c.severity}</span>
+          <span style="flex:1"></span>
+          <span class="status-indicator" id="status-${c.id}">${statusEmoji(s.decision)}</span>
+        </div>
+        <div class="card-description">${c.text}</div>
+        <div class="confusion-meta">Raised by: <strong>${c.raised_by}</strong> | Games: ${c.games}</div>
+        <div class="decision-controls">
+          <button class="btn btn-approve ${s.decision === 'approved' ? 'active' : ''}" onclick="decide('${c.id}', 'approved')">Approve Fix</button>
+          <button class="btn btn-notclear ${s.decision === 'not_clear' ? 'active' : ''}" onclick="decide('${c.id}', 'not_clear')">Not Clear</button>
+          <button class="btn btn-dismiss ${s.decision === 'dismissed' ? 'active' : ''}" onclick="decide('${c.id}', 'dismissed')">Dismiss</button>
+        </div>
+        <div class="notes-area">
+          <textarea id="notes-${c.id}" placeholder="Notes..." oninput="updateNotes('${c.id}')">${s.notes}</textarea>
+        </div>
+      </div>`;
+  });
+
+  html += "</div>";
+  container.innerHTML = html;
+}
+
+// ---- ACTIONS ----
+
+function decide(id, decision) {
+  const current = state[id].decision;
+  // Toggle off if clicking same decision
+  state[id].decision = current === decision ? "pending" : decision;
+  render();
+}
+
+function selectOption(id, index) {
+  const finding = FINDINGS.find(f => f.id === id);
+  if (!finding || !finding.options) return;
+  const opt = finding.options[index];
+  state[id].selected_option = state[id].selected_option === opt ? null : opt;
+  render();
+}
+
+function updateNotes(id) {
+  const el = document.getElementById("notes-" + id);
+  if (el) state[id].notes = el.value;
+}
+
+function updateCounts() {
+  const severities = { CRITICAL: 0, WARNING: 0, FINDING: 0, PASS: 0 };
+  FINDINGS.forEach(f => severities[f.severity]++);
+
+  document.getElementById("count-critical").textContent = severities.CRITICAL;
+  document.getElementById("count-warning").textContent = severities.WARNING;
+  document.getElementById("count-finding").textContent = severities.FINDING;
+  document.getElementById("count-pass").textContent = severities.PASS;
+  document.getElementById("count-total").textContent = FINDINGS.length;
+
+  // Reviewable = non-PASS findings + confusions
+  const reviewable = FINDINGS.filter(f => f.severity !== "PASS").length + CONFUSIONS.length;
+  let reviewed = 0;
+  FINDINGS.forEach(f => { if (f.severity !== "PASS" && state[f.id].decision !== "pending") reviewed++; });
+  CONFUSIONS.forEach(c => { if (state[c.id].decision !== "pending") reviewed++; });
+
+  document.getElementById("reviewed-count").textContent = reviewed;
+  document.getElementById("total-reviewable").textContent = reviewable;
+  document.getElementById("footer-reviewed").textContent = reviewed;
+  document.getElementById("footer-total").textContent = reviewable;
+
+  // Critical warning
+  const critPending = FINDINGS.filter(f => f.severity === "CRITICAL" && state[f.id].decision === "pending").length;
+  document.getElementById("critical-warning").style.display = critPending > 0 ? "block" : "none";
+}
+
+function render() {
+  // Preserve notes before re-render
+  const noteValues = {};
+  Object.keys(state).forEach(id => {
+    const el = document.getElementById("notes-" + id);
+    if (el) noteValues[id] = el.value;
+  });
+
+  renderFindings();
+  renderConfusions();
+  updateCounts();
+
+  // Restore notes
+  Object.keys(noteValues).forEach(id => {
+    const el = document.getElementById("notes-" + id);
+    if (el) {
+      el.value = noteValues[id];
+      state[id].notes = noteValues[id];
+    }
+  });
+}
+
+// ---- EXPORT ----
+
+function exportJSON() {
+  const now = new Date().toISOString();
+
+  const findingsOut = FINDINGS.map(f => ({
+    id: f.id,
+    title: f.title,
+    severity: f.severity,
+    category: f.category,
+    decision: state[f.id].decision,
+    selected_option: state[f.id].selected_option,
+    notes: state[f.id].notes
+  }));
+
+  const confusionsOut = CONFUSIONS.map(c => ({
+    id: c.id,
+    text: c.text,
+    raised_by: c.raised_by,
+    decision: state[c.id].decision,
+    notes: state[c.id].notes
+  }));
+
+  const breakdown = { approved: 0, not_clear: 0, dismissed: 0, monitor: 0, pending: 0, pass: 0 };
+  findingsOut.forEach(f => breakdown[f.decision]++);
+  confusionsOut.forEach(c => { if (breakdown[c.decision] !== undefined) breakdown[c.decision]++; });
+
+  const reviewed = Object.values(state).filter(s => s.decision !== "pending" && s.decision !== "pass").length;
+  const pending = Object.values(state).filter(s => s.decision === "pending").length;
+
+  const output = {
+    order_id: "TP-2026-00040",
+    game_title: "Gold Hunt",
+    exported_at: now,
+    total_findings: FINDINGS.length,
+    total_confusions: CONFUSIONS.length,
+    decisions: {
+      reviewed: reviewed,
+      pending: pending,
+      breakdown: breakdown
+    },
+    findings: findingsOut,
+    player_confusions: confusionsOut
+  };
+
+  const blob = new Blob([JSON.stringify(output, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `findings-TP-2026-00040-${now.slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ---- INIT ----
+
+initState();
+render();
+</script>
+</body>
+</html>
