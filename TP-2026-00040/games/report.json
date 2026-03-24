@@ -1,0 +1,60 @@
+{
+  "order_id": "TP-2026-00040",
+  "game_title": "Gold Hunt",
+  "games_played": 4,
+  "player_counts": [
+    2,
+    4,
+    6,
+    8
+  ],
+  "verdict": "GUARDRAIL",
+  "engine": "Agent Teams v2",
+  "results": [
+    {
+      "game": 1,
+      "players": 2,
+      "rounds": 5,
+      "winner": "Danny",
+      "winner_personality": "strategist",
+      "character": "Adiko Goldheart",
+      "collision_rate": 0.2,
+      "flags": 4,
+      "win_method": "tiebreaker_lower_priority"
+    },
+    {
+      "game": 2,
+      "players": 4,
+      "rounds": 5,
+      "winner": "Danny",
+      "winner_personality": "strategist",
+      "character": "Mai Red Lipstick",
+      "collision_rate": 0.8,
+      "flags": 8,
+      "win_method": "ability_clutch"
+    },
+    {
+      "game": 3,
+      "players": 6,
+      "rounds": 5,
+      "winner": "Yossi",
+      "winner_personality": "rules-lawyer",
+      "character": "Shaika Trail Tracker",
+      "collision_rate": 0.6,
+      "flags": 5,
+      "win_method": "standard_3_cases"
+    },
+    {
+      "game": 4,
+      "players": 8,
+      "rounds": 6,
+      "winner": "Danny",
+      "winner_personality": "strategist",
+      "character": "Nadavch Sheriff",
+      "collision_rate": 1.33,
+      "flags": 6,
+      "win_method": "tiebreaker_excess_tokens"
+    }
+  ],
+  "generated_at": "2026-03-24T06:00:00Z"
+}

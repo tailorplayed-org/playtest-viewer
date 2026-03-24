@@ -62,7 +62,12 @@
         "color": "#d4a843"
       }
     ],
-    "protocols": ["simultaneous-selection", "set-collection", "role-power-activation", "catch-up-escalation"],
+    "protocols": [
+      "simultaneous-selection",
+      "set-collection",
+      "role-power-activation",
+      "catch-up-escalation"
+    ],
     "status": "completed",
     "started_at": "2026-03-24T06:00:00Z",
     "ended_at": "2026-03-24T06:25:00Z",
@@ -73,35 +78,219 @@
     "win_condition": "3 cases (6-player mode)"
   },
   "board": {
-    "active_locations": ["mazok_shop", "eilat_reef", "messy_closet", "rosa_salon", "dizengoff_cabin", "nadav_hq", "subaru_wagon", "barka_salon"],
-    "locations": {
-      "mazok_shop": {"name": "Mazok Shop", "name_original": "חנות מצוק", "setup_tokens": ["green", "brown", "orange"], "special": "diverse_start"},
-      "eilat_reef": {"name": "Eilat Reef", "name_original": "שונית אילת", "setup_tokens": ["blue", "blue", "blue"], "special": "blue_specialized"},
-      "messy_closet": {"name": "Messy Closet", "name_original": "הארון המבולגן", "setup_tokens": [], "special": "bag_draw"},
-      "rosa_salon": {"name": "Rosa Salon", "name_original": "סלון הרוזה", "setup_tokens": ["orange", "orange", "orange"], "special": "orange_specialized"},
-      "dizengoff_cabin": {"name": "Dizengoff Cabin", "name_original": "בקתת דיזינגוף", "setup_tokens": ["darkred", "darkred"], "special": "reduced_supply"},
-      "nadav_hq": {"name": "Nadav HQ", "name_original": "מפקדת נדב", "setup_tokens": ["darkred", "orange", "brown"], "special": "case_swap"},
-      "subaru_wagon": {"name": "Subaru Wagon", "name_original": "כרכרת הסובארו", "setup_tokens": ["blue", "green", "brown"], "special": "token_swap"},
-      "barka_salon": {"name": "Barka Salon", "name_original": "סלון ברקה", "setup_tokens": ["green", "darkred", "brown"], "special": "standard"}
-    }
+    "active_locations": [
+      "mazok_shop",
+      "eilat_reef",
+      "messy_closet",
+      "rosa_salon",
+      "dizengoff_cabin",
+      "nadav_hq",
+      "subaru_wagon",
+      "barka_salon"
+    ],
+    "locations": [
+      {
+        "id": "mazok_shop",
+        "name": "Mazok Shop",
+        "name_original": "חנות מצוק",
+        "setup_tokens": [
+          "green",
+          "brown",
+          "orange"
+        ],
+        "special": "diverse_start"
+      },
+      {
+        "id": "eilat_reef",
+        "name": "Eilat Reef",
+        "name_original": "שונית אילת",
+        "setup_tokens": [
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "special": "blue_specialized"
+      },
+      {
+        "id": "messy_closet",
+        "name": "Messy Closet",
+        "name_original": "הארון המבולגן",
+        "setup_tokens": [],
+        "special": "bag_draw"
+      },
+      {
+        "id": "rosa_salon",
+        "name": "Rosa Salon",
+        "name_original": "סלון הרוזה",
+        "setup_tokens": [
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "special": "orange_specialized"
+      },
+      {
+        "id": "dizengoff_cabin",
+        "name": "Dizengoff Cabin",
+        "name_original": "בקתת דיזינגוף",
+        "setup_tokens": [
+          "darkred",
+          "darkred"
+        ],
+        "special": "reduced_supply"
+      },
+      {
+        "id": "nadav_hq",
+        "name": "Nadav HQ",
+        "name_original": "מפקדת נדב",
+        "setup_tokens": [
+          "darkred",
+          "orange",
+          "brown"
+        ],
+        "special": "case_swap"
+      },
+      {
+        "id": "subaru_wagon",
+        "name": "Subaru Wagon",
+        "name_original": "כרכרת הסובארו",
+        "setup_tokens": [
+          "blue",
+          "green",
+          "brown"
+        ],
+        "special": "token_swap"
+      },
+      {
+        "id": "barka_salon",
+        "name": "Barka Salon",
+        "name_original": "סלון ברקה",
+        "setup_tokens": [
+          "green",
+          "darkred",
+          "brown"
+        ],
+        "special": "standard"
+      }
+    ]
   },
   "case_files": {
-    "deck_order": [6, 14, 12, 2, 16, 15, 10, 18, 4, 7, 17, 8, 5, 3, 20, 19, 9, 11, 13, 1],
+    "deck_order": [
+      6,
+      14,
+      12,
+      2,
+      16,
+      15,
+      10,
+      18,
+      4,
+      7,
+      17,
+      8,
+      5,
+      3,
+      20,
+      19,
+      9,
+      11,
+      13,
+      1
+    ],
     "draft": {
-      "player-1": {"drew": [6, 14], "kept": 6, "returned": 14},
-      "player-2": {"drew": [12, 2], "kept": 2, "returned": 12},
-      "player-3": {"drew": [16, 15], "kept": 15, "returned": 16},
-      "player-4": {"drew": [10, 18], "kept": 10, "returned": 18},
-      "player-5": {"drew": [4, 7], "kept": 4, "returned": 7},
-      "player-6": {"drew": [17, 8], "kept": 17, "returned": 8}
+      "player-1": {
+        "drew": [
+          6,
+          14
+        ],
+        "kept": 6,
+        "returned": 14
+      },
+      "player-2": {
+        "drew": [
+          12,
+          2
+        ],
+        "kept": 2,
+        "returned": 12
+      },
+      "player-3": {
+        "drew": [
+          16,
+          15
+        ],
+        "kept": 15,
+        "returned": 16
+      },
+      "player-4": {
+        "drew": [
+          10,
+          18
+        ],
+        "kept": 10,
+        "returned": 18
+      },
+      "player-5": {
+        "drew": [
+          4,
+          7
+        ],
+        "kept": 4,
+        "returned": 7
+      },
+      "player-6": {
+        "drew": [
+          17,
+          8
+        ],
+        "kept": 17,
+        "returned": 8
+      }
     },
-    "public_cases": [5, 3],
-    "remaining_deck_after_setup": [20, 19, 9, 11, 13, 1, 14, 12, 16, 18, 7, 8]
+    "public_cases": [
+      5,
+      3
+    ],
+    "remaining_deck_after_setup": [
+      20,
+      19,
+      9,
+      11,
+      13,
+      1,
+      14,
+      12,
+      16,
+      18,
+      7,
+      8
+    ]
   },
   "setup": {
-    "bag_initial": {"green": 8, "brown": 8, "darkred": 8, "orange": 8, "blue": 8, "total": 40},
-    "tokens_on_board": {"green": 3, "brown": 4, "darkred": 4, "orange": 5, "blue": 4, "total": 20},
-    "bag_after_setup": {"green": 5, "brown": 4, "darkred": 4, "orange": 3, "blue": 4, "total": 20},
+    "bag_initial": {
+      "green": 8,
+      "brown": 8,
+      "darkred": 8,
+      "orange": 8,
+      "blue": 8,
+      "total": 40
+    },
+    "tokens_on_board": {
+      "green": 3,
+      "brown": 4,
+      "darkred": 4,
+      "orange": 5,
+      "blue": 4,
+      "total": 20
+    },
+    "bag_after_setup": {
+      "green": 5,
+      "brown": 4,
+      "darkred": 4,
+      "orange": 3,
+      "blue": 4,
+      "total": 20
+    },
     "sheriff_start": "player-2",
     "sheriff_reason": "Lowest priority among active characters (Alex Stranger P1)"
   },
@@ -181,41 +370,78 @@
         "collisions": [
           {
             "location": "mazok_shop",
-            "players": ["player-3", "player-1"],
+            "players": [
+              "player-3",
+              "player-1"
+            ],
             "resolution_rule": "Section 1.2 Rule 4b: 2 players, no sheriff. Higher priority (P6 Yossi) picks first, then P4 Danny.",
             "outcome": {
-              "player-3": {"takes": ["green"], "reason": "P6 picks first, takes green (needed for Case 15)"},
-              "player-1": {"takes": ["orange"], "reason": "P4 picks second, takes orange (needed for Case 6)"}
+              "player-3": {
+                "takes": [
+                  "green"
+                ],
+                "reason": "P6 picks first, takes green (needed for Case 15)"
+              },
+              "player-1": {
+                "takes": [
+                  "orange"
+                ],
+                "reason": "P4 picks second, takes orange (needed for Case 6)"
+              }
             },
-            "location_remaining": ["brown"]
+            "location_remaining": [
+              "brown"
+            ]
           }
         ],
         "solo_resolutions": [
           {
             "location": "rosa_salon",
             "player": "player-2",
-            "takes": ["orange", "orange"],
-            "location_remaining": ["orange"]
+            "takes": [
+              "orange",
+              "orange"
+            ],
+            "location_remaining": [
+              "orange"
+            ]
           },
           {
             "location": "messy_closet",
             "player": "player-4",
-            "bag_draw": ["blue", "brown", "orange"],
-            "keeps": ["blue", "orange"],
-            "returns_to_bag": ["brown"],
+            "bag_draw": [
+              "blue",
+              "brown",
+              "orange"
+            ],
+            "keeps": [
+              "blue",
+              "orange"
+            ],
+            "returns_to_bag": [
+              "brown"
+            ],
             "reason": "Ronit keeps blue (needed for Case 10) and orange (generally useful), returns brown"
           },
           {
             "location": "dizengoff_cabin",
             "player": "player-5",
-            "takes": ["darkred", "darkred"],
+            "takes": [
+              "darkred",
+              "darkred"
+            ],
             "location_remaining": []
           },
           {
             "location": "barka_salon",
             "player": "player-6",
-            "takes": ["green", "brown"],
-            "location_remaining": ["darkred"]
+            "takes": [
+              "green",
+              "brown"
+            ],
+            "location_remaining": [
+              "darkred"
+            ]
           }
         ],
         "case_completions": [],
@@ -223,42 +449,180 @@
       },
       "state_after": {
         "players": {
-          "player-1": {"tokens": ["orange"], "cases_complete": 0, "cases_in_hand": [6], "ability_available": true},
-          "player-2": {"tokens": ["orange", "orange"], "cases_complete": 0, "cases_in_hand": [2], "ability_available": true},
-          "player-3": {"tokens": ["green"], "cases_complete": 0, "cases_in_hand": [15], "ability_available": true},
-          "player-4": {"tokens": ["blue", "orange"], "cases_complete": 0, "cases_in_hand": [10], "ability_available": true},
-          "player-5": {"tokens": ["darkred", "darkred"], "cases_complete": 0, "cases_in_hand": [4], "ability_available": true},
-          "player-6": {"tokens": ["green", "brown"], "cases_complete": 0, "cases_in_hand": [17], "ability_available": true}
+          "player-1": {
+            "tokens": [
+              "orange"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              6
+            ],
+            "ability_available": true
+          },
+          "player-2": {
+            "tokens": [
+              "orange",
+              "orange"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              2
+            ],
+            "ability_available": true
+          },
+          "player-3": {
+            "tokens": [
+              "green"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              15
+            ],
+            "ability_available": true
+          },
+          "player-4": {
+            "tokens": [
+              "blue",
+              "orange"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              10
+            ],
+            "ability_available": true
+          },
+          "player-5": {
+            "tokens": [
+              "darkred",
+              "darkred"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              4
+            ],
+            "ability_available": true
+          },
+          "player-6": {
+            "tokens": [
+              "green",
+              "brown"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              17
+            ],
+            "ability_available": true
+          }
         },
         "board": {
-          "mazok_shop": ["brown"],
-          "eilat_reef": ["blue", "blue", "blue"],
+          "mazok_shop": [
+            "brown"
+          ],
+          "eilat_reef": [
+            "blue",
+            "blue",
+            "blue"
+          ],
           "messy_closet": [],
-          "rosa_salon": ["orange"],
+          "rosa_salon": [
+            "orange"
+          ],
           "dizengoff_cabin": [],
-          "nadav_hq": ["darkred", "orange", "brown"],
-          "subaru_wagon": ["blue", "green", "brown"],
-          "barka_salon": ["darkred"]
+          "nadav_hq": [
+            "darkred",
+            "orange",
+            "brown"
+          ],
+          "subaru_wagon": [
+            "blue",
+            "green",
+            "brown"
+          ],
+          "barka_salon": [
+            "darkred"
+          ]
         },
-        "bag": {"blue": 3, "orange": 2, "green": 5, "brown": 4, "darkred": 4, "total": 18},
+        "bag": {
+          "blue": 3,
+          "orange": 2,
+          "green": 5,
+          "brown": 4,
+          "darkred": 4,
+          "total": 18
+        },
         "replenishment": {
-          "dizengoff_cabin": {"added": ["brown", "brown"], "rule": "0 tokens -> +2 from bag"},
-          "mazok_shop": {"added": ["blue"], "rule": "1 token -> +1 from bag"},
-          "rosa_salon": {"added": ["brown"], "rule": "1 token -> +1 from bag"},
-          "barka_salon": {"added": ["blue"], "rule": "1 token -> +1 from bag"}
+          "dizengoff_cabin": {
+            "added": [
+              "brown",
+              "brown"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "mazok_shop": {
+            "added": [
+              "blue"
+            ],
+            "rule": "1 token -> +1 from bag"
+          },
+          "rosa_salon": {
+            "added": [
+              "brown"
+            ],
+            "rule": "1 token -> +1 from bag"
+          },
+          "barka_salon": {
+            "added": [
+              "blue"
+            ],
+            "rule": "1 token -> +1 from bag"
+          }
         },
-        "bag_after_replenish": {"blue": 1, "orange": 2, "green": 5, "brown": 1, "darkred": 4, "total": 13},
+        "bag_after_replenish": {
+          "blue": 1,
+          "orange": 2,
+          "green": 5,
+          "brown": 1,
+          "darkred": 4,
+          "total": 13
+        },
         "board_after_replenish": {
-          "mazok_shop": ["brown", "blue"],
-          "eilat_reef": ["blue", "blue", "blue"],
+          "mazok_shop": [
+            "brown",
+            "blue"
+          ],
+          "eilat_reef": [
+            "blue",
+            "blue",
+            "blue"
+          ],
           "messy_closet": [],
-          "rosa_salon": ["orange", "brown"],
-          "dizengoff_cabin": ["brown", "brown"],
-          "nadav_hq": ["darkred", "orange", "brown"],
-          "subaru_wagon": ["blue", "green", "brown"],
-          "barka_salon": ["darkred", "blue"]
+          "rosa_salon": [
+            "orange",
+            "brown"
+          ],
+          "dizengoff_cabin": [
+            "brown",
+            "brown"
+          ],
+          "nadav_hq": [
+            "darkred",
+            "orange",
+            "brown"
+          ],
+          "subaru_wagon": [
+            "blue",
+            "green",
+            "brown"
+          ],
+          "barka_salon": [
+            "darkred",
+            "blue"
+          ]
         },
-        "public_cases": [5, 3],
+        "public_cases": [
+          5,
+          3
+        ],
         "prize_token": "center",
         "score_gap": 0,
         "catch_up_triggered": false
@@ -340,21 +704,50 @@
         "collisions": [
           {
             "location": "subaru_wagon",
-            "players": ["player-5", "player-1"],
+            "players": [
+              "player-5",
+              "player-1"
+            ],
             "resolution_rule": "Section 1.2 Rule 4b: 2 players, no sheriff. Higher priority (P7 Danny2) picks first, then P4 Danny.",
             "outcome": {
-              "player-5": {"takes": ["green"], "reason": "P7 picks first, takes green (completes Case 4!)"},
-              "player-1": {"takes": ["blue"], "reason": "P4 picks second, takes blue (green already taken, blue for flexibility)"}
+              "player-5": {
+                "takes": [
+                  "green"
+                ],
+                "reason": "P7 picks first, takes green (completes Case 4!)"
+              },
+              "player-1": {
+                "takes": [
+                  "blue"
+                ],
+                "reason": "P4 picks second, takes blue (green already taken, blue for flexibility)"
+              }
             },
-            "location_remaining": ["brown"]
+            "location_remaining": [
+              "brown"
+            ]
           },
           {
             "location": "eilat_reef",
-            "players": ["player-2", "player-4"],
+            "players": [
+              "player-2",
+              "player-4"
+            ],
             "resolution_rule": "Section 1.2 Rule 4b + Section 1.4 Rule 5: 2 players, sheriff present. Sheriff (Michal P1) takes 2 tokens, opponent takes 1.",
             "outcome": {
-              "player-2": {"takes": ["blue", "blue"], "reason": "Sheriff bonus: takes 2 blue (completes Case 2!)"},
-              "player-4": {"takes": ["blue"], "reason": "Non-sheriff takes 1 blue (2nd blue for Case 10)"}
+              "player-2": {
+                "takes": [
+                  "blue",
+                  "blue"
+                ],
+                "reason": "Sheriff bonus: takes 2 blue (completes Case 2!)"
+              },
+              "player-4": {
+                "takes": [
+                  "blue"
+                ],
+                "reason": "Non-sheriff takes 1 blue (2nd blue for Case 10)"
+              }
             },
             "location_remaining": []
           }
@@ -363,14 +756,26 @@
           {
             "location": "nadav_hq",
             "player": "player-3",
-            "takes": ["brown", "orange"],
-            "location_remaining": ["darkred"],
-            "special_action": {"type": "case_swap", "used": false, "reason": "Yossi has Case 15 (needs 1g). Deck top is Case 20 (2bl+1dr). Case 15 is better, declines swap."}
+            "takes": [
+              "brown",
+              "orange"
+            ],
+            "location_remaining": [
+              "darkred"
+            ],
+            "special_action": {
+              "type": "case_swap",
+              "used": false,
+              "reason": "Yossi has Case 15 (needs 1g). Deck top is Case 20 (2bl+1dr). Case 15 is better, declines swap."
+            }
           },
           {
             "location": "rosa_salon",
             "player": "player-6",
-            "takes": ["orange", "brown"],
+            "takes": [
+              "orange",
+              "brown"
+            ],
             "location_remaining": []
           }
         ],
@@ -379,7 +784,11 @@
             "player_id": "player-5",
             "case_number": 4,
             "case_name": "Dracula Cloak Investigation",
-            "tokens_spent": ["darkred", "darkred", "green"],
+            "tokens_spent": [
+              "darkred",
+              "darkred",
+              "green"
+            ],
             "tokens_returned_to_bag": true,
             "new_case_drawn": 20,
             "cases_now_complete": 1
@@ -388,7 +797,11 @@
             "player_id": "player-2",
             "case_number": 2,
             "case_name": "Gold Rush Affair",
-            "tokens_spent": ["orange", "orange", "blue"],
+            "tokens_spent": [
+              "orange",
+              "orange",
+              "blue"
+            ],
             "tokens_returned_to_bag": true,
             "new_case_drawn": 19,
             "cases_now_complete": 1
@@ -398,43 +811,187 @@
       },
       "state_after": {
         "players": {
-          "player-1": {"tokens": ["orange", "blue"], "cases_complete": 0, "cases_in_hand": [6], "ability_available": true},
-          "player-2": {"tokens": ["blue"], "cases_complete": 1, "completed_cases": [2], "cases_in_hand": [19], "ability_available": true},
-          "player-3": {"tokens": ["green", "brown", "orange"], "cases_complete": 0, "cases_in_hand": [15], "ability_available": true},
-          "player-4": {"tokens": ["blue", "orange", "blue"], "cases_complete": 0, "cases_in_hand": [10], "ability_available": true},
-          "player-5": {"tokens": [], "cases_complete": 1, "completed_cases": [4], "cases_in_hand": [20], "ability_available": true},
-          "player-6": {"tokens": ["green", "brown", "orange", "brown"], "cases_complete": 0, "cases_in_hand": [17], "ability_available": true}
+          "player-1": {
+            "tokens": [
+              "orange",
+              "blue"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              6
+            ],
+            "ability_available": true
+          },
+          "player-2": {
+            "tokens": [
+              "blue"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              2
+            ],
+            "cases_in_hand": [
+              19
+            ],
+            "ability_available": true
+          },
+          "player-3": {
+            "tokens": [
+              "green",
+              "brown",
+              "orange"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              15
+            ],
+            "ability_available": true
+          },
+          "player-4": {
+            "tokens": [
+              "blue",
+              "orange",
+              "blue"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              10
+            ],
+            "ability_available": true
+          },
+          "player-5": {
+            "tokens": [],
+            "cases_complete": 1,
+            "completed_cases": [
+              4
+            ],
+            "cases_in_hand": [
+              20
+            ],
+            "ability_available": true
+          },
+          "player-6": {
+            "tokens": [
+              "green",
+              "brown",
+              "orange",
+              "brown"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              17
+            ],
+            "ability_available": true
+          }
         },
         "board": {
-          "mazok_shop": ["brown", "blue"],
+          "mazok_shop": [
+            "brown",
+            "blue"
+          ],
           "eilat_reef": [],
           "messy_closet": [],
           "rosa_salon": [],
-          "dizengoff_cabin": ["brown", "brown"],
-          "nadav_hq": ["darkred"],
-          "subaru_wagon": ["brown"],
-          "barka_salon": ["darkred", "blue"]
+          "dizengoff_cabin": [
+            "brown",
+            "brown"
+          ],
+          "nadav_hq": [
+            "darkred"
+          ],
+          "subaru_wagon": [
+            "brown"
+          ],
+          "barka_salon": [
+            "darkred",
+            "blue"
+          ]
         },
-        "bag": {"blue": 2, "orange": 4, "green": 6, "brown": 1, "darkred": 6, "total": 19},
+        "bag": {
+          "blue": 2,
+          "orange": 4,
+          "green": 6,
+          "brown": 1,
+          "darkred": 6,
+          "total": 19
+        },
         "replenishment": {
-          "eilat_reef": {"added": ["green", "darkred"], "rule": "0 tokens -> +2 from bag"},
-          "rosa_salon": {"added": ["green", "green"], "rule": "0 tokens -> +2 from bag"},
-          "nadav_hq": {"added": ["green"], "rule": "1 token -> +1 from bag"},
-          "subaru_wagon": {"added": ["darkred"], "rule": "1 token -> +1 from bag"},
-          "barka_salon": {"added": ["orange"], "rule": "2 tokens -> no replenish, already added by error correction: actually 2 tokens = no replenish"}
+          "eilat_reef": {
+            "added": [
+              "green",
+              "darkred"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "rosa_salon": {
+            "added": [
+              "green",
+              "green"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "nadav_hq": {
+            "added": [
+              "green"
+            ],
+            "rule": "1 token -> +1 from bag"
+          },
+          "subaru_wagon": {
+            "added": [
+              "darkred"
+            ],
+            "rule": "1 token -> +1 from bag"
+          },
+          "barka_salon": {
+            "added": [
+              "orange"
+            ],
+            "rule": "2 tokens -> no replenish, already added by error correction: actually 2 tokens = no replenish"
+          }
         },
-        "bag_after_replenish": {"blue": 2, "orange": 4, "green": 2, "brown": 1, "darkred": 4, "total": 13},
+        "bag_after_replenish": {
+          "blue": 2,
+          "orange": 4,
+          "green": 2,
+          "brown": 1,
+          "darkred": 4,
+          "total": 13
+        },
         "board_after_replenish": {
-          "mazok_shop": ["brown", "blue"],
-          "eilat_reef": ["green", "darkred"],
+          "mazok_shop": [
+            "brown",
+            "blue"
+          ],
+          "eilat_reef": [
+            "green",
+            "darkred"
+          ],
           "messy_closet": [],
-          "rosa_salon": ["green", "green"],
-          "dizengoff_cabin": ["brown", "brown"],
-          "nadav_hq": ["darkred", "green"],
-          "subaru_wagon": ["brown", "darkred"],
-          "barka_salon": ["darkred", "blue"]
+          "rosa_salon": [
+            "green",
+            "green"
+          ],
+          "dizengoff_cabin": [
+            "brown",
+            "brown"
+          ],
+          "nadav_hq": [
+            "darkred",
+            "green"
+          ],
+          "subaru_wagon": [
+            "brown",
+            "darkred"
+          ],
+          "barka_salon": [
+            "darkred",
+            "blue"
+          ]
         },
-        "public_cases": [5, 3],
+        "public_cases": [
+          5,
+          3
+        ],
         "prize_token": "player-5",
         "prize_reason": "Danny2 and Michal tied at 1 case each. Tiebreak: fewest tokens. Danny2=0, Michal=1. Prize to Danny2.",
         "score_gap": 1,
@@ -526,40 +1083,68 @@
           {
             "location": "rosa_salon",
             "player": "player-1",
-            "takes": ["green", "green"],
+            "takes": [
+              "green",
+              "green"
+            ],
             "location_remaining": []
           },
           {
             "location": "subaru_wagon",
             "player": "player-2",
-            "takes": ["brown", "darkred"],
+            "takes": [
+              "brown",
+              "darkred"
+            ],
             "location_remaining": []
           },
           {
             "location": "nadav_hq",
             "player": "player-3",
-            "takes": ["green", "darkred"],
+            "takes": [
+              "green",
+              "darkred"
+            ],
             "location_remaining": [],
-            "special_action": {"type": "case_swap", "used": false, "reason": "Yossi completes Case 15 this round, draws Case 9 (1o+1dr+1g). Already has orange+darkred = 2/3. Case 9 is better than deck top (Case 11). Declines swap."}
+            "special_action": {
+              "type": "case_swap",
+              "used": false,
+              "reason": "Yossi completes Case 15 this round, draws Case 9 (1o+1dr+1g). Already has orange+darkred = 2/3. Case 9 is better than deck top (Case 11). Declines swap."
+            }
           },
           {
             "location": "eilat_reef",
             "player": "player-4",
-            "takes": ["green", "darkred"],
+            "takes": [
+              "green",
+              "darkred"
+            ],
             "location_remaining": []
           },
           {
             "location": "barka_salon",
             "player": "player-5",
-            "takes": ["blue", "darkred"],
+            "takes": [
+              "blue",
+              "darkred"
+            ],
             "location_remaining": []
           },
           {
             "location": "messy_closet",
             "player": "player-6",
-            "bag_draw": ["orange", "orange", "darkred"],
-            "keeps": ["orange", "darkred"],
-            "returns_to_bag": ["orange"],
+            "bag_draw": [
+              "orange",
+              "orange",
+              "darkred"
+            ],
+            "keeps": [
+              "orange",
+              "darkred"
+            ],
+            "returns_to_bag": [
+              "orange"
+            ],
             "reason": "Michal2 needed green but drew none. Keeps orange + darkred for flexibility."
           }
         ],
@@ -568,7 +1153,11 @@
             "player_id": "player-1",
             "case_number": 6,
             "case_name": "The Toughest Cookie Affair",
-            "tokens_spent": ["green", "green", "orange"],
+            "tokens_spent": [
+              "green",
+              "green",
+              "orange"
+            ],
             "tokens_returned_to_bag": true,
             "new_case_drawn": 11,
             "cases_now_complete": 1
@@ -577,7 +1166,11 @@
             "player_id": "player-3",
             "case_number": 15,
             "case_name": "Thin Wall Case",
-            "tokens_spent": ["green", "green", "brown"],
+            "tokens_spent": [
+              "green",
+              "green",
+              "brown"
+            ],
             "tokens_returned_to_bag": true,
             "new_case_drawn": 9,
             "cases_now_complete": 1
@@ -586,7 +1179,11 @@
             "player_id": "player-4",
             "case_number": 10,
             "case_name": "Dive Affair",
-            "tokens_spent": ["blue", "blue", "green"],
+            "tokens_spent": [
+              "blue",
+              "blue",
+              "green"
+            ],
             "tokens_returned_to_bag": true,
             "new_case_drawn": 13,
             "cases_now_complete": 1
@@ -596,43 +1193,196 @@
       },
       "state_after": {
         "players": {
-          "player-1": {"tokens": ["blue"], "cases_complete": 1, "completed_cases": [6], "cases_in_hand": [11], "ability_available": true},
-          "player-2": {"tokens": ["blue", "brown", "darkred"], "cases_complete": 1, "completed_cases": [2], "cases_in_hand": [19], "ability_available": true},
-          "player-3": {"tokens": ["orange", "darkred"], "cases_complete": 1, "completed_cases": [15], "cases_in_hand": [9], "ability_available": true},
-          "player-4": {"tokens": ["orange", "darkred"], "cases_complete": 1, "completed_cases": [10], "cases_in_hand": [13], "ability_available": true},
-          "player-5": {"tokens": ["blue", "darkred"], "cases_complete": 1, "completed_cases": [4], "cases_in_hand": [20], "ability_available": true},
-          "player-6": {"tokens": ["green", "brown", "orange", "brown", "orange", "darkred"], "cases_complete": 0, "cases_in_hand": [17], "ability_available": true}
+          "player-1": {
+            "tokens": [
+              "blue"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              6
+            ],
+            "cases_in_hand": [
+              11
+            ],
+            "ability_available": true
+          },
+          "player-2": {
+            "tokens": [
+              "blue",
+              "brown",
+              "darkred"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              2
+            ],
+            "cases_in_hand": [
+              19
+            ],
+            "ability_available": true
+          },
+          "player-3": {
+            "tokens": [
+              "orange",
+              "darkred"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              15
+            ],
+            "cases_in_hand": [
+              9
+            ],
+            "ability_available": true
+          },
+          "player-4": {
+            "tokens": [
+              "orange",
+              "darkred"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              10
+            ],
+            "cases_in_hand": [
+              13
+            ],
+            "ability_available": true
+          },
+          "player-5": {
+            "tokens": [
+              "blue",
+              "darkred"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              4
+            ],
+            "cases_in_hand": [
+              20
+            ],
+            "ability_available": true
+          },
+          "player-6": {
+            "tokens": [
+              "green",
+              "brown",
+              "orange",
+              "brown",
+              "orange",
+              "darkred"
+            ],
+            "cases_complete": 0,
+            "cases_in_hand": [
+              17
+            ],
+            "ability_available": true
+          }
         },
         "board": {
-          "mazok_shop": ["brown", "blue"],
+          "mazok_shop": [
+            "brown",
+            "blue"
+          ],
           "eilat_reef": [],
           "messy_closet": [],
           "rosa_salon": [],
-          "dizengoff_cabin": ["brown", "brown"],
+          "dizengoff_cabin": [
+            "brown",
+            "brown"
+          ],
           "nadav_hq": [],
           "subaru_wagon": [],
           "barka_salon": []
         },
-        "bag": {"blue": 4, "orange": 4, "green": 7, "brown": 2, "darkred": 3, "total": 20},
+        "bag": {
+          "blue": 4,
+          "orange": 4,
+          "green": 7,
+          "brown": 2,
+          "darkred": 3,
+          "total": 20
+        },
         "replenishment": {
-          "eilat_reef": {"added": ["darkred", "green"], "rule": "0 tokens -> +2 from bag"},
-          "rosa_salon": {"added": ["orange", "darkred"], "rule": "0 tokens -> +2 from bag"},
-          "nadav_hq": {"added": ["darkred", "green"], "rule": "0 tokens -> +2 from bag"},
-          "subaru_wagon": {"added": ["brown", "green"], "rule": "0 tokens -> +2 from bag"},
-          "barka_salon": {"added": ["orange", "blue"], "rule": "0 tokens -> +2 from bag"}
+          "eilat_reef": {
+            "added": [
+              "darkred",
+              "green"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "rosa_salon": {
+            "added": [
+              "orange",
+              "darkred"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "nadav_hq": {
+            "added": [
+              "darkred",
+              "green"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "subaru_wagon": {
+            "added": [
+              "brown",
+              "green"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "barka_salon": {
+            "added": [
+              "orange",
+              "blue"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          }
         },
-        "bag_after_replenish": {"blue": 3, "orange": 2, "green": 4, "brown": 1, "darkred": 0, "total": 10},
+        "bag_after_replenish": {
+          "blue": 3,
+          "orange": 2,
+          "green": 4,
+          "brown": 1,
+          "darkred": 0,
+          "total": 10
+        },
         "board_after_replenish": {
-          "mazok_shop": ["brown", "blue"],
-          "eilat_reef": ["darkred", "green"],
+          "mazok_shop": [
+            "brown",
+            "blue"
+          ],
+          "eilat_reef": [
+            "darkred",
+            "green"
+          ],
           "messy_closet": [],
-          "rosa_salon": ["orange", "darkred"],
-          "dizengoff_cabin": ["brown", "brown"],
-          "nadav_hq": ["darkred", "green"],
-          "subaru_wagon": ["brown", "green"],
-          "barka_salon": ["orange", "blue"]
+          "rosa_salon": [
+            "orange",
+            "darkred"
+          ],
+          "dizengoff_cabin": [
+            "brown",
+            "brown"
+          ],
+          "nadav_hq": [
+            "darkred",
+            "green"
+          ],
+          "subaru_wagon": [
+            "brown",
+            "green"
+          ],
+          "barka_salon": [
+            "orange",
+            "blue"
+          ]
         },
-        "public_cases": [5, 3],
+        "public_cases": [
+          5,
+          3
+        ],
         "prize_token": "player-1",
         "prize_reason": "5 players tied at 1 case. Tiebreak: fewest tokens. Danny has 1 token, lowest among tied.",
         "score_gap": 1,
@@ -724,41 +1474,69 @@
           {
             "location": "rosa_salon",
             "player": "player-1",
-            "takes": ["orange", "darkred"],
+            "takes": [
+              "orange",
+              "darkred"
+            ],
             "location_remaining": []
           },
           {
             "location": "barka_salon",
             "player": "player-2",
-            "takes": ["orange", "blue"],
+            "takes": [
+              "orange",
+              "blue"
+            ],
             "location_remaining": []
           },
           {
             "location": "subaru_wagon",
             "player": "player-3",
-            "takes": ["green", "brown"],
+            "takes": [
+              "green",
+              "brown"
+            ],
             "location_remaining": []
           },
           {
             "location": "mazok_shop",
             "player": "player-4",
-            "takes": ["brown", "blue"],
+            "takes": [
+              "brown",
+              "blue"
+            ],
             "location_remaining": []
           },
           {
             "location": "messy_closet",
             "player": "player-5",
-            "bag_draw": ["green", "green", "orange"],
-            "keeps": ["green", "orange"],
-            "returns_to_bag": ["green"],
+            "bag_draw": [
+              "green",
+              "green",
+              "orange"
+            ],
+            "keeps": [
+              "green",
+              "orange"
+            ],
+            "returns_to_bag": [
+              "green"
+            ],
             "reason": "Danny2 needed blue but drew green*2+orange. No blue available. Keeps green+orange for future flexibility."
           },
           {
             "location": "nadav_hq",
             "player": "player-6",
-            "takes": ["green", "darkred"],
+            "takes": [
+              "green",
+              "darkred"
+            ],
             "location_remaining": [],
-            "special_action": {"type": "case_swap", "used": false, "reason": "Michal2 completes Case 17 this round, draws Case 1 (1o+1br+1g). Already has orange+brown. Only needs 1 green. Better than deck top (Case 14). Declines swap."}
+            "special_action": {
+              "type": "case_swap",
+              "used": false,
+              "reason": "Michal2 completes Case 17 this round, draws Case 1 (1o+1br+1g). Already has orange+brown. Only needs 1 green. Better than deck top (Case 14). Declines swap."
+            }
           }
         ],
         "case_completions": [
@@ -766,7 +1544,11 @@
             "player_id": "player-2",
             "case_number": 19,
             "case_name": "Birthday Investigation",
-            "tokens_spent": ["orange", "darkred", "brown"],
+            "tokens_spent": [
+              "orange",
+              "darkred",
+              "brown"
+            ],
             "tokens_returned_to_bag": true,
             "new_case_drawn": 14,
             "cases_now_complete": 2
@@ -775,7 +1557,11 @@
             "player_id": "player-3",
             "case_number": 9,
             "case_name": "Wedding Mystery",
-            "tokens_spent": ["orange", "darkred", "green"],
+            "tokens_spent": [
+              "orange",
+              "darkred",
+              "green"
+            ],
             "tokens_returned_to_bag": true,
             "new_case_drawn": 12,
             "cases_now_complete": 2
@@ -784,7 +1570,11 @@
             "player_id": "player-6",
             "case_number": 17,
             "case_name": "Olympus Affair",
-            "tokens_spent": ["green", "green", "orange"],
+            "tokens_spent": [
+              "green",
+              "green",
+              "orange"
+            ],
             "tokens_returned_to_bag": true,
             "new_case_drawn": 1,
             "cases_now_complete": 1
@@ -794,43 +1584,204 @@
       },
       "state_after": {
         "players": {
-          "player-1": {"tokens": ["blue", "orange", "darkred"], "cases_complete": 1, "completed_cases": [6], "cases_in_hand": [11], "ability_available": true},
-          "player-2": {"tokens": ["blue", "blue"], "cases_complete": 2, "completed_cases": [2, 19], "cases_in_hand": [14], "ability_available": true},
-          "player-3": {"tokens": ["brown"], "cases_complete": 2, "completed_cases": [15, 9], "cases_in_hand": [12], "ability_available": true},
-          "player-4": {"tokens": ["orange", "darkred", "brown", "blue"], "cases_complete": 1, "completed_cases": [10], "cases_in_hand": [13], "ability_available": true},
-          "player-5": {"tokens": ["blue", "darkred", "green", "orange"], "cases_complete": 1, "completed_cases": [4], "cases_in_hand": [20], "ability_available": true},
-          "player-6": {"tokens": ["brown", "brown", "orange", "darkred", "darkred"], "cases_complete": 1, "completed_cases": [17], "cases_in_hand": [1], "ability_available": true}
+          "player-1": {
+            "tokens": [
+              "blue",
+              "orange",
+              "darkred"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              6
+            ],
+            "cases_in_hand": [
+              11
+            ],
+            "ability_available": true
+          },
+          "player-2": {
+            "tokens": [
+              "blue",
+              "blue"
+            ],
+            "cases_complete": 2,
+            "completed_cases": [
+              2,
+              19
+            ],
+            "cases_in_hand": [
+              14
+            ],
+            "ability_available": true
+          },
+          "player-3": {
+            "tokens": [
+              "brown"
+            ],
+            "cases_complete": 2,
+            "completed_cases": [
+              15,
+              9
+            ],
+            "cases_in_hand": [
+              12
+            ],
+            "ability_available": true
+          },
+          "player-4": {
+            "tokens": [
+              "orange",
+              "darkred",
+              "brown",
+              "blue"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              10
+            ],
+            "cases_in_hand": [
+              13
+            ],
+            "ability_available": true
+          },
+          "player-5": {
+            "tokens": [
+              "blue",
+              "darkred",
+              "green",
+              "orange"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              4
+            ],
+            "cases_in_hand": [
+              20
+            ],
+            "ability_available": true
+          },
+          "player-6": {
+            "tokens": [
+              "brown",
+              "brown",
+              "orange",
+              "darkred",
+              "darkred"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              17
+            ],
+            "cases_in_hand": [
+              1
+            ],
+            "ability_available": true
+          }
         },
         "board": {
           "mazok_shop": [],
-          "eilat_reef": ["darkred", "green"],
+          "eilat_reef": [
+            "darkred",
+            "green"
+          ],
           "messy_closet": [],
           "rosa_salon": [],
-          "dizengoff_cabin": ["brown", "brown"],
+          "dizengoff_cabin": [
+            "brown",
+            "brown"
+          ],
           "nadav_hq": [],
           "subaru_wagon": [],
           "barka_salon": []
         },
-        "bag": {"blue": 3, "orange": 4, "green": 6, "brown": 2, "darkred": 2, "total": 17},
+        "bag": {
+          "blue": 3,
+          "orange": 4,
+          "green": 6,
+          "brown": 2,
+          "darkred": 2,
+          "total": 17
+        },
         "replenishment": {
-          "mazok_shop": {"added": ["darkred", "green"], "rule": "0 tokens -> +2 from bag"},
-          "rosa_salon": {"added": ["orange", "darkred"], "rule": "0 tokens -> +2 from bag"},
-          "nadav_hq": {"added": ["green", "darkred"], "rule": "0 tokens -> +2 from bag"},
-          "subaru_wagon": {"added": ["brown", "green"], "rule": "0 tokens -> +2 from bag"},
-          "barka_salon": {"added": ["orange", "blue"], "rule": "0 tokens -> +2 from bag"}
+          "mazok_shop": {
+            "added": [
+              "darkred",
+              "green"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "rosa_salon": {
+            "added": [
+              "orange",
+              "darkred"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "nadav_hq": {
+            "added": [
+              "green",
+              "darkred"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "subaru_wagon": {
+            "added": [
+              "brown",
+              "green"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          },
+          "barka_salon": {
+            "added": [
+              "orange",
+              "blue"
+            ],
+            "rule": "0 tokens -> +2 from bag"
+          }
         },
-        "bag_after_replenish": {"blue": 2, "orange": 2, "green": 3, "brown": 1, "darkred": 0, "total": 8},
+        "bag_after_replenish": {
+          "blue": 2,
+          "orange": 2,
+          "green": 3,
+          "brown": 1,
+          "darkred": 0,
+          "total": 8
+        },
         "board_after_replenish": {
-          "mazok_shop": ["darkred", "green"],
-          "eilat_reef": ["darkred", "green"],
+          "mazok_shop": [
+            "darkred",
+            "green"
+          ],
+          "eilat_reef": [
+            "darkred",
+            "green"
+          ],
           "messy_closet": [],
-          "rosa_salon": ["orange", "darkred"],
-          "dizengoff_cabin": ["brown", "brown"],
-          "nadav_hq": ["green", "darkred"],
-          "subaru_wagon": ["brown", "green"],
-          "barka_salon": ["orange", "blue"]
+          "rosa_salon": [
+            "orange",
+            "darkred"
+          ],
+          "dizengoff_cabin": [
+            "brown",
+            "brown"
+          ],
+          "nadav_hq": [
+            "green",
+            "darkred"
+          ],
+          "subaru_wagon": [
+            "brown",
+            "green"
+          ],
+          "barka_salon": [
+            "orange",
+            "blue"
+          ]
         },
-        "public_cases": [5, 3],
+        "public_cases": [
+          5,
+          3
+        ],
         "prize_token": "player-3",
         "prize_reason": "Michal and Yossi tied at 2 cases. Tiebreak: fewest tokens. Yossi=1, Michal=2. Prize to Yossi.",
         "score_gap": 2,
@@ -920,11 +1871,24 @@
         "collisions": [
           {
             "location": "rosa_salon",
-            "players": ["player-4", "player-2"],
+            "players": [
+              "player-4",
+              "player-2"
+            ],
             "resolution_rule": "Section 1.2 Rule 4b: 2 players, no sheriff. Higher priority (P3 Ronit) picks first, then P1 Michal.",
             "outcome": {
-              "player-4": {"takes": ["orange"], "reason": "P3 picks first, takes orange (completes Case 13!)"},
-              "player-2": {"takes": ["darkred"], "reason": "P1 picks second, takes darkred (has blue+darkred, still needs orange for Case 14)"}
+              "player-4": {
+                "takes": [
+                  "orange"
+                ],
+                "reason": "P3 picks first, takes orange (completes Case 13!)"
+              },
+              "player-2": {
+                "takes": [
+                  "darkred"
+                ],
+                "reason": "P1 picks second, takes darkred (has blue+darkred, still needs orange for Case 14)"
+              }
             },
             "location_remaining": []
           }
@@ -933,26 +1897,38 @@
           {
             "location": "dizengoff_cabin",
             "player": "player-1",
-            "takes": ["brown", "brown"],
+            "takes": [
+              "brown",
+              "brown"
+            ],
             "location_remaining": []
           },
           {
             "location": "nadav_hq",
             "player": "player-3",
-            "takes": ["green", "darkred"],
+            "takes": [
+              "green",
+              "darkred"
+            ],
             "location_remaining": []
           },
           {
             "location": "eilat_reef",
             "player": "player-5",
-            "takes": ["darkred", "green"],
+            "takes": [
+              "darkred",
+              "green"
+            ],
             "location_remaining": [],
             "note": "Danny2 reconsidered and went Eilat (original plan). Tokens not ideal for Case 20 but safe."
           },
           {
             "location": "subaru_wagon",
             "player": "player-6",
-            "takes": ["green", "brown"],
+            "takes": [
+              "green",
+              "brown"
+            ],
             "location_remaining": []
           }
         ],
@@ -961,7 +1937,11 @@
             "player_id": "player-3",
             "case_number": 12,
             "case_name": "Carriage Investigation",
-            "tokens_spent": ["green", "brown", "darkred"],
+            "tokens_spent": [
+              "green",
+              "brown",
+              "darkred"
+            ],
             "tokens_returned_to_bag": true,
             "cases_now_complete": 3,
             "winning_case": true
@@ -970,7 +1950,11 @@
             "player_id": "player-1",
             "case_number": 11,
             "case_name": "Bucket Case",
-            "tokens_spent": ["brown", "blue", "orange"],
+            "tokens_spent": [
+              "brown",
+              "blue",
+              "orange"
+            ],
             "tokens_returned_to_bag": true,
             "cases_now_complete": 2
           },
@@ -978,7 +1962,11 @@
             "player_id": "player-4",
             "case_number": 13,
             "case_name": "Cottage Mystery",
-            "tokens_spent": ["orange", "orange", "brown"],
+            "tokens_spent": [
+              "orange",
+              "orange",
+              "brown"
+            ],
             "tokens_returned_to_bag": true,
             "cases_now_complete": 2
           },
@@ -986,7 +1974,11 @@
             "player_id": "player-6",
             "case_number": 1,
             "case_name": "Spackle Mystery",
-            "tokens_spent": ["orange", "brown", "green"],
+            "tokens_spent": [
+              "orange",
+              "brown",
+              "green"
+            ],
             "tokens_returned_to_bag": true,
             "cases_now_complete": 2
           }
@@ -995,12 +1987,76 @@
       },
       "state_after": {
         "players": {
-          "player-1": {"tokens": ["darkred", "brown"], "cases_complete": 2, "completed_cases": [6, 11]},
-          "player-2": {"tokens": ["blue", "blue", "darkred"], "cases_complete": 2, "completed_cases": [2, 19]},
-          "player-3": {"tokens": [], "cases_complete": 3, "completed_cases": [15, 9, 12]},
-          "player-4": {"tokens": ["darkred", "blue"], "cases_complete": 2, "completed_cases": [10, 13]},
-          "player-5": {"tokens": ["blue", "darkred", "green", "orange", "darkred", "green"], "cases_complete": 1, "completed_cases": [4]},
-          "player-6": {"tokens": ["brown", "darkred", "darkred", "brown"], "cases_complete": 2, "completed_cases": [17, 1]}
+          "player-1": {
+            "tokens": [
+              "darkred",
+              "brown"
+            ],
+            "cases_complete": 2,
+            "completed_cases": [
+              6,
+              11
+            ]
+          },
+          "player-2": {
+            "tokens": [
+              "blue",
+              "blue",
+              "darkred"
+            ],
+            "cases_complete": 2,
+            "completed_cases": [
+              2,
+              19
+            ]
+          },
+          "player-3": {
+            "tokens": [],
+            "cases_complete": 3,
+            "completed_cases": [
+              15,
+              9,
+              12
+            ]
+          },
+          "player-4": {
+            "tokens": [
+              "darkred",
+              "blue"
+            ],
+            "cases_complete": 2,
+            "completed_cases": [
+              10,
+              13
+            ]
+          },
+          "player-5": {
+            "tokens": [
+              "blue",
+              "darkred",
+              "green",
+              "orange",
+              "darkred",
+              "green"
+            ],
+            "cases_complete": 1,
+            "completed_cases": [
+              4
+            ]
+          },
+          "player-6": {
+            "tokens": [
+              "brown",
+              "darkred",
+              "darkred",
+              "brown"
+            ],
+            "cases_complete": 2,
+            "completed_cases": [
+              17,
+              1
+            ]
+          }
         },
         "score_gap": 2,
         "catch_up_triggered": false
@@ -1032,9 +2088,33 @@
       "personality": "rules-lawyer",
       "priority": 6,
       "cases_completed": [
-        {"case": 15, "round": 3, "tokens_used": ["green", "green", "brown"]},
-        {"case": 9, "round": 4, "tokens_used": ["orange", "darkred", "green"]},
-        {"case": 12, "round": 5, "tokens_used": ["green", "brown", "darkred"]}
+        {
+          "case": 15,
+          "round": 3,
+          "tokens_used": [
+            "green",
+            "green",
+            "brown"
+          ]
+        },
+        {
+          "case": 9,
+          "round": 4,
+          "tokens_used": [
+            "orange",
+            "darkred",
+            "green"
+          ]
+        },
+        {
+          "case": 12,
+          "round": 5,
+          "tokens_used": [
+            "green",
+            "brown",
+            "darkred"
+          ]
+        }
       ],
       "win_method": "standard",
       "ability_used": false,
@@ -1043,29 +2123,92 @@
       "efficiency": "100% (0 excess tokens at game end)"
     },
     "final_standings": [
-      {"rank": 1, "player": "Yossi (Shaika Trail Tracker)", "cases": 3, "excess_tokens": 0},
-      {"rank": 2, "player": "Danny (Adiko Goldheart)", "cases": 2, "excess_tokens": 2},
-      {"rank": 3, "player": "Michal (Alex Stranger)", "cases": 2, "excess_tokens": 3},
-      {"rank": 4, "player": "Ronit (Yermi Dinosaur)", "cases": 2, "excess_tokens": 2},
-      {"rank": 5, "player": "Michal2 (Nadavch Sheriff)", "cases": 2, "excess_tokens": 4},
-      {"rank": 6, "player": "Danny2 (Ilanit Full Case)", "cases": 1, "excess_tokens": 6}
+      {
+        "rank": 1,
+        "player": "Yossi (Shaika Trail Tracker)",
+        "cases": 3,
+        "excess_tokens": 0
+      },
+      {
+        "rank": 2,
+        "player": "Danny (Adiko Goldheart)",
+        "cases": 2,
+        "excess_tokens": 2
+      },
+      {
+        "rank": 3,
+        "player": "Michal (Alex Stranger)",
+        "cases": 2,
+        "excess_tokens": 3
+      },
+      {
+        "rank": 4,
+        "player": "Ronit (Yermi Dinosaur)",
+        "cases": 2,
+        "excess_tokens": 2
+      },
+      {
+        "rank": 5,
+        "player": "Michal2 (Nadavch Sheriff)",
+        "cases": 2,
+        "excess_tokens": 4
+      },
+      {
+        "rank": 6,
+        "player": "Danny2 (Ilanit Full Case)",
+        "cases": 1,
+        "excess_tokens": 6
+      }
     ],
     "collision_stats": {
       "total_collisions": 3,
-      "rounds_with_collision": [1, 2, 5],
-      "collision_locations": {"mazok_shop": 1, "eilat_reef": 1, "subaru_wagon": 1, "rosa_salon": 1},
+      "rounds_with_collision": [
+        1,
+        2,
+        5
+      ],
+      "collision_locations": {
+        "mazok_shop": 1,
+        "eilat_reef": 1,
+        "subaru_wagon": 1,
+        "rosa_salon": 1
+      },
       "collision_rate": "0.60 per round",
       "empty_hand_events": 0
     },
     "location_usage": {
-      "mazok_shop": {"visits": 3, "unique_visitors": 3},
-      "eilat_reef": {"visits": 4, "unique_visitors": 4},
-      "messy_closet": {"visits": 2, "unique_visitors": 2},
-      "rosa_salon": {"visits": 5, "unique_visitors": 4},
-      "dizengoff_cabin": {"visits": 2, "unique_visitors": 2},
-      "nadav_hq": {"visits": 4, "unique_visitors": 3},
-      "subaru_wagon": {"visits": 4, "unique_visitors": 4},
-      "barka_salon": {"visits": 3, "unique_visitors": 3}
+      "mazok_shop": {
+        "visits": 3,
+        "unique_visitors": 3
+      },
+      "eilat_reef": {
+        "visits": 4,
+        "unique_visitors": 4
+      },
+      "messy_closet": {
+        "visits": 2,
+        "unique_visitors": 2
+      },
+      "rosa_salon": {
+        "visits": 5,
+        "unique_visitors": 4
+      },
+      "dizengoff_cabin": {
+        "visits": 2,
+        "unique_visitors": 2
+      },
+      "nadav_hq": {
+        "visits": 4,
+        "unique_visitors": 3
+      },
+      "subaru_wagon": {
+        "visits": 4,
+        "unique_visitors": 4
+      },
+      "barka_salon": {
+        "visits": 3,
+        "unique_visitors": 3
+      }
     },
     "case_completions_by_round": {
       "round_1": 0,
@@ -1076,7 +2219,12 @@
     },
     "catch_up_analysis": {
       "sheriff_transfers": 4,
-      "sheriff_holders": ["player-2", "player-2", "player-6", "player-1"],
+      "sheriff_holders": [
+        "player-2",
+        "player-2",
+        "player-6",
+        "player-1"
+      ],
       "catch_up_triggers": 3,
       "catch_up_effective": true,
       "notes": "Sheriff mechanic kept trailing players competitive. Michal2 received sheriff when at 0 cases and used it to safely collect at Nadav HQ. Danny received sheriff when at 1 case (4-way tie for trailing) and used it at Dizengoff for guaranteed brown. The mechanic worked as intended but never directly produced a collision advantage since sheriff holders went to solo locations."

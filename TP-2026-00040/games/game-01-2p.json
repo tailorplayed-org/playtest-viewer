@@ -26,7 +26,12 @@
         "color": "#f97316"
       }
     ],
-    "protocols": ["simultaneous-selection", "set-collection", "role-power-activation", "catch-up-escalation"],
+    "protocols": [
+      "simultaneous-selection",
+      "set-collection",
+      "role-power-activation",
+      "catch-up-escalation"
+    ],
     "status": "completed",
     "started_at": "2026-03-24T05:00:00Z",
     "ended_at": "2026-03-24T05:16:00Z",
@@ -37,12 +42,44 @@
     "win_condition": "2 cases (2-player mode)"
   },
   "board": {
-    "active_locations": ["mazok_shop", "eilat_reef", "rosa_salon"],
-    "locations": {
-      "mazok_shop": {"name": "Mazok Shop", "name_original": "חנות מצוק", "setup_tokens": ["green", "brown", "orange"], "special": "diverse_start"},
-      "eilat_reef": {"name": "Eilat Reef", "name_original": "שונית אילת", "setup_tokens": ["blue", "blue"], "special": "blue_specialized"},
-      "rosa_salon": {"name": "Rosa Salon", "name_original": "סלון הרוזה", "setup_tokens": ["orange", "orange"], "special": "orange_specialized"}
-    }
+    "active_locations": [
+      "mazok_shop",
+      "eilat_reef",
+      "rosa_salon"
+    ],
+    "locations": [
+      {
+        "id": "mazok_shop",
+        "name": "Mazok Shop",
+        "name_original": "חנות מצוק",
+        "setup_tokens": [
+          "green",
+          "brown",
+          "orange"
+        ],
+        "special": "diverse_start"
+      },
+      {
+        "id": "eilat_reef",
+        "name": "Eilat Reef",
+        "name_original": "שונית אילת",
+        "setup_tokens": [
+          "blue",
+          "blue"
+        ],
+        "special": "blue_specialized"
+      },
+      {
+        "id": "rosa_salon",
+        "name": "Rosa Salon",
+        "name_original": "סלון הרוזה",
+        "setup_tokens": [
+          "orange",
+          "orange"
+        ],
+        "special": "orange_specialized"
+      }
+    ]
   },
   "rounds": [
     {
@@ -58,8 +95,17 @@
           "target_name": "Mazok Shop",
           "thought": "Discarding Case 3 because darkred tokens are not visible at any location - that case is a dead end early game. Keeping Case 6 (2 green + 1 orange) and Case 10 (2 blue + 1 green) because Mazok has green and orange now, Eilat has blue - both cases have a clear path. Going Mazok: it has 3 tokens, and as sheriff even a collision gets me 2 tokens of my choice. Green feeds both my cases so this is the highest expected value play.",
           "confusion": null,
-          "tokens_collected": ["green", "orange"],
-          "draft": {"keep": [6, 10], "discard": 3}
+          "tokens_collected": [
+            "green",
+            "orange"
+          ],
+          "draft": {
+            "keep": [
+              6,
+              10
+            ],
+            "discard": 3
+          }
         },
         {
           "player_id": "player-2",
@@ -71,33 +117,106 @@
           "target_name": "Rosa Salon",
           "thought": "Case 13 needs 2 orange + 1 brown; Rosa Salon has exactly 2 orange making it the highest-value target. I discard Case 14 because it shares darkred+orange requirements with Case 9 creating redundant token competition. Collision scenario is strategically interesting: if Adiko goes here too she takes 2 and I get 0 triggering Sly Argument to steal 1 back.",
           "confusion": "Three gaps: (1) Does Sly Argument trigger when I end COLLECT phase with 0 new tokens, or only when the location itself had 0 tokens? (2) After collection are players still considered at a location for the steal? (3) Sheriff supplement timing: does location top up to 2 BEFORE Sheriff takes in a collision meaning Sheriff always gets 2 and I always get 0 at a 2-token location?",
-          "tokens_collected": ["orange", "orange"],
-          "draft": {"keep": [13, 9], "discard": 14}
+          "tokens_collected": [
+            "orange",
+            "orange"
+          ],
+          "draft": {
+            "keep": [
+              13,
+              9
+            ],
+            "discard": 14
+          }
         }
       ],
       "resolution": {
         "collisions": [],
         "replenishment": [
-          {"location": "mazok_shop", "tokens_added": ["brown"], "reason": "had 1 token"},
-          {"location": "rosa_salon", "tokens_added": ["blue", "orange"], "reason": "had 0 tokens"}
+          {
+            "location": "mazok_shop",
+            "tokens_added": [
+              "brown"
+            ],
+            "reason": "had 1 token"
+          },
+          {
+            "location": "rosa_salon",
+            "tokens_added": [
+              "blue",
+              "orange"
+            ],
+            "reason": "had 0 tokens"
+          }
         ],
         "completions": [],
-        "outcomes": ["Danny alone at Mazok: collected green+orange", "Yossi alone at Rosa: collected orange+orange", "No collisions, no completions"]
+        "outcomes": [
+          "Danny alone at Mazok: collected green+orange",
+          "Yossi alone at Rosa: collected orange+orange",
+          "No collisions, no completions"
+        ]
       },
       "state_after": {
-        "board": {"mazok_shop": ["brown", "brown"], "eilat_reef": ["blue", "blue"], "rosa_salon": ["blue", "orange"]},
+        "board": {
+          "mazok_shop": [
+            "brown",
+            "brown"
+          ],
+          "eilat_reef": [
+            "blue",
+            "blue"
+          ],
+          "rosa_salon": [
+            "blue",
+            "orange"
+          ]
+        },
         "bag_size": 30,
         "players": {
-          "player-1": {"tokens": ["green", "orange"], "completed_cases": [], "has_sheriff": true, "ability_available": true},
-          "player-2": {"tokens": ["orange", "orange"], "completed_cases": [], "has_sheriff": false, "ability_available": true}
+          "player-1": {
+            "tokens": [
+              "green",
+              "orange"
+            ],
+            "completed_cases": [],
+            "has_sheriff": true,
+            "ability_available": true
+          },
+          "player-2": {
+            "tokens": [
+              "orange",
+              "orange"
+            ],
+            "completed_cases": [],
+            "has_sheriff": false,
+            "ability_available": true
+          }
         },
         "score_gap": 0,
         "catch_up_triggered": false
       },
       "referee_flags": [
-        {"type": "player_confusion", "player": "Yossi", "id": "C-001", "content": "Sly Argument trigger: empty-handed from any cause vs only empty location", "resolution": "Clarified: triggers any time player collects 0 tokens"},
-        {"type": "player_confusion", "player": "Yossi", "id": "C-002", "content": "Are players at location during ability resolution for steal targeting", "resolution": "Clarified: yes, both present during ability resolution"},
-        {"type": "player_confusion", "player": "Yossi", "id": "C-003", "content": "Sheriff supplement timing at 2-token locations", "resolution": "Clarified: no top-up, sheriff takes available + supplements from bag"}
+        {
+          "type": "player_confusion",
+          "player": "Yossi",
+          "id": "C-001",
+          "content": "Sly Argument trigger: empty-handed from any cause vs only empty location",
+          "resolution": "Clarified: triggers any time player collects 0 tokens"
+        },
+        {
+          "type": "player_confusion",
+          "player": "Yossi",
+          "id": "C-002",
+          "content": "Are players at location during ability resolution for steal targeting",
+          "resolution": "Clarified: yes, both present during ability resolution"
+        },
+        {
+          "type": "player_confusion",
+          "player": "Yossi",
+          "id": "C-003",
+          "content": "Sheriff supplement timing at 2-token locations",
+          "resolution": "Clarified: no top-up, sheriff takes available + supplements from bag"
+        }
       ],
       "observer_notes": []
     },
@@ -114,8 +233,19 @@
           "target_name": "Eilat Reef",
           "thought": "Eilat has 2 blue tokens. If I go alone I collect both, giving me green + orange + blue + blue. That is exactly the 2 blue + 1 green needed to complete Case 10 this round. Yossi has 2 orange and no blue yet - he likely targets Mazok (green) or Rosa (blue + orange). Eilat is probably clear. Even with a collision I grab 2 blue as sheriff and still complete Case 10. This is the cleanest path to first completion.",
           "confusion": null,
-          "tokens_collected": ["blue", "blue"],
-          "case_completed": {"case_id": 10, "case_name": "Diving Case", "tokens_spent": ["blue", "blue", "green"]},
+          "tokens_collected": [
+            "blue",
+            "blue"
+          ],
+          "case_completed": {
+            "case_id": 10,
+            "case_name": "Diving Case",
+            "tokens_spent": [
+              "blue",
+              "blue",
+              "green"
+            ]
+          },
           "new_case_drawn": 1
         },
         {
@@ -128,29 +258,97 @@
           "target_name": "Mazok Shop",
           "thought": "I have 2 orange and Case 13 needs 2 orange + 1 brown. Mazok Shop has 2 brown - if I'm alone I collect 2 brown, giving me 2 orange + 2 brown and I can complete Case 13 immediately (spending 2 orange + 1 brown, returning them to bag). Even on collision: Danny (Sheriff) takes both browns, I get 0, Sly Argument triggers and I steal 1 token from Danny's hand at this location per the Round 1 clarification that players are still at the location during ability resolution.",
           "confusion": null,
-          "tokens_collected": ["brown", "brown"],
-          "case_completed": {"case_id": 13, "case_name": "Cottage Mystery", "tokens_spent": ["orange", "orange", "brown"]},
+          "tokens_collected": [
+            "brown",
+            "brown"
+          ],
+          "case_completed": {
+            "case_id": 13,
+            "case_name": "Cottage Mystery",
+            "tokens_spent": [
+              "orange",
+              "orange",
+              "brown"
+            ]
+          },
           "new_case_drawn": 7
         }
       ],
       "resolution": {
         "collisions": [],
         "replenishment": [
-          {"location": "mazok_shop", "tokens_added": ["blue", "green"], "reason": "had 0 tokens"},
-          {"location": "eilat_reef", "tokens_added": ["brown", "orange"], "reason": "had 0 tokens"}
+          {
+            "location": "mazok_shop",
+            "tokens_added": [
+              "blue",
+              "green"
+            ],
+            "reason": "had 0 tokens"
+          },
+          {
+            "location": "eilat_reef",
+            "tokens_added": [
+              "brown",
+              "orange"
+            ],
+            "reason": "had 0 tokens"
+          }
         ],
         "completions": [
-          {"player": "player-1", "case_id": 10, "case_name": "Diving Case"},
-          {"player": "player-2", "case_id": 13, "case_name": "Cottage Mystery"}
+          {
+            "player": "player-1",
+            "case_id": 10,
+            "case_name": "Diving Case"
+          },
+          {
+            "player": "player-2",
+            "case_id": 13,
+            "case_name": "Cottage Mystery"
+          }
         ],
-        "outcomes": ["Danny alone at Eilat: collected 2 blue, COMPLETED Case 10", "Yossi alone at Mazok: collected 2 brown, COMPLETED Case 13", "Both at 1/2 cases"]
+        "outcomes": [
+          "Danny alone at Eilat: collected 2 blue, COMPLETED Case 10",
+          "Yossi alone at Mazok: collected 2 brown, COMPLETED Case 13",
+          "Both at 1/2 cases"
+        ]
       },
       "state_after": {
-        "board": {"mazok_shop": ["blue", "green"], "eilat_reef": ["brown", "orange"], "rosa_salon": ["blue", "orange"]},
+        "board": {
+          "mazok_shop": [
+            "blue",
+            "green"
+          ],
+          "eilat_reef": [
+            "brown",
+            "orange"
+          ],
+          "rosa_salon": [
+            "blue",
+            "orange"
+          ]
+        },
         "bag_size": 32,
         "players": {
-          "player-1": {"tokens": ["orange"], "completed_cases": [10], "has_sheriff": true, "ability_available": true},
-          "player-2": {"tokens": ["brown"], "completed_cases": [13], "has_sheriff": false, "ability_available": true}
+          "player-1": {
+            "tokens": [
+              "orange"
+            ],
+            "completed_cases": [
+              10
+            ],
+            "has_sheriff": true,
+            "ability_available": true
+          },
+          "player-2": {
+            "tokens": [
+              "brown"
+            ],
+            "completed_cases": [
+              13
+            ],
+            "has_sheriff": false,
+            "ability_available": true
+          }
         },
         "score_gap": 0,
         "catch_up_triggered": false
@@ -171,7 +369,10 @@
           "target_name": "Mazok Shop",
           "thought": "Both my cases need green - Case 6 needs 2 green, Case 1 needs 1 green. Green only appears at Mazok this round. Yossi has 1 brown and may also want Mazok's green, but as sheriff a collision still gets me 2 tokens (green + blue), emptying the location so he gets nothing. If I'm alone I take green + blue. Either way I get the green I need. Eilat gives brown + orange which only partially helps Case 1 but leaves me without green, stalling both cases another round.",
           "confusion": null,
-          "tokens_collected": ["green", "blue"]
+          "tokens_collected": [
+            "green",
+            "blue"
+          ]
         },
         {
           "player_id": "player-2",
@@ -196,33 +397,91 @@
         "collisions": [
           {
             "location": "mazok_shop",
-            "players": ["player-1", "player-2"],
+            "players": [
+              "player-1",
+              "player-2"
+            ],
             "resolution_rule": "Sheriff bonus (2p): Sheriff takes 2, opponent takes remainder (0). Section 1.4 Rule 5",
-            "sheriff_collected": ["green", "blue"],
+            "sheriff_collected": [
+              "green",
+              "blue"
+            ],
             "opponent_collected": [],
             "ability_triggered": "Sly Argument — Yossi steals green from Danny"
           }
         ],
         "replenishment": [
-          {"location": "mazok_shop", "tokens_added": ["green", "orange"], "reason": "had 0 tokens"}
+          {
+            "location": "mazok_shop",
+            "tokens_added": [
+              "green",
+              "orange"
+            ],
+            "reason": "had 0 tokens"
+          }
         ],
         "completions": [],
-        "outcomes": ["COLLISION at Mazok Shop", "Danny (sheriff) took green+blue, Yossi got 0", "Sly Argument: Yossi stole green from Danny", "Final: Danny has orange+blue, Yossi has brown+green"]
+        "outcomes": [
+          "COLLISION at Mazok Shop",
+          "Danny (sheriff) took green+blue, Yossi got 0",
+          "Sly Argument: Yossi stole green from Danny",
+          "Final: Danny has orange+blue, Yossi has brown+green"
+        ]
       },
       "state_after": {
-        "board": {"mazok_shop": ["green", "orange"], "eilat_reef": ["brown", "orange"], "rosa_salon": ["blue", "orange"]},
+        "board": {
+          "mazok_shop": [
+            "green",
+            "orange"
+          ],
+          "eilat_reef": [
+            "brown",
+            "orange"
+          ],
+          "rosa_salon": [
+            "blue",
+            "orange"
+          ]
+        },
         "bag_size": 30,
         "players": {
-          "player-1": {"tokens": ["orange", "blue"], "completed_cases": [10], "has_sheriff": true, "ability_available": true},
-          "player-2": {"tokens": ["brown", "green"], "completed_cases": [13], "has_sheriff": false, "ability_available": false}
+          "player-1": {
+            "tokens": [
+              "orange",
+              "blue"
+            ],
+            "completed_cases": [
+              10
+            ],
+            "has_sheriff": true,
+            "ability_available": true
+          },
+          "player-2": {
+            "tokens": [
+              "brown",
+              "green"
+            ],
+            "completed_cases": [
+              13
+            ],
+            "has_sheriff": false,
+            "ability_available": false
+          }
         },
         "score_gap": 0,
         "catch_up_triggered": false
       },
       "referee_flags": [
-        {"type": "ability_activation", "player": "Yossi", "ability": "Sly Argument", "context": "Empty-handed from collision at 2-token location with sheriff. Stole green from Danny's hand."}
+        {
+          "type": "ability_activation",
+          "player": "Yossi",
+          "ability": "Sly Argument",
+          "context": "Empty-handed from collision at 2-token location with sheriff. Stole green from Danny's hand."
+        }
       ],
-      "observer_notes": ["First collision of the game. Sheriff bonus at 2-token location = opponent gets 0 guaranteed. Ability trigger worked as designed."]
+      "observer_notes": [
+        "First collision of the game. Sheriff bonus at 2-token location = opponent gets 0 guaranteed. Ability trigger worked as designed."
+      ]
     },
     {
       "number": 4,
@@ -237,7 +496,10 @@
           "target_name": "Mazok Shop",
           "thought": "Mazok has green + orange and green is critical for both my cases. Yossi's Sly Argument is used up - no more steals - so a collision at Mazok now just means I take green + orange as sheriff and he gets 0. Last round he followed me to Mazok but that cost him his ability with no gain. He has brown + green already and likely needs orange next, making Rosa or Eilat more attractive to him. Either way Mazok is correct: alone I grab green + orange, collision I still grab green + orange.",
           "confusion": null,
-          "tokens_collected": ["green", "orange"]
+          "tokens_collected": [
+            "green",
+            "orange"
+          ]
         },
         {
           "player_id": "player-2",
@@ -249,32 +511,95 @@
           "target_name": "Rosa Salon",
           "thought": "Rosa Salon has blue + orange - the only location where BOTH tokens are directly useful to my cases (orange for Case 9, blue for Case 7). Mazok and Eilat each yield at most 1 useful token given what I already hold. Brown in my hand is dead weight for both cases. Darkred remains the bottleneck for completion but I should build out the remaining requirements now so I can complete immediately once darkred appears.",
           "confusion": null,
-          "tokens_collected": ["blue", "orange"]
+          "tokens_collected": [
+            "blue",
+            "orange"
+          ]
         }
       ],
       "resolution": {
         "collisions": [],
         "replenishment": [
-          {"location": "mazok_shop", "tokens_added": ["darkred", "blue"], "reason": "had 0 tokens"},
-          {"location": "rosa_salon", "tokens_added": ["blue", "brown"], "reason": "had 0 tokens"}
+          {
+            "location": "mazok_shop",
+            "tokens_added": [
+              "darkred",
+              "blue"
+            ],
+            "reason": "had 0 tokens"
+          },
+          {
+            "location": "rosa_salon",
+            "tokens_added": [
+              "blue",
+              "brown"
+            ],
+            "reason": "had 0 tokens"
+          }
         ],
         "completions": [],
-        "outcomes": ["Danny alone at Mazok: collected green+orange", "Yossi alone at Rosa: collected blue+orange", "No completions. Darkred appears at Mazok via replenishment!"]
+        "outcomes": [
+          "Danny alone at Mazok: collected green+orange",
+          "Yossi alone at Rosa: collected blue+orange",
+          "No completions. Darkred appears at Mazok via replenishment!"
+        ]
       },
       "state_after": {
-        "board": {"mazok_shop": ["darkred", "blue"], "eilat_reef": ["brown", "orange"], "rosa_salon": ["blue", "brown"]},
+        "board": {
+          "mazok_shop": [
+            "darkred",
+            "blue"
+          ],
+          "eilat_reef": [
+            "brown",
+            "orange"
+          ],
+          "rosa_salon": [
+            "blue",
+            "brown"
+          ]
+        },
         "bag_size": 26,
         "players": {
-          "player-1": {"tokens": ["orange", "orange", "blue", "green"], "completed_cases": [10], "has_sheriff": true, "ability_available": true},
-          "player-2": {"tokens": ["brown", "green", "blue", "orange"], "completed_cases": [13], "has_sheriff": false, "ability_available": false}
+          "player-1": {
+            "tokens": [
+              "orange",
+              "orange",
+              "blue",
+              "green"
+            ],
+            "completed_cases": [
+              10
+            ],
+            "has_sheriff": true,
+            "ability_available": true
+          },
+          "player-2": {
+            "tokens": [
+              "brown",
+              "green",
+              "blue",
+              "orange"
+            ],
+            "completed_cases": [
+              13
+            ],
+            "has_sheriff": false,
+            "ability_available": false
+          }
         },
         "score_gap": 0,
         "catch_up_triggered": false
       },
       "referee_flags": [
-        {"type": "pattern", "content": "Darkred drought lasted 4 rounds. First darkred on board via Round 4 replenishment. Yossi's both cases blocked on darkred for 2 rounds."}
+        {
+          "type": "pattern",
+          "content": "Darkred drought lasted 4 rounds. First darkred on board via Round 4 replenishment. Yossi's both cases blocked on darkred for 2 rounds."
+        }
       ],
-      "observer_notes": ["Every location now has orange + one other color. Darkred scarcity is the defining tension of this game."]
+      "observer_notes": [
+        "Every location now has orange + one other color. Darkred scarcity is the defining tension of this game."
+      ]
     },
     {
       "number": 5,
@@ -289,8 +614,19 @@
           "target_name": "Eilat Reef",
           "thought": "I only need 1 brown to complete Case 1 this round. Eilat has brown + orange - if I go alone I grab both, then Case 1 (orange + brown + green) completes immediately. Yossi has 4 tokens and may be close to completing too, but his Sly Argument is used so no steal threat. As sheriff even a collision at Eilat gets me 2 tokens including brown. Rosa also has brown but Yossi seems more likely to chase Rosa given blue + brown suits his hand. Eilat is the safer read for a clear path to second completion.",
           "confusion": null,
-          "tokens_collected": ["brown", "orange"],
-          "case_completed": {"case_id": 1, "case_name": "Shpachtel Mystery", "tokens_spent": ["orange", "brown", "green"]}
+          "tokens_collected": [
+            "brown",
+            "orange"
+          ],
+          "case_completed": {
+            "case_id": 1,
+            "case_name": "Shpachtel Mystery",
+            "tokens_spent": [
+              "orange",
+              "brown",
+              "green"
+            ]
+          }
         },
         {
           "player_id": "player-2",
@@ -302,37 +638,102 @@
           "target_name": "Mazok Shop",
           "thought": "Mazok Shop has the only darkred on the board and I need exactly 1 darkred to complete either Case 9 or Case 7 immediately. If alone I take darkred + blue and complete a case this round, moving to 2/2 and winning. The collision risk is real since Danny also benefits from darkred, but avoiding Mazok guarantees stagnation - the other locations offer only brown/orange/blue which I already have sufficient of. This is the forced play regardless of collision risk.",
           "confusion": null,
-          "tokens_collected": ["darkred", "blue"],
-          "case_completed": {"case_id": 9, "case_name": "Wedding Mystery", "tokens_spent": ["orange", "darkred", "green"]}
+          "tokens_collected": [
+            "darkred",
+            "blue"
+          ],
+          "case_completed": {
+            "case_id": 9,
+            "case_name": "Wedding Mystery",
+            "tokens_spent": [
+              "orange",
+              "darkred",
+              "green"
+            ]
+          }
         }
       ],
       "resolution": {
         "collisions": [],
         "completions": [
-          {"player": "player-1", "case_id": 1, "case_name": "Shpachtel Mystery", "winning_case": true},
-          {"player": "player-2", "case_id": 9, "case_name": "Wedding Mystery", "winning_case": true}
+          {
+            "player": "player-1",
+            "case_id": 1,
+            "case_name": "Shpachtel Mystery",
+            "winning_case": true
+          },
+          {
+            "player": "player-2",
+            "case_id": 9,
+            "case_name": "Wedding Mystery",
+            "winning_case": true
+          }
         ],
         "tiebreaker": {
           "both_at_2_cases": true,
-          "excess_tokens": {"player-1": 3, "player-2": 3},
+          "excess_tokens": {
+            "player-1": 3,
+            "player-2": 3
+          },
           "tiebreaker_1": "TIED (both 3 excess)",
-          "priority_values": {"player-1": 4, "player-2": 5},
+          "priority_values": {
+            "player-1": 4,
+            "player-2": 5
+          },
           "tiebreaker_2": "Player-1 wins (priority 4 < 5)",
           "winner": "player-1"
         },
-        "outcomes": ["Danny at Eilat: collected brown+orange, COMPLETED Case 1 (2nd case!)", "Yossi at Mazok: collected darkred+blue, COMPLETED Case 9 (2nd case!)", "SIMULTANEOUS WIN — tiebreaker: excess tokens tied at 3, lower priority (Danny P4) wins"]
+        "outcomes": [
+          "Danny at Eilat: collected brown+orange, COMPLETED Case 1 (2nd case!)",
+          "Yossi at Mazok: collected darkred+blue, COMPLETED Case 9 (2nd case!)",
+          "SIMULTANEOUS WIN — tiebreaker: excess tokens tied at 3, lower priority (Danny P4) wins"
+        ]
       },
       "state_after": {
         "players": {
-          "player-1": {"tokens": ["orange", "orange", "blue"], "completed_cases": [10, 1], "total_completed": 2},
-          "player-2": {"tokens": ["brown", "blue", "blue"], "completed_cases": [13, 9], "total_completed": 2}
+          "player-1": {
+            "tokens": [
+              "orange",
+              "orange",
+              "blue"
+            ],
+            "completed_cases": [
+              10,
+              1
+            ],
+            "total_completed": 2
+          },
+          "player-2": {
+            "tokens": [
+              "brown",
+              "blue",
+              "blue"
+            ],
+            "completed_cases": [
+              13,
+              9
+            ],
+            "total_completed": 2
+          }
         }
       },
       "referee_flags": [
-        {"type": "finding", "id": "F-001", "severity": "FINDING", "content": "Tiebreaker chain fully exercised: both players completed winning case simultaneously. Excess tokens tied (3 each), resolved by priority value. System worked correctly."},
-        {"type": "finding", "id": "F-002", "severity": "FINDING", "content": "Danny's Gold Heart ability never triggered — he never returned empty-handed across 5 rounds. In 2p with sheriff, the sheriff almost never returns empty-handed (only at truly empty locations)."}
+        {
+          "type": "finding",
+          "id": "F-001",
+          "severity": "FINDING",
+          "content": "Tiebreaker chain fully exercised: both players completed winning case simultaneously. Excess tokens tied (3 each), resolved by priority value. System worked correctly."
+        },
+        {
+          "type": "finding",
+          "id": "F-002",
+          "severity": "FINDING",
+          "content": "Danny's Gold Heart ability never triggered — he never returned empty-handed across 5 rounds. In 2p with sheriff, the sheriff almost never returns empty-handed (only at truly empty locations)."
+        }
       ],
-      "observer_notes": ["Dramatic finish. Both players made optimal moves to their best locations. The game created genuine tension through darkred scarcity and simultaneous completion."]
+      "observer_notes": [
+        "Dramatic finish. Both players made optimal moves to their best locations. The game created genuine tension through darkred scarcity and simultaneous completion."
+      ]
     }
   ],
   "final_analysis": {
@@ -341,18 +742,56 @@
     "winner_name": "Danny (Adiko Goldheart)",
     "win_condition_met": "tiebreaker_lower_priority",
     "score_progression": [
-      {"round": 1, "player-1": 0, "player-2": 0},
-      {"round": 2, "player-1": 1, "player-2": 1},
-      {"round": 3, "player-1": 1, "player-2": 1},
-      {"round": 4, "player-1": 1, "player-2": 1},
-      {"round": 5, "player-1": 2, "player-2": 2}
+      {
+        "round": 1,
+        "player-1": 0,
+        "player-2": 0
+      },
+      {
+        "round": 2,
+        "player-1": 1,
+        "player-2": 1
+      },
+      {
+        "round": 3,
+        "player-1": 1,
+        "player-2": 1
+      },
+      {
+        "round": 4,
+        "player-1": 1,
+        "player-2": 1
+      },
+      {
+        "round": 5,
+        "player-1": 2,
+        "player-2": 2
+      }
     ],
     "collision_rate": 0.2,
     "collisions_total": 1,
     "location_usage": {
-      "mazok_shop": {"visits": 6, "by_player": {"player-1": 3, "player-2": 3}},
-      "eilat_reef": {"visits": 2, "by_player": {"player-1": 2, "player-2": 0}},
-      "rosa_salon": {"visits": 2, "by_player": {"player-1": 0, "player-2": 2}}
+      "mazok_shop": {
+        "visits": 6,
+        "by_player": {
+          "player-1": 3,
+          "player-2": 3
+        }
+      },
+      "eilat_reef": {
+        "visits": 2,
+        "by_player": {
+          "player-1": 2,
+          "player-2": 0
+        }
+      },
+      "rosa_salon": {
+        "visits": 2,
+        "by_player": {
+          "player-1": 0,
+          "player-2": 2
+        }
+      }
     },
     "dead_locations": [],
     "catch_up_triggers": 0,
@@ -361,9 +800,30 @@
     "rule_ambiguities_found": 3,
     "invented_rules": 0,
     "player_confusions": [
-      {"content": "Sly Argument trigger timing (empty-handed definition)", "player": "Yossi", "games": [1], "severity": "WARNING"},
-      {"content": "Location presence during ability resolution", "player": "Yossi", "games": [1], "severity": "WARNING"},
-      {"content": "Sheriff supplement timing at 2-token locations", "player": "Yossi", "games": [1], "severity": "WARNING"}
+      {
+        "content": "Sly Argument trigger timing (empty-handed definition)",
+        "player": "Yossi",
+        "games": [
+          1
+        ],
+        "severity": "WARNING"
+      },
+      {
+        "content": "Location presence during ability resolution",
+        "player": "Yossi",
+        "games": [
+          1
+        ],
+        "severity": "WARNING"
+      },
+      {
+        "content": "Sheriff supplement timing at 2-token locations",
+        "player": "Yossi",
+        "games": [
+          1
+        ],
+        "severity": "WARNING"
+      }
     ],
     "decision_diversity": {
       "player-1": 0.6,
